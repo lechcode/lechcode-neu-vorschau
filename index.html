@@ -422,22 +422,13 @@
   .berater-band p{color:var(--bone-dim);margin-top:8px;font-size:var(--step-0);}
   .berater-band .btn{flex:none;}
 
-  /* ===== Leonie — Branding, Logo, Fotos ===== */
-  .leonie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,20px);margin-top:var(--space-4);}
-  .leonie-card{background:var(--panel);border:1px solid var(--line-d);border-radius:var(--radius);
-    padding:clamp(18px,2.6vw,26px);display:grid;gap:8px;align-content:start;box-shadow:var(--edge-d);}
-  .leonie-card .icon{font-size:26px;}
-  .leonie-card h3{font-size:var(--step-1);color:#fbf5e8;}
-  .leonie-card .preis{font-family:var(--mono);color:var(--gold);font-size:var(--step--1);letter-spacing:.04em;}
-  .leonie-card p{color:var(--bone-dim);font-size:var(--step-0);line-height:var(--lh-body);}
-  .leonie-fine{color:var(--muted);font-size:var(--step--1);margin-top:var(--space-3);}
-  @media (max-width:860px){.leonie-grid{grid-template-columns:1fr;}}
+  /* (Leonie-Sektion „Branding & Fotos" auf Lennys Wunsch entfernt, 22.07.) */
 
   @media (prefers-reduced-motion:reduce){
     *{animation:none !important;scroll-behavior:auto !important;}
     .js .reveal > .wrap{opacity:1;transform:none;transition:none;}
     .js .reveal .stagger > *{opacity:1 !important;transform:none !important;transition:none !important;}
-    .price,.step,.person,.compare-card,.arg,.trust,.brand-mark,.play-disc,.leonie-card{transition:none !important;transform:none !important;}
+    .price,.step,.person,.compare-card,.arg,.trust,.brand-mark,.play-disc{transition:none !important;transform:none !important;}
   }
   </style>
 </head>
@@ -462,7 +453,6 @@
         <a href="#ablauf">So läuft’s</a>
         <a href="#vergleich">Warum Lechcode</a>
         <a href="#arbeiten">Beispiele</a>
-        <a href="#leonie">Branding &amp; Fotos</a>
         <a href="#ueber-uns">Wer wir sind</a>
         <a class="btn" href="#eintragen">Kostenlos starten <span class="arr">→</span></a>
       </div>
@@ -535,7 +525,7 @@
               <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Rechtlich sauber</b> — verschlüsselt (das Schloss-Symbol im Browser), Impressum &amp; Datenschutzerklärung; ohne Cookies gebaut, wo immer möglich — dann braucht es auch keinen Cookie-Banner.</span></li>
               <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Blitzschnell auf jedem Gerät</b> — gebaut fürs Handy zuerst: Über 60 % deiner Besucher kommen mobil (StatCounter, 2024/25).</span></li>
               <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Kein Abo, keine Miete — die Seite gehört dir.</b> Du kannst jederzeit umziehen, ganz ohne uns.</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Laufend nur deine Domain</b> — rund 10 € im Jahr. Das Hosting übernehmen wir; ein monatliches Abo brauchst du nicht.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Laufend nur deine Domain</b> — auf rund 4 € im Jahr drückbar. Das Hosting übernehmen wir; ein monatliches Abo brauchst du nicht.</span></li>
             </ul>
             <a class="btn" href="#eintragen">Meinen kostenlosen Entwurf ansehen <span class="arr">→</span></a>
             <p class="price-fine">Die 10 Plätze sind der 500-€-Startpreis — eine kostenlose Vorschau bekommst du in jedem Fall · keine versteckten Kosten</p>
@@ -588,9 +578,9 @@
           <div class="flip-row">
             <div class="flip-col"><span class="cost-old">10–25 € / Monat</span><small>Baukasten-Abo, dauerhaft</small></div>
             <span class="flip-arrow" aria-hidden="true">→</span>
-            <div class="flip-col"><span class="cost-new">~1–2 € / Monat</span><small>nur noch Hosting + Domain</small></div>
+            <div class="flip-col"><span class="cost-new">≈ 4 € / Jahr</span><small>nur die Domain — Hosting übernehmen wir</small></div>
           </div>
-          <p class="cost-say">Das monatliche Baukasten-Abo fällt komplett weg. Was bleibt, ist winzig: Das Hosting deiner Seite übernehmen wir, die Domain kostet rund 10 € im Jahr. Mehr nicht.</p>
+          <p class="cost-say">Das monatliche Baukasten-Abo fällt komplett weg. Was bleibt, ist winzig: Das Hosting deiner Seite übernehmen wir — und deine Domain lässt sich auf rund 4 € im Jahr drücken. Mehr nicht.</p>
           <div class="cost-chips"><span>✓ kein Abo-Zwang</span><span>✓ kein Cookie-Banner</span><span>✓ Recht inklusive</span></div>
           <p class="cost-foot">Wer Änderungen lieber abgibt, bucht optional die Rundum-sorglos-Pflege (19 €/Monat, monatlich kündbar). Wer selten etwas ändert, zahlt gar nichts im Monat.</p>
         </div>
@@ -714,39 +704,6 @@
       </div>
     </section>
 
-    <!-- LEONIE — Branding, Logo, Fotos -->
-    <section class="dark reveal" id="leonie">
-      <div class="wrap">
-        <div class="sec-head">
-          <span class="eyebrow">Mehr als Website</span>
-          <h2>Logo, Branding, Fotos — mit Leonie.</h2>
-          <p class="lead">Manchmal braucht ein Auftritt mehr als eine gute Seite: ein Logo, das wirklich passt. Farben und Sprache, die sich nach dir anfühlen. Fotos, auf denen man dich spürt. Dafür ist Leonie da — studierte Grafikdesignerin und Fotografin, und bei Lechcode für alles zuständig, was deiner Marke Gesicht gibt.</p>
-        </div>
-        <div class="leonie-grid stagger">
-          <div class="leonie-card">
-            <span class="icon" aria-hidden="true">📸</span>
-            <h3>Fotoshooting</h3>
-            <!-- PLATZHALTER-PREISE: von Lenny/Leonie bestätigen (gilt für alle drei Karten) -->
-            <span class="preis">ab 290 € · Einführungspreis</span>
-            <p>Professionelle Bilder von dir und deiner Arbeit — bei dir vor Ort, entspannt und natürlich. Genau die Fotos, die eine Website warm machen.</p>
-          </div>
-          <div class="leonie-card">
-            <span class="icon" aria-hidden="true">🎨</span>
-            <h3>Logo-Gestaltung</h3>
-            <span class="preis">ab 390 € · Einführungspreis</span>
-            <p>Ein Logo, das zu dir passt statt zum Trend — mit allen Dateien für Web, Druck und Schild an der Tür.</p>
-          </div>
-          <div class="leonie-card">
-            <span class="icon" aria-hidden="true">🧭</span>
-            <h3>Branding-Workshop</h3>
-            <span class="preis">ab 490 € · Einführungspreis</span>
-            <p>Farben, Worte, Auftritt: In einem halben Tag schärfen wir gemeinsam, wofür du stehst — und deine Website zieht direkt mit.</p>
-          </div>
-        </div>
-        <p class="leonie-fine">Alles optional und unabhängig vom Startangebot — sag im Gespräch oder im Formular einfach Bescheid, dann meldet sich Leonie persönlich.</p>
-      </div>
-    </section>
-
     <!-- Lech-Welle: dunkel → hell -->
     <svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" fill="none" aria-hidden="true" style="background:var(--night);">
       <g class="wave-anim wave-back">
@@ -814,7 +771,7 @@
         </div>
         <div class="foot-col">
           <h4>Seite</h4>
-          <a href="#angebot">Startangebot</a><a href="#ablauf">So läuft’s</a><a href="#vergleich">Warum Lechcode</a><a href="#arbeiten">Beispiele</a><a href="#leonie">Branding &amp; Fotos</a><a href="#ueber-uns">Wer wir sind</a><a href="#eintragen">Eintragen</a>
+          <a href="#angebot">Startangebot</a><a href="#ablauf">So läuft’s</a><a href="#vergleich">Warum Lechcode</a><a href="#arbeiten">Beispiele</a><a href="#ueber-uns">Wer wir sind</a><a href="#eintragen">Eintragen</a>
         </div>
         <div class="foot-col">
           <h4>Rechtliches</h4>
