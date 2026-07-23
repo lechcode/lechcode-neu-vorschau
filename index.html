@@ -83,8 +83,14 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 12px);}
   body{background:var(--night);color:var(--bone);font-family:var(--sans);line-height:var(--lh-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;}
-  body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  /* Filmkorn: liegt fest über dem ganzen Bild und wird per mix-blend-mode verrechnet.
+     Das kostet auf jedem Bild eine bildschirmgroße Mischung — auf dem Handy einer der
+     teuersten Posten beim Scrollen, und dort sieht man das Korn ohnehin kaum.
+     Deshalb erst ab Tablet-Breite. */
+  @media (min-width:900px){
+    body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  }
   h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:var(--lh-snug);letter-spacing:var(--ls-h2);text-wrap:balance;}
   a{color:inherit;text-decoration:none;}
   img,svg{display:block;max-width:100%;}
@@ -354,12 +360,32 @@
   .ki-lead p{color:var(--bone-dim);font-size:var(--step-0);line-height:var(--lh-body);}
   @media (max-width:520px){.ki-lead{flex-direction:column;text-align:center;}.ki-lead .ki-badge{margin-inline:auto;}}
   /* Stimmen (Testimonial) */
-  .stimme{max-width:760px;margin-inline:auto;text-align:center;}
-  .stimme-stars{color:var(--gold-deep);font-size:22px;letter-spacing:4px;}
-  .stimme-quote{font-family:var(--display);font-weight:600;font-size:var(--step-2);line-height:1.4;color:var(--ink);margin-top:16px;letter-spacing:var(--ls-lead);}
-  .stimme-more{color:var(--ink-soft);font-size:var(--step-0);line-height:var(--lh-body);margin-top:16px;max-width:60ch;margin-inline:auto;}
-  .stimme-by{margin-top:18px;font-family:var(--display);font-weight:600;font-size:var(--step-0);color:var(--ink);}
-  .stimme-by b{color:var(--gold-deep);}
+  /* Stimme als eigene Zitat-Karte: gerahmt, mit großem Anführungszeichen und
+     Absender-Zeile. Vorher stand der Text frei auf dem Sand und war auf den
+     ersten Blick nicht als Kundenstimme zu erkennen. */
+  .stimme{position:relative;max-width:760px;margin-inline:auto;text-align:center;
+    background:var(--warm-white);border:1px solid var(--line-l);border-radius:var(--radius-lg);
+    padding:clamp(30px,4.5vw,46px) clamp(22px,4vw,50px) clamp(24px,3.4vw,34px);
+    box-shadow:var(--edge-l), var(--shadow-l);overflow:hidden;}
+  .stimme::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(46% 70% at 8% 0%, rgba(232,146,63,.10), transparent 62%);}
+  .stimme > *{position:relative;}
+  .stimme-mark{position:absolute;left:clamp(8px,1.6vw,20px);top:clamp(-30px,-2.4vw,-14px);
+    font-family:var(--display);font-weight:700;font-size:clamp(96px,13vw,150px);line-height:1;
+    color:var(--gold);opacity:.17;pointer-events:none;user-select:none;}
+  .stimme-stars{color:var(--gold-deep);font-size:24px;letter-spacing:5px;text-shadow:0 2px 10px rgba(232,146,63,.35);}
+  .stimme-quote{font-family:var(--display);font-weight:600;font-size:var(--step-2);line-height:1.4;color:var(--ink);margin-top:14px;letter-spacing:var(--ls-lead);}
+  .stimme-more{color:var(--ink-soft);font-size:var(--step-0);line-height:var(--lh-body);margin-top:16px;max-width:58ch;margin-inline:auto;}
+  .stimme-by{display:flex;align-items:center;justify-content:center;gap:13px;
+    margin-top:clamp(22px,3vw,30px);padding-top:clamp(18px,2.4vw,24px);border-top:1px solid var(--line-l);}
+  .stimme-av{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+    font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.04em;color:#2a1808;
+    background:linear-gradient(180deg,var(--gold),var(--gold-deep));
+    box-shadow:0 10px 20px -10px rgba(232,146,63,.75), inset 0 1px 0 rgba(255,248,230,.5);}
+  .stimme-wer{text-align:left;}
+  .stimme-wer b{display:block;font-family:var(--display);font-weight:600;font-size:var(--step-0);color:var(--ink);}
+  .stimme-wer small{display:block;font-size:var(--step--1);color:var(--ink-faint);margin-top:2px;}
+  @media (max-width:480px){.stimme-by{flex-direction:column;gap:10px;}.stimme-wer{text-align:center;}}
   @media (max-width:860px){.ki-team{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:520px){.ki-team{grid-template-columns:1fr;}}
   /* ===== Über uns — Organigramm (KI-Werkstatt) ===== */
@@ -411,7 +437,12 @@
        Der Grund entspricht der Sektion, deshalb geht das Bild ohne harte Kante in die Seite über.
        Die Halterung trägt das leichte Schweben, das Bild selbst die Hover-Reaktion — sonst
        würden sich zwei Transforms gegenseitig überschreiben. */
-  .org-avhold{position:relative;flex:none;display:block;animation:schweben 9s ease-in-out infinite;will-change:transform;}
+  .org-avhold{position:relative;flex:none;display:block;}
+  /* Das Schweben erst ab Tablet: sieben dauerhaft animierte Ebenen kosten auf dem
+     Handy spürbar Leistung, und dort stehen die Karten ohnehin untereinander. */
+  @media (min-width:900px){
+    .org-avhold{animation:schweben 9s ease-in-out infinite;will-change:transform;}
+  }
   @keyframes schweben{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
   .org-gruender .org-avhold{animation-duration:10.5s;}
   .org-gruender .org-karte:nth-child(2) .org-avhold{animation-delay:-3.4s;}
@@ -881,10 +912,14 @@
           <h2>Von „Berührungsängsten" zu „von Herzen empfehlen".</h2>
         </div>
         <figure class="stimme">
+          <span class="stimme-mark" aria-hidden="true">„</span>
           <div class="stimme-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
           <blockquote class="stimme-quote">„Als jemand, der beim Thema Website immer große Berührungsängste hatte, war ich auf der Suche nach einer Lösung, die unkompliziert ist und trotzdem einen ästhetischen, professionellen Online-Auftritt ermöglicht. Genau das habe ich hier gefunden."</blockquote>
           <p class="stimme-more">„Die Zusammenarbeit war von Anfang an angenehm, zuverlässig und absolut unkompliziert. Auf meine Wünsche wurde eingegangen und das Ergebnis hat meine Erwartungen sogar übertroffen. Eine klare Empfehlung!"</p>
-          <figcaption class="stimme-by"><b>Anna Sonntag</b> · 5,0&nbsp;★ · Trustpilot</figcaption>
+          <figcaption class="stimme-by">
+            <span class="stimme-av" aria-hidden="true">AS</span>
+            <span class="stimme-wer"><b>Anna Sonntag</b><small>Bewertung auf Trustpilot · 5,0 von 5</small></span>
+          </figcaption>
         </figure>
       </div>
     </section>
@@ -1121,26 +1156,43 @@
         glut:Math.random()<0.22, ton:(Math.random()*TOENE.length)|0};
     }
     function messen(){
-      var dpr=Math.min(window.devicePixelRatio||1,2);
+      var klein=window.innerWidth<900;
+      var dpr=Math.min(window.devicePixelRatio||1, klein?1:1.5);
       felder.forEach(function(fld){
         var el=fld.cv.parentElement;
         fld.b=el.clientWidth; fld.h=el.clientHeight;
-        fld.cv.width=Math.round(fld.b*dpr); fld.cv.height=Math.round(fld.h*dpr);
-        fld.ctx.setTransform(dpr,0,0,dpr,0,0);
-        var n=Math.max(10,Math.min(96,Math.round((fld.b*fld.h)/17000)));
+        /* Auflösung deckeln: der Über-uns-Abschnitt ist mehrere tausend Pixel hoch —
+           mal Pixeldichte ergäbe das einen Puffer von vielen Megapixeln, der jedes Bild
+           neu gelöscht werden müsste. Gezeichnet wird weiter in CSS-Pixeln (setTransform),
+           die Funken sitzen also unverändert; nur der Puffer ist kleiner und wird von der
+           Grafikeinheit hochskaliert. Bei weichen Lichtpunkten sieht man das nicht. */
+        var skala=dpr, MAX=klein?1.4e6:3.2e6;
+        if(fld.b*fld.h*skala*skala>MAX) skala=Math.max(0.45,Math.sqrt(MAX/(fld.b*fld.h)));
+        fld.cv.width=Math.max(1,Math.round(fld.b*skala)); fld.cv.height=Math.max(1,Math.round(fld.h*skala));
+        fld.ctx.setTransform(skala,0,0,skala,0,0);
+        var n=Math.max(10,Math.min(klein?56:96,Math.round((fld.b*fld.h)/17000)));
         fld.f=[]; for(var i=0;i<n;i++) fld.f.push(neu(fld,true));
       });
     }
     var laeuft=true;
     function zeichnen(){
       if(!laeuft) return;
+      var fensterHoehe=window.innerHeight||document.documentElement.clientHeight;
       felder.forEach(function(fld){
         if(!fld.sicht) return;                       // Felder außerhalb des Bildes kosten nichts
-        var ctx=fld.ctx; ctx.clearRect(0,0,fld.b,fld.h);
+        /* Nur das Band löschen und zeichnen, das gerade im Bild ist. Vorher wurde die
+           volle Abschnittshöhe bearbeitet — bei einem 4000 px hohen Abschnitt also das
+           Zehnfache dessen, was man sieht. Der Aufwand hängt jetzt am Bildschirm,
+           nicht an der Abschnittslänge. */
+        var r=fld.cv.getBoundingClientRect();
+        var y0=Math.max(0,-r.top-40), y1=Math.min(fld.h,-r.top+fensterHoehe+40);
+        if(y1<=y0) return;
+        var ctx=fld.ctx; ctx.clearRect(0,y0,fld.b,y1-y0);
         for(var i=0;i<fld.f.length;i++){
           var f=fld.f[i];
           f.y-=f.tempo; f.phase+=f.schwung; f.x+=f.drift+Math.sin(f.phase)*0.18;
           if(f.y<-14||f.x<-24||f.x>fld.b+24){ fld.f[i]=neu(fld,false); f=fld.f[i]; }
+          if(f.y<y0-30||f.y>y1+30) continue;         // außerhalb des Bandes: nur rechnen, nicht zeichnen
           var rand=Math.min(1, f.y/(fld.h*0.26), (fld.h-f.y)/(fld.h*0.12));
           if(rand<=0) continue;
           // leichtes Flackern, damit die Funken glimmen statt gleichmäßig zu leuchten
@@ -1250,6 +1302,9 @@
      Animationen gegeneinander; Ankerlinks gehen deshalb über lenis.scrollTo. */
   window.addEventListener("load",function(){
     if(window.matchMedia("(prefers-reduced-motion: reduce)").matches||!window.Lenis) return;
+    /* Auf Touch-Geräten bleibt das native Scrollen: es ist dort ohnehin flüssiger,
+       und eine dauerhaft mitlaufende Animationsschleife weniger hilft dem Handy. */
+    if(window.innerWidth<900||window.matchMedia("(hover: none)").matches) return;
     var nav=parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h"),10)||72;
     document.documentElement.style.scrollBehavior="auto";
     var lenis=new window.Lenis({duration:1.05,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));},
