@@ -108,6 +108,25 @@
   .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px 1px rgba(232,146,63,.6);flex:none;}
   .light .eyebrow{color:var(--gold-deep);}
   .light .eyebrow::before{box-shadow:none;}
+  /* Hero-Eyebrow tippt sich beim Laden ein, wie eine Zeile Code.
+     Die Schrift ist Monospace — ein steps()-Schritt ist deshalb exakt ein Zeichen.
+     Aufgedeckt wird per clip-path: der Text bleibt vollständig im DOM (Screenreader
+     lesen ihn normal) und es wackelt kein Layout.
+     Der verdeckte Zustand hängt an .tippt — die Klasse setzt das Skript selbst und
+     nimmt sie nach 4,2 s wieder weg. Läuft kein JavaScript oder führt der Browser die
+     Animation nicht aus, steht die Zeile einfach da. Inhalt hängt nie an einer Animation. */
+  .tippen{position:relative;display:inline-block;white-space:nowrap;}
+  .tippen.tippt > span{display:inline-block;clip-path:inset(0 100% 0 0);
+    animation:tippen 2.2s steps(50,end) .45s forwards;}
+  .tippen.tippt::after{content:"";position:absolute;top:.1em;bottom:.05em;left:0;width:2px;
+    background:var(--ember);box-shadow:0 0 8px rgba(240,168,94,.7);
+    animation:caret-lauf 2.2s steps(50,end) .45s forwards,
+              caret-blinken .8s steps(1,end) infinite,
+              caret-aus .5s ease 3.5s forwards;}
+  @keyframes tippen{to{clip-path:inset(0 0 0 0);}}
+  @keyframes caret-lauf{from{left:0;}to{left:100%;}}
+  @keyframes caret-blinken{50%{opacity:0;}}
+  @keyframes caret-aus{to{opacity:0;}}
   .wm{font-family:var(--display);font-weight:700;letter-spacing:-.04em;line-height:1;display:inline-flex;align-items:baseline;}
   .wm .lech{color:var(--bone);} .wm .code{color:var(--gold);font-family:var(--mono);font-weight:700;letter-spacing:-.02em;}
 
@@ -585,7 +604,7 @@
     <section class="hero dark">
       <canvas class="funken" aria-hidden="true"></canvas>
       <div class="wrap">
-        <span class="eyebrow">Web-Agentur aus Landsberg am Lech · Code mit Seele</span>
+        <span class="eyebrow"><span class="tippen"><span>Web-Agentur aus Landsberg am Lech · Code mit Seele</span></span></span>
         <h1>Deine neue Website.<br><span class="q">Morgen schon zum Ansehen.</span></h1>
         <p class="hero-sub">Du kümmerst dich um Menschen — wir um deine Website. Trag dich ein, morgen liegt dein fertiger Entwurf im Postfach. Erst ansehen, dann entscheiden. Kostenlos.</p>
 
@@ -1180,6 +1199,18 @@
     window.addEventListener("scroll",pruefen,{passive:true});
     window.addEventListener("resize",pruefen,{passive:true});
     pruefen(); setTimeout(pruefen,1400);
+  })();
+
+  /* Der Hero-Eyebrow tippt sich ein wie eine Zeile Code. Das Skript startet den Effekt und
+     räumt ihn danach wieder ab — so steht die Zeile am Ende als ganz normaler Text da,
+     egal ob die Animation gelaufen ist oder nicht. */
+  (function(){
+    var zeile=document.querySelector(".tippen");
+    if(!zeile) return;
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if(document.documentElement.classList.contains("foto")) return;
+    zeile.classList.add("tippt");
+    setTimeout(function(){zeile.classList.remove("tippt");},4200);
   })();
 
   /* Sanfte Tiefe: Bayertor und Footer-Skyline wandern beim Scrollen ein paar Pixel gegen die Seite.
