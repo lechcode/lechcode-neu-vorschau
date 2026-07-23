@@ -378,8 +378,6 @@
   .org-leitung .org-karte{flex-basis:340px;max-width:380px;background:linear-gradient(180deg,var(--panel-2),var(--panel));border-color:rgba(231,185,100,.3);}
   .org-conn{display:flex;justify-content:center;}
   .org-conn::before{content:"";width:1px;height:clamp(26px,4vw,42px);background:linear-gradient(180deg,transparent,var(--gold));opacity:.5;}
-  .org-hinweis{margin:clamp(40px,6vw,64px) auto 0;text-align:center;font-size:var(--step-0);color:var(--muted);max-width:62ch;text-wrap:pretty;line-height:1.65;}
-  .org-hinweis b{color:var(--bone-dim);font-weight:600;}
   @media (max-width:900px){.org-reihe-4{grid-template-columns:repeat(2,minmax(0,1fr));}}
   @media (max-width:520px){.org-reihe-4{grid-template-columns:1fr;justify-items:center;}.org-reihe-4 .org-karte{max-width:420px;width:100%;}}
 
@@ -399,14 +397,12 @@
     transition:transform .5s var(--ease),border-color .4s var(--ease),box-shadow .5s var(--ease);}
   .org-karte:hover .org-av{transform:scale(1.05);border-color:rgba(232,146,63,.62);
     box-shadow:0 18px 40px -20px rgba(0,0,0,.95), 0 0 0 10px rgba(232,146,63,.10);}
-  /* Kennzeichnung direkt am Gesicht: alle sieben sind gezeichnet — wer Mensch ist und wer
-     KI-Rolle, muss man ohne Lesen der Zwischenüberschrift erkennen können. */
+  /* KI-Kennzeichnung direkt am Gesicht: alle Porträts sind gezeichnet, deshalb trägt jede
+     KI-Rolle ihr Schildchen — die Gründer bleiben ohne. */
   .org-chip{position:absolute;right:-4px;bottom:4px;font-family:var(--mono);font-weight:500;font-size:10px;
     letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:var(--radius-pill);}
   .org-chip.is-ki{color:#2a1808;background:linear-gradient(180deg,var(--gold),var(--gold-deep));
     box-shadow:0 8px 16px -8px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,248,230,.45);}
-  .org-chip.is-mensch{color:#1d2412;background:linear-gradient(180deg,#b3c08c,var(--moss));
-    box-shadow:0 8px 16px -8px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.35);}
   /* Verteiler: eine Linie von Klaus, die sich auf die vier Rollen aufteilt */
   .org-fan{--g:clamp(16px,2.4vw,22px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--g);
     position:relative;height:42px;margin-bottom:2px;}
@@ -807,10 +803,10 @@
         </div>
 
         <div class="org-ebene org-gruender">
-          <div class="org-label" data-anim>Die Gründer · Menschen</div>
+          <div class="org-label" data-anim>Die Gründer</div>
           <div class="org-reihe">
-            <div class="org-karte" data-anim style="--d:60ms"><span class="org-avhold"><img class="org-av" src="assets/team-michi.jpg" alt="Michael" width="116" height="116" loading="lazy" decoding="async"><span class="org-chip is-mensch">Mensch</span></span><h3>Michael</h3><div class="org-rolle">Gründer · Dein Kontakt</div><p>Dein persönlicher Draht zu uns. Er führt mit <a href="https://wairua-spirit.de" target="_blank" rel="noopener">Wairua&nbsp;Spirit</a> selbst Menschen in die Natur — und hört auch bei deiner Seite erst zu, bevor er vorschlägt. In 30 Minuten geht er deinen Entwurf mit dir durch.</p></div>
-            <div class="org-karte" data-anim style="--d:170ms"><span class="org-avhold"><img class="org-av" src="assets/team-lenny.jpg" alt="Lenny" width="116" height="116" loading="lazy" decoding="async"><span class="org-chip is-mensch">Mensch</span></span><h3>Lenny</h3><div class="org-rolle">Gründer · Technik &amp; KI</div><p>Der Kopf hinter der Technik. Er kommt selbst aus der Bewusstseins-Arbeit (<a href="https://coming-home.now" target="_blank" rel="noopener">Coming&nbsp;Home</a>) und hat unsere KI-Software gebaut — damit deine Seite schnell, sicher und aktuell bleibt.</p></div>
+            <div class="org-karte" data-anim style="--d:60ms"><span class="org-avhold"><img class="org-av" src="assets/team-michi.jpg" alt="Michael" width="116" height="116" loading="lazy" decoding="async"></span><h3>Michael</h3><div class="org-rolle">Gründer · Dein Kontakt</div><p>Dein persönlicher Ansprechpartner. Bei ihm laufen deine Wünsche zusammen — er begleitet dich vom ersten Entwurf bis zur finalen Abnahme und hört zu, bevor er vorschlägt.</p></div>
+            <div class="org-karte" data-anim style="--d:170ms"><span class="org-avhold"><img class="org-av" src="assets/team-lenny.jpg" alt="Lenny" width="116" height="116" loading="lazy" decoding="async"></span><h3>Lenny</h3><div class="org-rolle">Gründer · Technik &amp; KI</div><p>Der Kopf hinter der Technik. Er hat unsere KI-Software gebaut und entwickelt sie laufend weiter — damit deine Seite schnell, sicher und aktuell bleibt.</p></div>
           </div>
         </div>
 
@@ -836,9 +832,7 @@
           </div>
         </div>
 
-        <p class="org-hinweis" data-anim><b>Klaus, Aldo, Mona, Leonardo und Andrea sind KI-Rollen</b> — keine Angestellten. Wir haben ihnen Namen und ein eigenes Handwerk gegeben, weil jede wirklich ihre eigene Handschrift hat. Die Verantwortung tragen wir zwei.</p>
-
-        <div style="text-align:center;margin-top:clamp(30px,4.5vw,44px);" data-anim><span class="local">📍 Landsberg am Lech &amp; Umgebung</span></div>
+        <div style="text-align:center;margin-top:clamp(44px,6.5vw,68px);" data-anim><span class="local">📍 Landsberg am Lech &amp; Umgebung</span></div>
       </div>
     </section>
 
