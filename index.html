@@ -230,7 +230,7 @@
   }
 
   /* Pflege-Banner (19 €) — dunkle Karte in heller Sektion */
-  .care-banner{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,44px);align-items:center;margin-top:clamp(36px,5vw,54px);
+  .care-banner{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,44px);align-items:start;margin-top:clamp(36px,5vw,54px);
     background:radial-gradient(120% 160% at 0% 0%, #2a2214, var(--night-2) 70%);color:var(--bone);border:1px solid var(--line-d);border-radius:var(--radius-lg);
     padding:clamp(24px,4vw,40px) clamp(22px,4vw,44px);box-shadow:var(--edge-d), var(--shadow-d);position:relative;overflow:hidden;}
   .care-banner::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(40% 80% at 8% 10%, rgba(232,146,63,.14), transparent 60%);}
@@ -319,6 +319,14 @@
   .ki-card .role{display:block;font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.04em;color:var(--gold);margin:3px 0 9px;}
   .ki-card p{color:var(--bone-dim);font-size:var(--step-0);line-height:var(--lh-body);}
   .team-foot{text-align:center;color:var(--bone-dim);font-size:var(--step-0);max-width:60ch;margin:clamp(24px,3.5vw,34px) auto 0;}
+  /* Klaus — Lead-Karte über dem KI-Team */
+  .ki-lead{display:flex;gap:clamp(16px,2.5vw,22px);align-items:flex-start;background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid rgba(231,185,100,.28);border-radius:var(--radius);padding:clamp(18px,2.6vw,26px);box-shadow:var(--edge-d), var(--shadow-d);margin-top:var(--space-3);}
+  .ki-lead .ki-badge{flex:none;width:56px;height:56px;font-size:28px;background:rgba(231,185,100,.14);margin-bottom:0;}
+  .ki-lead-txt{flex:1;min-width:0;}
+  .ki-lead h3{color:#fbf5e8;font-size:var(--step-2);}
+  .ki-lead .role{display:block;font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.04em;color:var(--gold);margin:2px 0 7px;}
+  .ki-lead p{color:var(--bone-dim);font-size:var(--step-0);line-height:var(--lh-body);}
+  @media (max-width:520px){.ki-lead{flex-direction:column;text-align:center;}.ki-lead .ki-badge{margin-inline:auto;}}
   /* Stimmen (Testimonial) */
   .stimme{max-width:760px;margin-inline:auto;text-align:center;}
   .stimme-stars{color:var(--gold-deep);font-size:22px;letter-spacing:4px;}
@@ -556,7 +564,7 @@
           </div>
           <div>
             <h3>Und du musst nie wieder an deine Website denken.</h3>
-            <p>Du willst dich um nichts kümmern? Übernehmen wir: <b>so viele Änderungen du willst</b> — neue Fotos, andere Preise, ein neuer Abschnitt. Eine E-Mail oder Sprachnachricht genügt, meist am nächsten Tag online. <b>Freiwillig — wer selten etwas ändert, braucht es nicht.</b></p>
+            <p>Zwei Wege, such dir aus, was zu dir passt. Entweder du schreibst uns kurz: eine E-Mail oder Sprachnachricht, und deine Änderung ist meist am nächsten Tag online. Oder du machst es selbst — in <b>deinem eigenen Kundenportal</b> tippst du einfach in den Chat, was anders soll. „Neuer Preis: 80 €" genügt, und die Seite ändert sich. So oft du willst, <b>kinderleicht</b>, ohne uns zu fragen. Freiwillig ist das alles: Wer selten etwas ändert, braucht es nicht.</p>
           </div>
         </div>
       </div>
@@ -588,7 +596,7 @@
             <span class="stat-tag">Bei uns gemessen</span>
             <div class="stat-num">≈&nbsp;5×</div>
             <div class="stat-label">schneller geladen</div>
-            <p>So viel schneller laden im Schnitt die Seiten, die wir bisher gebaut haben — gemessen. Tempo zählt für Google und für den ersten Eindruck bei deinen Besuchern.</p>
+            <p>So viel schneller laden im Schnitt die Seiten, die wir bisher gebaut haben. Das merkt Google, und deine Besucher merken’s auch: Kaum jemand wartet heute noch auf eine langsame Seite.</p>
           </div>
           <div class="stat">
             <span class="stat-tag stat-tag-muted">Marktdaten</span>
@@ -655,20 +663,24 @@
         <div class="sec-head" style="margin-bottom:0;">
           <span class="eyebrow">Menschen + KI-Team</span>
           <h2>Zwei Menschen <span class="q">aus deiner Welt</span>. Ein KI-Team dahinter.</h2>
-          <p class="lead">Lenny und Michael sind seit Jahren selbst in der Coaching- und Bewusstseins-Welt zu Hause — sie kennen deine Arbeit und die Menschen, die auf deiner Seite ankommen. Dahinter arbeitet ein eingespieltes Team aus KI-Spezialisten: Es macht den ersten Entwurf, die beiden geben den letzten Schliff. Dein Ton bleibt deiner.</p>
+          <p class="lead">Lenny und Michael sind seit Jahren selbst in der Coaching- und Bewusstseins-Welt unterwegs — sie kennen deine Arbeit und die Menschen, die bei dir ankommen. Ein KI-Team baut den ersten Entwurf; den letzten Schliff geben die beiden. Dein Ton bleibt deiner.</p>
         </div>
         <div class="people stagger">
           <div class="person"><img class="avatar" src="assets/team-lenny.jpg" alt="Lenny" width="84" height="84" loading="lazy" decoding="async"><h3>Lenny</h3><span class="role">Technik &amp; KI</span><p>Hat die Lechcode-Software gebaut und führt sie. Er kommt selbst aus der Bewusstseins-Arbeit — mit <a href="https://coming-home.now" target="_blank" rel="noopener"><b>Coming Home</b></a> begleitet er seit Jahren Menschen auf ihrem Weg. Darum weiß er, worauf es bei deiner Seite ankommt: schnell, sicher, aktuell, ohne dass du an Technik denken musst.</p></div>
           <div class="person"><img class="avatar" src="assets/team-michi.jpg" alt="Michael" width="84" height="84" loading="lazy" decoding="async"><h3>Michael</h3><span class="role">Dein Gespräch</span><p>Dein direkter Draht zu uns. Er führt mit <a href="https://wairua-spirit.de" target="_blank" rel="noopener"><b>Wairua Spirit</b></a> Menschen zurück in die Natur — und hört auch bei deiner Seite erst zu, bevor er etwas vorschlägt. In 30 Minuten geht er deinen Entwurf mit dir durch, in Ruhe.</p></div>
         </div>
-        <p class="team-intro">Dahinter arbeitet unser KI-Team.</p>
-        <div class="ki-team stagger">
-          <div class="ki-card"><span class="ki-badge" aria-hidden="true">📐</span><h3>Aldo</h3><span class="role">Architekt &amp; Baumeister</span><p>Plant deine Seite wie ein Bauwerk und setzt sie Stein für Stein — jede Schriftgröße sitzt, jeder Abstand stimmt. Änderungswunsch? Er baut um, bis es passt, und murrt nie.</p></div>
-          <div class="ki-card"><span class="ki-badge" aria-hidden="true">🎬</span><h3>Leonardo</h3><span class="role">Creative Director</span><p>Schaut auf jede fertige Seite mit dem Blick, den sonst nur teure Agenturen bezahlen. Sein Urteil kennt zwei Möglichkeiten: ausliefern — oder zurück auf den Tisch. Mittelmaß kommt an ihm nicht vorbei.</p></div>
-          <div class="ki-card"><span class="ki-badge" aria-hidden="true">✍️</span><h3>Mona</h3><span class="role">Texterin mit Seele</span><p>Schreibt jede Zeile so, wie die Menschen sie hören müssen, die zu dir kommen: warm, klar, ohne Floskeln. (Ja, auch diese hier. Hallo.) Lieber ein echter Satz als zehn glatte.</p></div>
-          <div class="ki-card"><span class="ki-badge" aria-hidden="true">🎯</span><h3>Andrea</h3><span class="role">Zielkunden-Stimme</span><p>Schlüpft in genau deine Wunschkundin und sagt schonungslos, wo jemand stutzt, zögert oder wegklickt — bevor es echte Besucher tun. Unbequem? Manchmal. Genau deshalb Gold wert.</p></div>
+        <p class="team-intro">Vorne stehen Lenny und Michael. Dahinter führt Klaus das KI-Team — hier sind die fünf, die den Ton angeben.</p>
+        <div class="ki-lead">
+          <span class="ki-badge" aria-hidden="true">🧭</span>
+          <div class="ki-lead-txt"><h3>Klaus</h3><span class="role">Studioleiter</span><p>Führt das KI-Team, wie jemand ein Studio führt, der das zwanzig Jahre gemacht hat. Er baut und textet nicht selbst, aber er weiß, wer was wann macht — und schaut am Ende drüber, dass bei dir wirklich das Richtige ankommt. Bei ihm bleibt nichts liegen.</p></div>
         </div>
-        <p class="team-foot">Und dahinter noch mehr Spezialisten — für SEO, Recht und Bilder. Ein ganzes Team arbeitet an deiner Seite, während du dich um deine Menschen kümmerst.</p>
+        <div class="ki-team stagger">
+          <div class="ki-card"><span class="ki-badge" aria-hidden="true">📐</span><h3>Aldo</h3><span class="role">Architekt &amp; Baumeister</span><p>Baut deine Seite, Handgriff für Handgriff, bis die Abstände stimmen und am Handy nichts verrutscht. Willst du später etwas ändern, setzt er’s um, ohne zu murren.</p></div>
+          <div class="ki-card"><span class="ki-badge" aria-hidden="true">🎬</span><h3>Leonardo</h3><span class="role">Creative Director</span><p>Schaut sich jede fertige Seite an, bevor sie zu dir geht — und ist schwer zufriedenzustellen. Was ihm nicht gut genug ist, geht zurück ins Team; erst wenn er Ja sagt, bekommst du sie zu sehen.</p></div>
+          <div class="ki-card"><span class="ki-badge" aria-hidden="true">✍️</span><h3>Mona</h3><span class="role">Texterin mit Seele</span><p>Schreibt die Worte auf deiner Seite, vom großen Titel bis zum kleinen Hinweis unterm Formular. Ihr ist ein ehrlicher Satz lieber als zehn glatte.</p></div>
+          <div class="ki-card"><span class="ki-badge" aria-hidden="true">🎯</span><h3>Andrea</h3><span class="role">Zielkunden-Stimme</span><p>Setzt sich in deine Wunschkundin hinein und geht die fertige Seite mit deren Augen durch: Wo stutzt sie, wo klickt sie weg? Das sagt sie uns, bevor ein echter Besucher es tut.</p></div>
+        </div>
+        <p class="team-foot">Dazu kommen ein paar stille Helfer für SEO, Recht und Bilder. Ein ganzes Team arbeitet an deiner Seite, während du dich um deine Menschen kümmerst.</p>
         <div style="text-align:center;margin-top:clamp(26px,4vw,36px);"><span class="local">📍 Landsberg am Lech &amp; Umgebung</span></div>
       </div>
     </section>
@@ -712,9 +724,11 @@
           <div class="card">
             <h3>Deine neue Website starten</h3>
             <p class="sub" style="margin-bottom:var(--space-3);">Kostenlos &amp; unverbindlich — du entscheidest erst, wenn du den Entwurf gesehen hast.</p>
-            <!-- Web3Forms aktiv (Form „Lechcode Landingpage", Key unten). Empfang bestätigt: Anfragen kommen an (Lenny, 21.07.).
-                 Anzeige-Adresse auf der Seite = info@lechcode.de (Erfolgstext/Footer/Fallback-mailto).
-                 Falls der Dashboard-Empfänger je umgestellt werden soll: app.web3forms.com → Form „Lechcode Landingpage" → Linked Email. -->
+            <!-- Absenden startet den vollautomatischen Entwurf: das Formular-JS unten POSTet einen
+                 chat-brief-Job an den Lechcode-Worker (/job) → Runner baut+prüft+deployt → Team-Push
+                 „Entwurf fertig" → 1-Klick-Freigabe der Vorschau-Mail. Voll-auto ab Formular (Lenny, 22.07.).
+                 Fallback OHNE JavaScript: der form action= (Web3Forms) mailt die Anfrage an info@lechcode.de,
+                 das Team baut dann manuell per /anfrage. Mit JS an: reiner Worker-Weg + mailto bei Worker-Ausfall. -->
             <form class="form" id="anfrage-form" action="https://api.web3forms.com/submit" method="POST">
               <input type="hidden" name="access_key" value="fe4340bb-771e-4142-8c26-59970049ead1">
               <input type="hidden" name="subject" value="🌊 Neue Website-Anfrage über lechcode.de">
@@ -850,39 +864,54 @@
     document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){reveal(document.querySelector(a.getAttribute('href')));});});
     revealHash();
   })();
-  /* Formular: sendet per Web3Forms — solange kein Key eingesetzt ist (PLATZHALTER-FORM),
-     öffnet es stattdessen eine fertige E-Mail im Mailprogramm. So geht keine Anfrage verloren. */
+  /* Formular: startet den vollautomatischen Entwurf direkt über die Lechcode-Plattform.
+     Der Worker legt einen chat-brief-Job in die Queue → der Runner baut den Entwurf,
+     prüft ihn (QA) und deployt ihn; das Team bekommt einen „Entwurf fertig"-Push und
+     gibt die Vorschau-Mail per 1-Klick frei. Klappt der Worker mal nicht, fällt das
+     Formular auf eine fertige E-Mail an info@lechcode.de zurück — so geht nie eine
+     Anfrage verloren. */
   (function(){
+    var LC_API='https://lechcode-api.nameless-waterfall-55e5.workers.dev';
     var form=document.getElementById('anfrage-form'),msg=document.getElementById('form-msg'),btn=document.getElementById('submit-btn');
     if(!form)return;
-    var KEY=form.querySelector('[name="access_key"]').value;
-    var PLATZHALTER=KEY.indexOf('DEIN-')===0;
+    function mailtoFallback(data){
+      var body='Hallo Lenny & Michael,%0D%0A%0D%0Aich möchte gern meinen kostenlosen Website-Entwurf:%0D%0A%0D%0AName: '+encodeURIComponent(data.name)+'%0D%0AE-Mail: '+encodeURIComponent(data.email)+'%0D%0AMeine Website: '+encodeURIComponent(data.domain)+'%0D%0AWünsche: '+encodeURIComponent(data.wuensche||'—')+'%0D%0A%0D%0AAGB & Datenschutz akzeptiert, Inhalte dürfen für die Vorschau verwendet werden.';
+      msg.className='form-msg err';
+      msg.innerHTML='Hoppla, das hat online gerade nicht geklappt. Wir öffnen dir eine fertige E-Mail: einfach absenden, dann kümmern wir uns. <a href="mailto:info@lechcode.de?subject='+encodeURIComponent('Neue Website-Anfrage: '+data.domain)+'&body='+body+'" style="font-weight:600;text-decoration:underline;">Anfrage per E-Mail senden</a>';
+    }
     form.addEventListener('submit',function(e){
       e.preventDefault();
       if(form.querySelector('[name="botcheck"]').checked)return;
       var data={name:form.name.value.trim(),email:form.email.value.trim(),domain:form.domain.value.trim(),wuensche:form.wuensche.value.trim()};
-      if(PLATZHALTER){
-        var body='Hallo Lenny & Michael,%0D%0A%0D%0Aich möchte gern meinen kostenlosen Website-Entwurf:%0D%0A%0D%0AName: '+encodeURIComponent(data.name)+'%0D%0AE-Mail: '+encodeURIComponent(data.email)+'%0D%0AMeine Website: '+encodeURIComponent(data.domain)+'%0D%0AWünsche: '+encodeURIComponent(data.wuensche||'—')+'%0D%0A%0D%0AAGB & Datenschutz akzeptiert, Inhalte dürfen für die Vorschau verwendet werden.';
-        location.href='mailto:info@lechcode.de?subject='+encodeURIComponent('Neue Website-Anfrage: '+data.domain)+'&body='+body;
-        msg.className='form-msg ok';
-        msg.textContent='Dein E-Mail-Programm öffnet sich mit der fertigen Anfrage — einfach absenden. Innerhalb von 24 Stunden hast du deinen Vorschau-Link.';
-        return;
-      }
+      var anrede=(data.name||'').split(/\s+/)[0]||'';
       btn.disabled=true;btn.style.opacity='.7';
-      var fd=new FormData(form);
-      fetch('https://api.web3forms.com/submit',{method:'POST',body:fd,headers:{'Accept':'application/json'}})
-        .then(function(r){return r.json();})
+      fetch(LC_API+'/job',{
+        method:'POST',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify({
+          type:'chat-brief',
+          botcheck:'',
+          payload:{
+            brief:{
+              name:data.name, anrede:anrede, email:data.email,
+              alte_url:data.domain||'keine', wuensche_oton:data.wuensche||'',
+              firma:'', beruf_nische:'', ort:'', ziel:'',
+              fotos_vorhanden:'', texte_vorhanden:'',
+              consent:true
+            },
+            transcript:[]
+          }
+        })
+      })
+        .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
         .then(function(res){
-          if(res.success){
+          if(res.ok&&res.j&&res.j.ok){
             msg.className='form-msg ok';
-            msg.textContent='Schön, dass du dabei bist! Deine Anfrage ist unterwegs. Schau morgen um diese Zeit in dein Postfach — dein Vorschau-Link kommt. Bis dahin: einmal tief durchatmen, den Rest machen wir. ☀️';
+            msg.textContent='Schön, dass du dabei bist! Wir bauen deinen Entwurf jetzt — schau morgen um diese Zeit in dein Postfach, dein Vorschau-Link kommt. Bis dahin: einmal tief durchatmen, den Rest machen wir. ☀️';
             form.reset();
-          }else{throw new Error();}
+          }else{ mailtoFallback(data); }
         })
-        .catch(function(){
-          msg.className='form-msg err';
-          msg.innerHTML='Hoppla — das hat gerade nicht geklappt. Magst du uns direkt schreiben? <a href="mailto:info@lechcode.de" style="font-weight:600;text-decoration:underline;">info@lechcode.de</a>';
-        })
+        .catch(function(){ mailtoFallback(data); })
         .finally(function(){btn.disabled=false;btn.style.opacity='';});
     });
   })();
