@@ -76,6 +76,7 @@
     --glow-l:inset 0 1px 0 rgba(255,255,255,.7), 0 0 0 1px rgba(199,154,79,.35), 0 22px 46px -24px rgba(189,123,84,.34);
     --amber-soft:rgba(232,146,63,.14);
     --ease:cubic-bezier(.22,.61,.36,1);
+    --ease-line:cubic-bezier(.65,0,.35,1);
     --focus:0 0 0 3px rgba(232,146,63,.45);
     --focus-l:0 0 0 3px rgba(199,154,79,.45);
   }
@@ -362,14 +363,15 @@
   .org-karte{background:var(--panel);border:1px solid var(--line-d);border-radius:var(--radius);padding:24px 20px 26px;text-align:center;flex:1 1 240px;max-width:300px;display:flex;flex-direction:column;align-items:center;transition:border-color .35s var(--ease),transform .45s var(--ease),box-shadow .45s var(--ease);}
   .org-reihe-4 .org-karte{max-width:none;}
   .org-karte:hover{border-color:rgba(231,185,100,.42);transform:translateY(-5px);box-shadow:0 18px 44px -22px rgba(0,0,0,.9);}
-  .org-av{width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:50% 22%;border:2px solid rgba(231,185,100,.28);background:var(--panel-2);flex:none;}
+  .org-av{width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:50% 22%;border:2px solid rgba(231,185,100,.28);background:var(--panel-2);flex:none;}
   .org-av-ki{display:grid;place-items:center;font-size:40px;line-height:1;}
   .org-karte h3{font-family:var(--display);font-weight:600;font-size:var(--step-2);margin:16px 0 0;color:#fbf5e8;}
   .org-rolle{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-top:7px;}
   .org-karte p{font-size:var(--step-0);color:var(--bone-dim);margin:13px 0 0;line-height:1.6;text-wrap:pretty;}
   .org-karte p a{color:var(--ember);text-decoration:underline;text-decoration-color:rgba(231,185,100,.45);text-underline-offset:3px;}
   .org-gruender .org-karte{flex-basis:300px;max-width:340px;padding:28px 24px 30px;}
-  .org-gruender .org-av{width:116px;height:116px;border-color:rgba(232,146,63,.5);}
+  .org-gruender .org-av{width:128px;height:128px;border-color:rgba(232,146,63,.5);}
+  .org-leitung .org-av{width:122px;height:122px;border-color:rgba(232,146,63,.42);}
   .org-leitung{position:relative;}
   .org-leitung::before{content:"";position:absolute;left:50%;top:52%;width:min(520px,86vw);height:min(520px,86vw);transform:translate(-50%,-50%);pointer-events:none;background:radial-gradient(circle,rgba(232,146,63,.12),transparent 62%);animation:atmen 7.5s ease-in-out infinite;z-index:0;}
   @keyframes atmen{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.07);}}
@@ -380,6 +382,59 @@
   .org-hinweis b{color:var(--bone-dim);font-weight:600;}
   @media (max-width:900px){.org-reihe-4{grid-template-columns:repeat(2,minmax(0,1fr));}}
   @media (max-width:520px){.org-reihe-4{grid-template-columns:1fr;justify-items:center;}.org-reihe-4 .org-karte{max-width:420px;width:100%;}}
+
+  /* — Porträts (23.07.): illustriert, warmes Streiflicht, dunkler Bildgrund.
+       Der Grund entspricht der Sektion, deshalb geht das Bild ohne harte Kante in die Seite über.
+       Die Halterung trägt das leichte Schweben, das Bild selbst die Hover-Reaktion — sonst
+       würden sich zwei Transforms gegenseitig überschreiben. */
+  .org-avhold{position:relative;flex:none;display:block;animation:schweben 9s ease-in-out infinite;will-change:transform;}
+  @keyframes schweben{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+  .org-gruender .org-avhold{animation-duration:10.5s;}
+  .org-gruender .org-karte:nth-child(2) .org-avhold{animation-delay:-3.4s;}
+  .org-reihe-4 .org-karte:nth-child(1) .org-avhold{animation-delay:-.8s;}
+  .org-reihe-4 .org-karte:nth-child(2) .org-avhold{animation-delay:-2.6s;}
+  .org-reihe-4 .org-karte:nth-child(3) .org-avhold{animation-delay:-4.4s;}
+  .org-reihe-4 .org-karte:nth-child(4) .org-avhold{animation-delay:-6.2s;}
+  .org-av{box-shadow:0 18px 40px -20px rgba(0,0,0,.95), 0 0 0 7px rgba(232,146,63,.05);
+    transition:transform .5s var(--ease),border-color .4s var(--ease),box-shadow .5s var(--ease);}
+  .org-karte:hover .org-av{transform:scale(1.05);border-color:rgba(232,146,63,.62);
+    box-shadow:0 18px 40px -20px rgba(0,0,0,.95), 0 0 0 10px rgba(232,146,63,.10);}
+  /* Kennzeichnung direkt am Gesicht: alle sieben sind gezeichnet — wer Mensch ist und wer
+     KI-Rolle, muss man ohne Lesen der Zwischenüberschrift erkennen können. */
+  .org-chip{position:absolute;right:-4px;bottom:4px;font-family:var(--mono);font-weight:500;font-size:10px;
+    letter-spacing:.12em;text-transform:uppercase;padding:2px 8px;border-radius:var(--radius-pill);}
+  .org-chip.is-ki{color:#2a1808;background:linear-gradient(180deg,var(--gold),var(--gold-deep));
+    box-shadow:0 8px 16px -8px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,248,230,.45);}
+  .org-chip.is-mensch{color:#1d2412;background:linear-gradient(180deg,#b3c08c,var(--moss));
+    box-shadow:0 8px 16px -8px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.35);}
+  /* Verteiler: eine Linie von Klaus, die sich auf die vier Rollen aufteilt */
+  .org-fan{--g:clamp(16px,2.4vw,22px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--g);
+    position:relative;height:42px;margin-bottom:2px;}
+  .org-fan::before{content:"";position:absolute;top:0;left:50%;width:1px;height:21px;background:var(--gold);opacity:.5;}
+  .org-fan::after{content:"";position:absolute;top:21px;height:1px;background:var(--gold);opacity:.3;
+    left:calc((100% - 3*var(--g))/8);right:calc((100% - 3*var(--g))/8);}
+  .org-fan i{position:relative;}
+  .org-fan i::after{content:"";position:absolute;left:50%;top:21px;width:1px;height:21px;background:var(--gold);opacity:.5;}
+  @media (max-width:900px){.org-fan{display:none;}}
+  /* Aufbau-Sequenz: das Organigramm setzt sich beim Scrollen selbst zusammen —
+     Karten steigen auf, Linien zeichnen sich nach. Startzustand hängt an .js:
+     ohne JavaScript ist alles sofort da, Inhalt hängt nie an einer Animation. */
+  .js #ueber-uns.reveal > .wrap{opacity:1;transform:none;}
+  .js #ueber-uns [data-anim]{opacity:0;transform:translateY(18px);
+    transition:opacity .8s var(--ease) var(--d,0ms),transform .8s var(--ease) var(--d,0ms);}
+  .js #ueber-uns [data-anim].is-in{opacity:1;transform:none;}
+  .js .org-conn::before,.js .org-fan::before,.js .org-fan i::after{transform:scaleY(0);transform-origin:top;
+    transition:transform .55s var(--ease-line);}
+  .js .org-fan::after{transform:scaleX(0);transform-origin:center;transition:transform .6s var(--ease-line) .12s;}
+  .js .org-conn.is-in::before,.js .org-fan.is-in::before{transform:scaleY(1);}
+  .js .org-fan.is-in::after{transform:scaleX(1);}
+  .js .org-fan.is-in i:nth-child(1)::after{transform:scaleY(1);transition-delay:.30s;}
+  .js .org-fan.is-in i:nth-child(2)::after{transform:scaleY(1);transition-delay:.36s;}
+  .js .org-fan.is-in i:nth-child(3)::after{transform:scaleY(1);transition-delay:.42s;}
+  .js .org-fan.is-in i:nth-child(4)::after{transform:scaleY(1);transition-delay:.48s;}
+  .foto #ueber-uns [data-anim]{opacity:1 !important;transform:none !important;transition:none !important;}
+  .foto .org-conn::before,.foto .org-fan::before,.foto .org-fan i::after{transform:scaleY(1) !important;}
+  .foto .org-fan::after{transform:scaleX(1) !important;}
 
   /* ===== 7 · EINTRAGEN (hell) ===== */
   .contact-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:start;}
@@ -434,6 +489,23 @@
   .js .reveal.in .stagger > *:nth-child(2){transition-delay:.06s;}
   .js .reveal.in .stagger > *:nth-child(3){transition-delay:.12s;}
   .js .reveal.in .stagger > *:nth-child(4){transition-delay:.18s;}
+  .js .reveal.in .stagger > *:nth-child(5){transition-delay:.24s;}
+  .js .reveal.in .stagger > *:nth-child(6){transition-delay:.30s;}
+  .js .reveal.in .stagger > *:nth-child(7){transition-delay:.36s;}
+  .js .reveal.in .stagger > *:nth-child(8){transition-delay:.42s;}
+  /* Kacheln, die bisher stumm dastanden, reagieren jetzt mit — gleiche Sprache wie .step/.compare-card */
+  .arg,.proof-stats .stat{transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);}
+  .arg:hover,.proof-stats .stat:hover{transform:translateY(-3px);box-shadow:var(--glow-l);border-color:rgba(199,154,79,.35);}
+  .note-line,.cost-flip{transition:transform .35s var(--ease),box-shadow .35s var(--ease);}
+  .note-line:hover{transform:translateY(-2px);box-shadow:var(--glow-l);}
+  /* Video-Bühne: hebt sich beim Darüberfahren leicht an, das Glühen zieht mit.
+     (Kein zusätzlicher Schein dahinter — der Hero hat schon zwei atmende Verläufe,
+     ein dritter überstrahlt die ganze Bühne.) */
+  .video-frame{transition:box-shadow .6s var(--ease),transform .6s var(--ease);}
+  .video-shell:hover .video-frame{transform:translateY(-3px);
+    box-shadow:var(--edge-d), 0 0 0 1px rgba(231,185,100,.22), 0 46px 100px -40px rgba(0,0,0,.85), 0 34px 90px -40px rgba(232,146,63,.5);}
+  /* Sanfte Tiefe: Wahrzeichen wandern beim Scrollen minimal gegen die Seite (JS setzt --par) */
+  .about-bayertor,.foot-scene .scene-svg{transform:translate3d(0,var(--par,0px),0);}
   /* Foto-Modus (?foto): alles sofort sichtbar für Full-Page-Screenshots */
   .foto .reveal > .wrap,.foto .reveal .stagger > *{opacity:1 !important;transform:none !important;transition:none !important;}
   .skip{position:absolute;left:-999px;top:8px;z-index:200;background:var(--amber);color:#2a1808;padding:10px 16px;border-radius:var(--radius-sm);font-weight:600;}
@@ -477,6 +549,11 @@
     .js .reveal > .wrap{opacity:1;transform:none;transition:none;}
     .js .reveal .stagger > *{opacity:1 !important;transform:none !important;transition:none !important;}
     .price,.step,.person,.compare-card,.arg,.trust,.brand-mark,.play-disc{transition:none !important;transform:none !important;}
+    /* Organigramm: alles sofort da, keine Aufbau-Sequenz, kein Schweben */
+    .js #ueber-uns [data-anim]{opacity:1 !important;transform:none !important;transition:none !important;}
+    .js .org-conn::before,.js .org-fan::before,.js .org-fan i::after{transform:scaleY(1) !important;transition:none !important;}
+    .js .org-fan::after{transform:scaleX(1) !important;transition:none !important;}
+    .org-avhold,.org-av,.about-bayertor,.foot-scene .scene-svg{transform:none !important;}
   }
   </style>
 </head>
@@ -602,6 +679,7 @@
 
         <!-- Pflege-Service -->
         <div class="care-banner">
+          <canvas class="funken" aria-hidden="true"></canvas>
           <div>
             <span class="pill-mini">Optional · Rundum-sorglos</span>
             <div class="amount">19 €<small>pro Monat · freiwillig · jederzeit monatlich kündbar</small></div>
@@ -635,7 +713,7 @@
           <p class="cost-foot">Änderungen lieber abgeben? Optional die Pflege für 19 €/Monat, monatlich kündbar. Sonst zahlst du im Monat nichts.</p>
         </div>
 
-        <div class="proof-stats">
+        <div class="proof-stats stagger">
           <div class="stat is-lead">
             <span class="stat-tag">Bei uns gemessen</span>
             <div class="stat-num">≈&nbsp;5×</div>
@@ -706,10 +784,10 @@
       </svg>
       <div class="wrap">
         <div class="sec-head" style="margin-bottom:0;">
-          <span class="eyebrow">Über uns</span>
-          <h2>Warum wir das machen.</h2>
+          <span class="eyebrow" data-anim>Über uns</span>
+          <h2 data-anim style="--d:90ms">Warum wir das machen.</h2>
         </div>
-        <div class="org-prosa">
+        <div class="org-prosa" data-anim style="--d:190ms">
           <p class="auftakt">Wir sind Lenny und Michael, zwei aus Landsberg, und wir kennen den Website-Schmerz aus eigener Erfahrung. Alles dauert zu lange, kostet zu viel, und wenn man nach dem Launch eine Kleinigkeit ändern will, vergehen wieder Wochen. Am Ende liegt die Seite halbfertig herum und man macht lieber weiter das, was man eigentlich kann.</p>
           <details class="org-more">
             <summary class="org-more-sum">Mehr über uns lesen</summary>
@@ -723,43 +801,44 @@
         </div>
 
         <div class="sec-head org-head2" style="margin-bottom:0;">
-          <span class="eyebrow">Wie wir arbeiten</span>
-          <h2>Zwei Gründer und eine KI-Werkstatt.</h2>
-          <p class="lead">An deiner Website arbeitet ein eingespieltes Team: zwei Menschen aus Landsberg und fünf KI-Rollen, die wir selbst gebaut und trainiert haben. Jede hat ihr Handwerk — einer baut, eine schreibt, einer sucht die Fehler. Und keine Seite geht raus, bevor sie durch alle Hände gegangen ist.</p>
+          <span class="eyebrow" data-anim>Wie wir arbeiten</span>
+          <h2 data-anim style="--d:90ms">Zwei Gründer und eine KI-Werkstatt.</h2>
+          <p class="lead" data-anim style="--d:190ms">An deiner Website arbeitet ein eingespieltes Team: zwei Menschen aus Landsberg und fünf KI-Rollen, die wir selbst gebaut und trainiert haben. Jede hat ihr Handwerk — einer baut, eine schreibt, einer sucht die Fehler. Und keine Seite geht raus, bevor sie durch alle Hände gegangen ist.</p>
         </div>
 
         <div class="org-ebene org-gruender">
-          <div class="org-label">Die Gründer · Menschen</div>
+          <div class="org-label" data-anim>Die Gründer · Menschen</div>
           <div class="org-reihe">
-            <div class="org-karte"><img class="org-av" src="assets/team-michi.jpg" alt="Michael" width="116" height="116" loading="lazy" decoding="async"><h3>Michael</h3><div class="org-rolle">Gründer · Dein Kontakt</div><p>Dein persönlicher Draht zu uns. Er führt mit <a href="https://wairua-spirit.de" target="_blank" rel="noopener">Wairua&nbsp;Spirit</a> selbst Menschen in die Natur — und hört auch bei deiner Seite erst zu, bevor er vorschlägt. In 30 Minuten geht er deinen Entwurf mit dir durch.</p></div>
-            <div class="org-karte"><img class="org-av" src="assets/team-lenny.jpg" alt="Lenny" width="116" height="116" loading="lazy" decoding="async"><h3>Lenny</h3><div class="org-rolle">Gründer · Technik &amp; KI</div><p>Der Kopf hinter der Technik. Er kommt selbst aus der Bewusstseins-Arbeit (<a href="https://coming-home.now" target="_blank" rel="noopener">Coming&nbsp;Home</a>) und hat unsere KI-Software gebaut — damit deine Seite schnell, sicher und aktuell bleibt.</p></div>
+            <div class="org-karte" data-anim style="--d:60ms"><span class="org-avhold"><img class="org-av" src="assets/team-michi.jpg" alt="Michael" width="116" height="116" loading="lazy" decoding="async"><span class="org-chip is-mensch">Mensch</span></span><h3>Michael</h3><div class="org-rolle">Gründer · Dein Kontakt</div><p>Dein persönlicher Draht zu uns. Er führt mit <a href="https://wairua-spirit.de" target="_blank" rel="noopener">Wairua&nbsp;Spirit</a> selbst Menschen in die Natur — und hört auch bei deiner Seite erst zu, bevor er vorschlägt. In 30 Minuten geht er deinen Entwurf mit dir durch.</p></div>
+            <div class="org-karte" data-anim style="--d:170ms"><span class="org-avhold"><img class="org-av" src="assets/team-lenny.jpg" alt="Lenny" width="116" height="116" loading="lazy" decoding="async"><span class="org-chip is-mensch">Mensch</span></span><h3>Lenny</h3><div class="org-rolle">Gründer · Technik &amp; KI</div><p>Der Kopf hinter der Technik. Er kommt selbst aus der Bewusstseins-Arbeit (<a href="https://coming-home.now" target="_blank" rel="noopener">Coming&nbsp;Home</a>) und hat unsere KI-Software gebaut — damit deine Seite schnell, sicher und aktuell bleibt.</p></div>
           </div>
         </div>
 
         <div class="org-conn" aria-hidden="true"></div>
 
         <div class="org-ebene org-leitung">
-          <div class="org-label">Die Leitung · KI</div>
+          <div class="org-label" data-anim>Die Leitung · KI</div>
           <div class="org-reihe">
-            <div class="org-karte"><span class="org-av org-av-ki" aria-hidden="true">🧭</span><h3>Klaus</h3><div class="org-rolle">Der Dirigent</div><p>Klaus führt die Werkstatt. Er nimmt auf, was du mit Michael besprochen hast, verteilt die Arbeit und kennt am Ende jede Zeile — deine Seite gibt er erst frei, wenn sie wirklich fertig ist.</p></div>
+            <div class="org-karte" data-anim style="--d:80ms"><span class="org-avhold"><img class="org-av" src="assets/team-klaus.jpg" alt="Klaus" width="112" height="112" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Klaus</h3><div class="org-rolle">Der Dirigent</div><p>Klaus führt die Werkstatt. Er nimmt auf, was du mit Michael besprochen hast, verteilt die Arbeit und kennt am Ende jede Zeile — deine Seite gibt er erst frei, wenn sie wirklich fertig ist.</p></div>
           </div>
         </div>
 
         <div class="org-conn" aria-hidden="true"></div>
 
         <div class="org-ebene">
-          <div class="org-label">Die Werkstatt · KI</div>
+          <div class="org-label" data-anim>Die Werkstatt · KI</div>
+          <div class="org-fan" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
           <div class="org-reihe org-reihe-4">
-            <div class="org-karte"><span class="org-av org-av-ki" aria-hidden="true">📐</span><h3>Aldo</h3><div class="org-rolle">Der Baumeister</div><p>Aldo plant, bevor er baut: Aufbau, Wege, jedes Format vom Handy bis zum großen Bildschirm. Erst wenn die Struktur trägt, entsteht die Oberfläche.</p></div>
-            <div class="org-karte"><span class="org-av org-av-ki" aria-hidden="true">✍️</span><h3>Mona</h3><div class="org-rolle">Die Wortfinderin</div><p>Mona schreibt deine Texte — warm, klar und in der Sprache deiner Kundinnen. Sie sucht so lange, bis ein Satz wirklich nach dir klingt.</p></div>
-            <div class="org-karte"><span class="org-av org-av-ki" aria-hidden="true">🎬</span><h3>Leonardo</h3><div class="org-rolle">Der Kritiker</div><p>Leonardo schaut mit frischen Augen auf das Fertige und misst es an einem hohen Maßstab. Was nur „ganz gut" ist, geht bei ihm zurück — bevor du es zu sehen bekommst.</p></div>
-            <div class="org-karte"><span class="org-av org-av-ki" aria-hidden="true">🎯</span><h3>Andrea</h3><div class="org-rolle">Die erste Besucherin</div><p>Andrea geht deine Seite durch, wie deine Kundin es täte: zum ersten Mal, mit wenig Zeit. Sie sagt ehrlich, wo sie zögert, etwas nicht findet oder abspringt.</p></div>
+            <div class="org-karte" data-anim><span class="org-avhold"><img class="org-av" src="assets/team-aldo.jpg" alt="Aldo" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Aldo</h3><div class="org-rolle">Der Baumeister</div><p>Aldo plant, bevor er baut: Aufbau, Wege, jedes Format vom Handy bis zum großen Bildschirm. Erst wenn die Struktur trägt, entsteht die Oberfläche.</p></div>
+            <div class="org-karte" data-anim style="--d:110ms"><span class="org-avhold"><img class="org-av" src="assets/team-mona.jpg" alt="Mona" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Mona</h3><div class="org-rolle">Die Wortfinderin</div><p>Mona schreibt deine Texte — warm, klar und in der Sprache deiner Kundinnen. Sie sucht so lange, bis ein Satz wirklich nach dir klingt.</p></div>
+            <div class="org-karte" data-anim style="--d:220ms"><span class="org-avhold"><img class="org-av" src="assets/team-leonardo.jpg" alt="Leonardo" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Leonardo</h3><div class="org-rolle">Der Kritiker</div><p>Leonardo schaut mit frischen Augen auf das Fertige und misst es an einem hohen Maßstab. Was nur „ganz gut" ist, geht bei ihm zurück — bevor du es zu sehen bekommst.</p></div>
+            <div class="org-karte" data-anim style="--d:330ms"><span class="org-avhold"><img class="org-av" src="assets/team-andrea.jpg" alt="Andrea" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Andrea</h3><div class="org-rolle">Die erste Besucherin</div><p>Andrea geht deine Seite durch, wie deine Kundin es täte: zum ersten Mal, mit wenig Zeit. Sie sagt ehrlich, wo sie zögert, etwas nicht findet oder abspringt.</p></div>
           </div>
         </div>
 
-        <p class="org-hinweis"><b>Klaus, Aldo, Mona, Leonardo und Andrea sind KI-Rollen</b> — keine Angestellten. Wir haben ihnen Namen und ein eigenes Handwerk gegeben, weil jede wirklich ihre eigene Handschrift hat. Die Verantwortung tragen wir zwei.</p>
+        <p class="org-hinweis" data-anim><b>Klaus, Aldo, Mona, Leonardo und Andrea sind KI-Rollen</b> — keine Angestellten. Wir haben ihnen Namen und ein eigenes Handwerk gegeben, weil jede wirklich ihre eigene Handschrift hat. Die Verantwortung tragen wir zwei.</p>
 
-        <div style="text-align:center;margin-top:clamp(30px,4.5vw,44px);"><span class="local">📍 Landsberg am Lech &amp; Umgebung</span></div>
+        <div style="text-align:center;margin-top:clamp(30px,4.5vw,44px);" data-anim><span class="local">📍 Landsberg am Lech &amp; Umgebung</span></div>
       </div>
     </section>
 
@@ -1001,17 +1080,25 @@
   (function(){
     "use strict";
     if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    var TOENE=["232,146,63","231,185,100","240,168,94"], felder=[];
+    var TOENE=[[232,146,63],[231,185,100],[240,168,94],[255,206,152]], felder=[];
     document.querySelectorAll("canvas.funken").forEach(function(cv){
       var ctx=cv.getContext&&cv.getContext("2d",{alpha:true});
-      if(ctx) felder.push({cv:cv,ctx:ctx,b:0,h:0,f:[]});
+      if(ctx) felder.push({cv:cv,ctx:ctx,b:0,h:0,f:[],sicht:true});
     });
     if(!felder.length) return;
+    /* Der Glutschein wird einmal vorgezeichnet und danach nur noch kopiert — ein eigener
+       Radialverlauf pro Funke und Bild wäre auf schwachen Geräten deutlich zu teuer. */
+    var SCHEINE=TOENE.map(function(t){
+      var s=document.createElement("canvas"), m=32; s.width=s.height=m*2;
+      var c=s.getContext("2d"), v=c.createRadialGradient(m,m,0,m,m,m), rgb=t.join(",");
+      v.addColorStop(0,"rgba("+rgb+",.9)"); v.addColorStop(.32,"rgba("+rgb+",.24)"); v.addColorStop(1,"rgba("+rgb+",0)");
+      c.fillStyle=v; c.fillRect(0,0,m*2,m*2); return s;
+    });
     function neu(fld,start){
       return {x:Math.random()*fld.b, y:start?Math.random()*fld.h:fld.h+Math.random()*40,
-        r:0.6+Math.random()*1.5, tempo:0.09+Math.random()*0.26, drift:(Math.random()-0.5)*0.22,
-        phase:Math.random()*Math.PI*2, schwung:0.004+Math.random()*0.009, max:0.12+Math.random()*0.3,
-        ton:TOENE[(Math.random()*TOENE.length)|0]};
+        r:0.6+Math.random()*2.0, tempo:0.10+Math.random()*0.34, drift:(Math.random()-0.5)*0.26,
+        phase:Math.random()*Math.PI*2, schwung:0.005+Math.random()*0.011, max:0.16+Math.random()*0.42,
+        glut:Math.random()<0.22, ton:(Math.random()*TOENE.length)|0};
     }
     function messen(){
       var dpr=Math.min(window.devicePixelRatio||1,2);
@@ -1020,7 +1107,7 @@
         fld.b=el.clientWidth; fld.h=el.clientHeight;
         fld.cv.width=Math.round(fld.b*dpr); fld.cv.height=Math.round(fld.h*dpr);
         fld.ctx.setTransform(dpr,0,0,dpr,0,0);
-        var n=Math.max(6,Math.min(48,Math.round((fld.b*fld.h)/30000)));
+        var n=Math.max(10,Math.min(96,Math.round((fld.b*fld.h)/17000)));
         fld.f=[]; for(var i=0;i<n;i++) fld.f.push(neu(fld,true));
       });
     }
@@ -1028,14 +1115,23 @@
     function zeichnen(){
       if(!laeuft) return;
       felder.forEach(function(fld){
+        if(!fld.sicht) return;                       // Felder außerhalb des Bildes kosten nichts
         var ctx=fld.ctx; ctx.clearRect(0,0,fld.b,fld.h);
         for(var i=0;i<fld.f.length;i++){
           var f=fld.f[i];
-          f.y-=f.tempo; f.phase+=f.schwung; f.x+=f.drift+Math.sin(f.phase)*0.16;
-          if(f.y<-12||f.x<-20||f.x>fld.b+20){ fld.f[i]=neu(fld,false); f=fld.f[i]; }
-          var rand=Math.min(1, f.y/(fld.h*0.28), (fld.h-f.y)/(fld.h*0.14));
-          ctx.globalAlpha=f.max*Math.max(0,rand);
-          ctx.fillStyle="rgba("+f.ton+",1)";
+          f.y-=f.tempo; f.phase+=f.schwung; f.x+=f.drift+Math.sin(f.phase)*0.18;
+          if(f.y<-14||f.x<-24||f.x>fld.b+24){ fld.f[i]=neu(fld,false); f=fld.f[i]; }
+          var rand=Math.min(1, f.y/(fld.h*0.26), (fld.h-f.y)/(fld.h*0.12));
+          if(rand<=0) continue;
+          // leichtes Flackern, damit die Funken glimmen statt gleichmäßig zu leuchten
+          var a=f.max*rand*(0.82+Math.sin(f.phase*3.1)*0.18);
+          if(f.glut){
+            var g=f.r*7;
+            ctx.globalAlpha=a*0.5;
+            ctx.drawImage(SCHEINE[f.ton], f.x-g, f.y-g, g*2, g*2);
+          }
+          ctx.globalAlpha=Math.min(1,a);
+          ctx.fillStyle="rgba("+TOENE[f.ton].join(",")+",1)";
           ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,Math.PI*2); ctx.fill();
         }
         ctx.globalAlpha=1;
@@ -1048,8 +1144,96 @@
     document.addEventListener("visibilitychange",function(){
       if(document.hidden){laeuft=false;} else if(!laeuft){laeuft=true;requestAnimationFrame(zeichnen);}
     });
+    if("IntersectionObserver" in window){
+      var beob=new IntersectionObserver(function(en){
+        en.forEach(function(e){
+          for(var i=0;i<felder.length;i++) if(felder[i].cv===e.target) felder[i].sicht=e.isIntersecting;
+        });
+      },{rootMargin:"140px"});
+      felder.forEach(function(fld){beob.observe(fld.cv);});
+    }
     messen(); requestAnimationFrame(zeichnen);
   })();
+  </script>
+  <script>
+  /* Aufbau-Sequenz im Organigramm: Karten steigen auf, die Verbindungslinien zeichnen sich nach.
+     Gleiches Sicherheitsnetz wie beim Abschnitts-Reveal — IntersectionObserver PLUS Scroll-Prüfung,
+     damit in keinem Browser (auch In-App-WebViews) je ein Element unsichtbar hängen bleibt. */
+  (function(){
+    var teile=document.querySelectorAll("#ueber-uns [data-anim], #ueber-uns .org-conn, #ueber-uns .org-fan");
+    if(!teile.length) return;
+    var i, reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function an(el){el.classList.add("is-in");}
+    if(reduce||document.documentElement.classList.contains("foto")){
+      for(i=0;i<teile.length;i++) an(teile[i]);
+      return;
+    }
+    function pruefen(){
+      var vh=window.innerHeight||document.documentElement.clientHeight, offen=0, r;
+      for(var k=0;k<teile.length;k++){
+        if(teile[k].classList.contains("is-in")) continue;
+        r=teile[k].getBoundingClientRect();
+        if(r.top<vh*0.94&&r.bottom>0) an(teile[k]); else offen++;
+      }
+      if(!offen){window.removeEventListener("scroll",pruefen);window.removeEventListener("resize",pruefen);}
+    }
+    if("IntersectionObserver" in window){
+      var io=new IntersectionObserver(function(en){
+        en.forEach(function(e){ if(e.isIntersecting){ an(e.target); io.unobserve(e.target); } });
+      },{threshold:0.12,rootMargin:"0px 0px -6% 0px"});
+      for(i=0;i<teile.length;i++) io.observe(teile[i]);
+    }
+    window.addEventListener("scroll",pruefen,{passive:true});
+    window.addEventListener("resize",pruefen,{passive:true});
+    pruefen(); setTimeout(pruefen,1400);
+  })();
+
+  /* Sanfte Tiefe: Bayertor und Footer-Skyline wandern beim Scrollen ein paar Pixel gegen die Seite.
+     Nur zwei Elemente, nur per CSS-Variable — kein Layout wird angefasst. */
+  (function(){
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var teile=[].slice.call(document.querySelectorAll(".about-bayertor, .foot-scene .scene-svg"));
+    if(!teile.length) return;
+    var wartet=false;
+    function setzen(){
+      wartet=false;
+      var vh=window.innerHeight||document.documentElement.clientHeight;
+      teile.forEach(function(el){
+        var r=el.getBoundingClientRect();
+        if(r.bottom<-240||r.top>vh+240) return;
+        var mitte=(r.top+r.height/2-vh/2)/vh;                    // -1 (oben) … 1 (unten)
+        var kraft=el.classList.contains("about-bayertor")?-20:-10;
+        el.style.setProperty("--par",(mitte*kraft).toFixed(1)+"px");
+      });
+    }
+    window.addEventListener("scroll",function(){if(!wartet){wartet=true;requestAnimationFrame(setzen);}},{passive:true});
+    window.addEventListener("resize",setzen,{passive:true});
+    setzen();
+  })();
+  </script>
+  <script src="assets/lenis.js" defer></script>
+  <script>
+  /* Weiches Scrollen (Lenis, lokal mitgeliefert — kein externer Request).
+     Das native scroll-behavior:smooth wird dabei abgeschaltet, sonst laufen zwei
+     Animationen gegeneinander; Ankerlinks gehen deshalb über lenis.scrollTo. */
+  window.addEventListener("load",function(){
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches||!window.Lenis) return;
+    var nav=parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h"),10)||72;
+    document.documentElement.style.scrollBehavior="auto";
+    var lenis=new window.Lenis({duration:1.05,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));},
+      smoothWheel:true,touchMultiplier:1.6});
+    (function takt(zeit){lenis.raf(zeit);requestAnimationFrame(takt);})(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener("click",function(e){
+        var id=a.getAttribute("href");
+        if(!id||id.length<2) return;
+        var ziel=document.querySelector(id);
+        if(!ziel) return;
+        e.preventDefault();
+        lenis.scrollTo(ziel,{offset:-(nav+12)});
+      });
+    });
+  });
   </script>
 </body>
 </html>
