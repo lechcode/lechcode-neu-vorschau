@@ -274,6 +274,7 @@
   .proof-stats .stat.is-lead{border-color:var(--amber);background:linear-gradient(180deg,#fffaf0,#fcefdb);box-shadow:var(--edge-l), 0 0 0 1px rgba(232,146,63,.32), 0 30px 60px -30px rgba(232,146,63,.42);}
   .proof-stats .stat.is-lead .stat-num{color:var(--amber);font-size:clamp(38px,5.2vw,62px);}
   .vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+  .nb{white-space:nowrap;}   /* haelt Woerter mit Bindestrich zusammen, z. B. E-Mails */
   .cost-flip{width:min(900px,100%);margin:clamp(28px,4vw,40px) auto 0;background:var(--warm-white);border:1px solid var(--line-l);border-radius:var(--radius-lg);padding:clamp(24px,4vw,38px);box-shadow:var(--edge-l), var(--shadow-l);position:relative;overflow:hidden;text-align:center;}
   .cost-flip::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(46% 80% at 6% 8%, rgba(232,146,63,.12), transparent 60%);}
   .cost-flip > *{position:relative;}
@@ -362,17 +363,23 @@
   @media (max-width:860px){.ki-team{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:520px){.ki-team{grid-template-columns:1fr;}}
   /* ===== Über uns — Organigramm (KI-Werkstatt) ===== */
+  /* Größen wie im Rest der Seite: der Auftakt liegt auf der Lead-Stufe (wie die
+     Einleitungen der anderen Abschnitte), der ausgeklappte Teil auf Fließtext-Stufe
+     (wie .step p oder .stimme-more). Vorher lief der Auftakt auf --step-2 und war
+     damit so groß wie eine Kartenüberschrift. */
   .org-prosa{max-width:62ch;margin:clamp(28px,4vw,44px) auto 0;}
-  .org-prosa p{font-size:var(--step-1);line-height:1.8;color:var(--bone-dim);margin:0 0 1.3em;text-wrap:pretty;}
-  .org-prosa p.auftakt{font-size:var(--step-2);line-height:1.55;color:#fbf5e8;}
+  .org-prosa p{font-size:var(--step-0);line-height:1.75;color:var(--bone-dim);margin:0 0 1.25em;text-wrap:pretty;}
+  .org-prosa p.auftakt{font-size:var(--step-1);line-height:var(--lh-relaxed);letter-spacing:var(--ls-lead);color:#fbf5e8;}
   .org-prosa p:last-child{margin-bottom:0;}
-  .org-more{margin-top:.2em;}
-  .org-more-sum{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:600;font-size:var(--step-0);color:var(--ember);padding:8px 0;transition:color .2s var(--ease);}
+  .org-more{margin-top:.35em;}
+  .org-more-sum{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:600;font-size:var(--step--1);letter-spacing:.02em;color:var(--ember);padding:8px 0;transition:color .2s var(--ease);}
   .org-more-sum::-webkit-details-marker{display:none;}
   .org-more-sum::after{content:"↓";font-size:.9em;transition:transform .3s var(--ease);}
   .org-more[open] .org-more-sum::after{transform:rotate(180deg);}
   .org-more-sum:hover{color:var(--gold);}
-  .org-more-body{padding-top:1.1em;}
+  /* Der ausgeklappte Teil bekommt eine feine Kante nach oben — dann liest er sich
+     als Fortsetzung und nicht als Text, der plötzlich im Raum steht. */
+  .org-more-body{margin-top:.9em;padding-top:1.4em;border-top:1px solid var(--line-d);}
   .org-trenner{width:100%;max-width:62ch;margin:clamp(48px,7vw,80px) auto 0;height:1px;border:0;background:linear-gradient(90deg,transparent,var(--line-d),transparent);}
   .org-head2{margin-top:clamp(52px,8vw,88px);}
   .org-ebene{position:relative;margin-top:clamp(28px,4vw,40px);}
@@ -689,7 +696,7 @@
           <div class="step"><div class="num">1</div><span class="zeit">2 Minuten</span><h3>Du trägst dich ein</h3><p>Name, E-Mail, Domain — mehr nicht. Deine Wünsche optional.</p></div>
           <div class="step"><div class="num">2</div><span class="zeit">binnen 24 h</span><h3>Dein Entwurf kommt</h3><p>Ein privater Link zu deiner fertig gestalteten Seite. In Ruhe anschauen, am Handy und am Rechner. Kostenlos.</p></div>
           <div class="step"><div class="num">3</div><span class="zeit">30 Minuten</span><h3>Gespräch mit Michael</h3><p>Ihr geht die Seite gemeinsam durch, du sagst, was anders soll. Die finale Version kommt in 24 Stunden.</p></div>
-          <div class="step"><div class="num">4</div><span class="zeit">ohne Stress</span><h3>Wir bringen sie live</h3><p>Wir ziehen alles um — einmal die Zugangsdaten, den Rest machen wir. Deine E-Mails bleiben unberührt. Versprochen.</p></div>
+          <div class="step"><div class="num">4</div><span class="zeit">ohne Stress</span><h3>Wir bringen sie live</h3><p>Ist die finale Version durch, übernehmen wir den kompletten Umzug — Domain, Hosting, sichere Verschlüsselung. Deine <span class="nb">E-Mails</span> bleiben unberührt.</p></div>
         </div>
 
         <!-- Pflege-Service -->
