@@ -130,21 +130,28 @@
   .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px 1px rgba(232,146,63,.6);flex:none;}
   .light .eyebrow{color:var(--gold-deep);}
   .light .eyebrow::before{box-shadow:none;}
-  /* Hero-Eyebrow tippt sich beim Laden ein, wie eine Zeile Code.
-     Die Schrift ist Monospace — ein steps()-Schritt ist deshalb exakt ein Zeichen.
+  /* Eyebrows tippen sich ein, wie eine Zeile Code — im Hero beim Laden, sonst
+     sobald die Zeile ins Bild kommt.
+     Die Schrift ist Monospace, ein steps()-Schritt ist deshalb exakt ein Zeichen;
+     Zeichenzahl und Dauer setzt das Skript je Zeile als --n und --dauer.
      Aufgedeckt wird per clip-path: der Text bleibt vollständig im DOM (Screenreader
      lesen ihn normal) und es wackelt kein Layout.
      Der verdeckte Zustand hängt an .tippt — die Klasse setzt das Skript selbst und
-     nimmt sie nach 4,2 s wieder weg. Läuft kein JavaScript oder führt der Browser die
-     Animation nicht aus, steht die Zeile einfach da. Inhalt hängt nie an einer Animation. */
-  .tippen{position:relative;display:inline-block;white-space:nowrap;}
+     nimmt sie nach dem Tippen wieder weg. Läuft kein JavaScript oder führt der Browser
+     die Animation nicht aus, steht die Zeile einfach da.
+     Inhalt hängt nie an einer Animation.
+     Wichtig: nowrap gilt NUR währenddessen — und das Skript startet eine Zeile erst
+     gar nicht, wenn sie über zwei Zeilen läuft. Sonst würde eine lange Zeile
+     (der Hero-Eyebrow ist ~500 px breit) auf dem Handy aus dem Bild ragen. */
+  .tippen{position:relative;display:inline-block;}
+  .tippen.tippt{white-space:nowrap;}
   .tippen.tippt > span{display:inline-block;clip-path:inset(0 100% 0 0);
-    animation:tippen 2.2s steps(50,end) .45s forwards;}
+    animation:tippen var(--dauer,2.2s) steps(var(--n,40),end) var(--start,.2s) forwards;}
   .tippen.tippt::after{content:"";position:absolute;top:.1em;bottom:.05em;left:0;width:2px;
     background:var(--ember);box-shadow:0 0 8px rgba(240,168,94,.7);
-    animation:caret-lauf 2.2s steps(50,end) .45s forwards,
+    animation:caret-lauf var(--dauer,2.2s) steps(var(--n,40),end) var(--start,.2s) forwards,
               caret-blinken .8s steps(1,end) infinite,
-              caret-aus .5s ease 3.5s forwards;}
+              caret-aus .4s ease calc(var(--start,.2s) + var(--dauer,2.2s) + .5s) forwards;}
   @keyframes tippen{to{clip-path:inset(0 0 0 0);}}
   @keyframes caret-lauf{from{left:0;}to{left:100%;}}
   @keyframes caret-blinken{50%{opacity:0;}}
@@ -756,7 +763,7 @@
     <section class="hero dark">
       <canvas class="funken" aria-hidden="true"></canvas>
       <div class="wrap">
-        <span class="eyebrow"><span class="tippen"><span>Web-Agentur aus Landsberg am Lech · Code mit Seele</span></span></span>
+        <span class="eyebrow">Web-Agentur aus Landsberg am Lech · Code mit Seele</span>
         <h1>Deine neue Website.<br><span class="q">Morgen schon zum Ansehen.</span></h1>
         <p class="hero-sub">Du kümmerst dich um Menschen — wir um deine Website. Trag dich ein, morgen liegt dein fertiger Entwurf im Postfach. Erst ansehen, dann entscheiden. Kostenlos.</p>
 
@@ -1374,16 +1381,55 @@
     pruefen(); setTimeout(pruefen,1400);
   })();
 
-  /* Der Hero-Eyebrow tippt sich ein wie eine Zeile Code. Das Skript startet den Effekt und
-     räumt ihn danach wieder ab — so steht die Zeile am Ende als ganz normaler Text da,
+  /* Alle Eyebrows tippen sich ein wie eine Zeile Code: im Hero beim Laden, alle anderen,
+     sobald sie ins Bild kommen. Das Skript packt den Text selbst in seine Hülle, startet
+     den Effekt und räumt ihn danach wieder ab — am Ende steht überall ganz normaler Text,
      egal ob die Animation gelaufen ist oder nicht. */
   (function(){
-    var zeile=document.querySelector(".tippen");
-    if(!zeile) return;
     if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if(document.documentElement.classList.contains("foto")) return;
-    zeile.classList.add("tippt");
-    setTimeout(function(){zeile.classList.remove("tippt");},4200);
+    var TEMPO=52, KUERZESTE=520, LAENGSTE=2200, zeilen=[];
+
+    document.querySelectorAll(".eyebrow").forEach(function(el){
+      var text=(el.textContent||"").trim();
+      if(!text) return;
+      var huelle=document.createElement("span"); huelle.className="tippen";
+      var innen=document.createElement("span"); innen.textContent=text;
+      huelle.appendChild(innen);
+      el.textContent=""; el.appendChild(huelle);
+      var dauer=Math.min(LAENGSTE,Math.max(KUERZESTE,Math.round(text.length*TEMPO)));
+      var start=el.closest(".hero")?450:200;      // im Hero etwas später, die Seite baut sich ja gerade auf
+      huelle.style.setProperty("--n",text.length);
+      huelle.style.setProperty("--dauer",dauer+"ms");
+      huelle.style.setProperty("--start",start+"ms");
+      zeilen.push({huelle:huelle,innen:innen,dauer:dauer,start:start});
+    });
+    if(!zeilen.length) return;
+
+    function tippen(z){
+      if(z.gelaufen) return;
+      z.gelaufen=true;
+      /* Erst kurz vor dem Start messen: Läuft die Zeile über zwei Zeilen, wird nicht
+         getippt — mit nowrap würde sie sonst seitlich aus dem Bild ragen. Sie steht
+         dann einfach da, wie jede andere Überschrift auch. */
+      if(z.innen.getClientRects().length>1) return;
+      z.huelle.classList.add("tippt");
+      setTimeout(function(){z.huelle.classList.remove("tippt");}, z.start+z.dauer+900);
+    }
+
+    if("IntersectionObserver" in window){
+      var io=new IntersectionObserver(function(eintraege){
+        eintraege.forEach(function(e){
+          if(!e.isIntersecting) return;
+          io.unobserve(e.target);
+          for(var i=0;i<zeilen.length;i++) if(zeilen[i].huelle===e.target) tippen(zeilen[i]);
+        });
+      },{threshold:0.6,rootMargin:"0px 0px -5% 0px"});
+      zeilen.forEach(function(z){io.observe(z.huelle);});
+    }else{
+      // Ohne Beobachter: nur die Zeile im Hero tippen, der Rest bleibt schlicht stehen.
+      tippen(zeilen[0]);
+    }
   })();
 
   /* Sanfte Tiefe: Bayertor und Footer-Skyline wandern beim Scrollen ein paar Pixel gegen die Seite.
