@@ -1,0 +1,16 @@
+# Lechcode · Redesign-Vorschau (lechcode-neu-vorschau)
+#
+# ⚠ SOLANGE diese Fassung unter der Vorschau-URL liegt, bleibt sie für Suchmaschinen
+#   gesperrt — sonst würde sie neben lechcode.de als zweite, fast gleiche Seite auftauchen.
+#
+# ➜ BEIM CUTOVER (diese Fassung wird lechcode.de) diese Datei ersetzen durch:
+#
+#     User-agent: *
+#     Allow: /
+#
+#     Sitemap: https://lechcode.de/sitemap.xml
+#
+#   und in allen vier HTML-Dateien den noindex auf "index, follow" umstellen.
+
+User-agent: *
+Disallow: /
