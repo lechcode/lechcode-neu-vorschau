@@ -382,11 +382,20 @@
   .ki-lead .role{display:block;font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.04em;color:var(--gold);margin:2px 0 7px;}
   .ki-lead p{color:var(--bone-dim);font-size:var(--step-0);line-height:var(--lh-body);}
   @media (max-width:520px){.ki-lead{flex-direction:column;text-align:center;}.ki-lead .ki-badge{margin-inline:auto;}}
-  /* Stimmen (Testimonial) */
-  /* Stimme als eigene Zitat-Karte: gerahmt, mit großem Anführungszeichen und
-     Absender-Zeile. Vorher stand der Text frei auf dem Sand und war auf den
-     ersten Blick nicht als Kundenstimme zu erkennen. */
-  .stimme{position:relative;max-width:760px;margin-inline:auto;text-align:center;
+  /* Stimmen — Slider aus Trustpilot-Bewertungen.
+     Basis ist natives Scroll-Snap: auch ohne das Slider-Skript sind alle Karten
+     durch Wischen/Scrollen erreichbar. Pfeile und Punkte kommen per JS dazu.
+     Jede Karte ist eine eigene Zitat-Karte (gerahmt, großes Anführungszeichen,
+     Absender-Zeile) — auf den ersten Blick als Kundenstimme erkennbar. */
+  .stimmen-slider{position:relative;max-width:760px;margin-inline:auto;}
+  .stimmen-slider:focus-visible{outline:none;}
+  .stimmen-track{position:relative;display:flex;align-items:stretch;
+    overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+    -ms-overflow-style:none;scrollbar-width:none;}
+  .stimmen-track::-webkit-scrollbar{display:none;}
+  @media (prefers-reduced-motion:reduce){.stimmen-track{scroll-behavior:auto;}}
+  .stimme{position:relative;flex:0 0 100%;scroll-snap-align:center;
+    display:flex;flex-direction:column;text-align:center;
     background:var(--warm-white);border:1px solid var(--line-l);border-radius:var(--radius-lg);
     padding:clamp(30px,4.5vw,46px) clamp(22px,4vw,50px) clamp(24px,3.4vw,34px);
     box-shadow:var(--edge-l), var(--shadow-l);overflow:hidden;}
@@ -397,10 +406,12 @@
     font-family:var(--display);font-weight:700;font-size:clamp(96px,13vw,150px);line-height:1;
     color:var(--gold);opacity:.17;pointer-events:none;user-select:none;}
   .stimme-stars{color:var(--gold-deep);font-size:24px;letter-spacing:5px;text-shadow:0 2px 10px rgba(232,146,63,.35);}
-  .stimme-quote{font-family:var(--display);font-weight:600;font-size:var(--step-2);line-height:1.4;color:var(--ink);margin-top:14px;letter-spacing:var(--ls-lead);}
-  .stimme-more{color:var(--ink-soft);font-size:var(--step-0);line-height:var(--lh-body);margin-top:16px;max-width:58ch;margin-inline:auto;}
-  .stimme-by{display:flex;align-items:center;justify-content:center;gap:13px;
-    margin-top:clamp(22px,3vw,30px);padding-top:clamp(18px,2.4vw,24px);border-top:1px solid var(--line-l);}
+  .stimme-quote{font-family:var(--display);font-weight:600;font-size:var(--step-2);line-height:1.4;color:var(--ink);margin-top:14px;letter-spacing:var(--ls-lead);text-wrap:balance;}
+  .stimme-more{color:var(--ink-soft);font-size:var(--step-0);line-height:var(--lh-body);margin-top:16px;max-width:58ch;margin-inline:auto;text-wrap:pretty;}
+  /* margin-top:auto schiebt die Absender-Zeile an den Kartenboden, damit sie bei
+     unterschiedlich langen Bewertungen auf einer Höhe steht (Karten sind gleich hoch). */
+  .stimme-by{display:flex;align-items:center;justify-content:center;gap:13px;width:100%;
+    margin-top:auto;padding-top:clamp(20px,2.6vw,26px);border-top:1px solid var(--line-l);}
   .stimme-av{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
     font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.04em;color:#2a1808;
     background:linear-gradient(180deg,var(--gold),var(--gold-deep));
@@ -408,6 +419,19 @@
   .stimme-wer{text-align:left;}
   .stimme-wer b{display:block;font-family:var(--display);font-weight:600;font-size:var(--step-0);color:var(--ink);}
   .stimme-wer small{display:block;font-size:var(--step--1);color:var(--ink-faint);margin-top:2px;}
+  /* Bedienung: Pfeile + Punkte. Erst mit JS sichtbar — ohne JS wird gewischt/gescrollt. */
+  .stimmen-ctrl{display:none;align-items:center;justify-content:center;gap:clamp(12px,2vw,18px);margin-top:clamp(22px,3vw,30px);}
+  .js .stimmen-ctrl{display:flex;}
+  .stimmen-arrow{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+    background:var(--warm-white);border:1px solid var(--line-l);color:var(--gold-deep);box-shadow:var(--edge-l), var(--shadow-l);
+    transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease),color .2s var(--ease);}
+  .stimmen-arrow:hover{transform:translateY(-2px);border-color:rgba(199,154,79,.5);color:var(--amber);box-shadow:var(--glow-l);}
+  .stimmen-arrow svg{width:17px;height:17px;}
+  .stimmen-dots{display:flex;align-items:center;gap:4px;}
+  .stimmen-dot{width:24px;height:24px;padding:0;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;}
+  .stimmen-dot::before{content:"";width:9px;height:9px;border-radius:50%;background:rgba(199,154,79,.4);
+    transition:transform .25s var(--ease),background .25s var(--ease);}
+  .stimmen-dot[aria-current="true"]::before{background:var(--gold-deep);transform:scale(1.4);}
   @media (max-width:480px){.stimme-by{flex-direction:column;gap:10px;}.stimme-wer{text-align:center;}}
   @media (max-width:860px){.ki-team{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:520px){.ki-team{grid-template-columns:1fr;}}
@@ -1030,18 +1054,62 @@
       <div class="wrap">
         <div class="sec-head">
           <span class="eyebrow">Stimmen</span>
-          <h2>Von „Berührungsängsten" zu „von Herzen empfehlen".</h2>
+          <h2>Von Herzen empfohlen.</h2>
+          <p class="lead">Echte Bewertungen von Trustpilot — von Menschen, für die wir gebaut haben.</p>
         </div>
-        <figure class="stimme">
-          <span class="stimme-mark" aria-hidden="true">„</span>
-          <div class="stimme-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
-          <blockquote class="stimme-quote">„Als jemand, der beim Thema Website immer große Berührungsängste hatte, war ich auf der Suche nach einer Lösung, die unkompliziert ist und trotzdem einen ästhetischen, professionellen Online-Auftritt ermöglicht. Genau das habe ich hier gefunden."</blockquote>
-          <p class="stimme-more">„Die Zusammenarbeit war von Anfang an angenehm, zuverlässig und absolut unkompliziert. Auf meine Wünsche wurde eingegangen und das Ergebnis hat meine Erwartungen sogar übertroffen. Eine klare Empfehlung!"</p>
-          <figcaption class="stimme-by">
-            <span class="stimme-av" aria-hidden="true">AS</span>
-            <span class="stimme-wer"><b>Anna Sonntag</b><small>Bewertung auf Trustpilot · 5,0 von 5</small></span>
-          </figcaption>
-        </figure>
+
+        <div class="stimmen-slider" tabindex="0" role="group" aria-roledescription="Slider" aria-label="Kundenstimmen von Trustpilot">
+          <div class="stimmen-track">
+
+            <figure class="stimme" role="group" aria-roledescription="Bewertung" aria-label="Bewertung 1 von 3">
+              <span class="stimme-mark" aria-hidden="true">„</span>
+              <div class="stimme-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
+              <blockquote class="stimme-quote">Super Ergebnis innerhalb kürzester Zeit!</blockquote>
+              <p class="stimme-more">Ich bin mit meiner neuen Website von Lechcode mehr als zufrieden. Es brauchte nur wenige Angaben von mir und innerhalb kürzester Zeit wurde eine stimmige, professionelle und moderne Website gezaubert. Hinzu kommt der angenehme und warme Kontakt mit Michael und Lenny, der meine Erfahrung abrundet. Klare Weiterempfehlung und ein großes Dankeschön.</p>
+              <figcaption class="stimme-by">
+                <span class="stimme-av" aria-hidden="true">E</span>
+                <span class="stimme-wer"><b>Emily</b><small>Bewertung auf Trustpilot · 5,0 von 5</small></span>
+              </figcaption>
+            </figure>
+
+            <figure class="stimme" role="group" aria-roledescription="Bewertung" aria-label="Bewertung 2 von 3">
+              <span class="stimme-mark" aria-hidden="true">„</span>
+              <div class="stimme-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
+              <blockquote class="stimme-quote">Genau das habe ich hier gefunden.</blockquote>
+              <p class="stimme-more">Als jemand, der beim Thema Website immer große Berührungsängste hatte, war ich auf der Suche nach einer Lösung, die unkompliziert ist und trotzdem einen ästhetischen, professionellen Online-Auftritt ermöglicht. Die Zusammenarbeit war von Anfang an angenehm, zuverlässig und absolut unkompliziert. Auf meine Wünsche wurde eingegangen und das Ergebnis hat meine Erwartungen sogar übertroffen. Eine klare Empfehlung!</p>
+              <figcaption class="stimme-by">
+                <span class="stimme-av" aria-hidden="true">AS</span>
+                <span class="stimme-wer"><b>Anna Sonntag</b><small>Bewertung auf Trustpilot · 5,0 von 5</small></span>
+              </figcaption>
+            </figure>
+
+            <figure class="stimme" role="group" aria-roledescription="Bewertung" aria-label="Bewertung 3 von 3">
+              <span class="stimme-mark" aria-hidden="true">„</span>
+              <div class="stimme-stars" role="img" aria-label="5 von 5 Sternen">★★★★★</div>
+              <blockquote class="stimme-quote">Ich bin begeistert von Lechcode.</blockquote>
+              <p class="stimme-more">Wir haben ein digitales Programmheft erstellen lassen und das Ergebnis hat meine Erwartungen weit übertroffen. Es ist beeindruckend, was alles möglich ist. Der Kontakt mit Michael war von Anfang an super angenehm und professionell. Unsere Vorschläge und Wünsche wurden jederzeit offen aufgenommen und schnell sowie zuverlässig umgesetzt. Vielen Dank für die tolle Zusammenarbeit – wir würden Lechcode jederzeit weiterempfehlen und arbeiten in Zukunft hoffentlich für weitere Projekte zusammen!</p>
+              <figcaption class="stimme-by">
+                <span class="stimme-av" aria-hidden="true">CM</span>
+                <span class="stimme-wer"><b>C. M.</b><small>Bewertung auf Trustpilot · 5,0 von 5</small></span>
+              </figcaption>
+            </figure>
+
+          </div>
+
+          <div class="stimmen-ctrl">
+            <button type="button" class="stimmen-arrow prev" aria-label="Vorherige Stimme">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <div class="stimmen-dots">
+              <button type="button" class="stimmen-dot" aria-label="Zur Bewertung 1"></button>
+              <button type="button" class="stimmen-dot" aria-label="Zur Bewertung 2"></button>
+              <button type="button" class="stimmen-dot" aria-label="Zur Bewertung 3"></button>
+            </div>
+            <button type="button" class="stimmen-arrow next" aria-label="Nächste Stimme">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1453,6 +1521,78 @@
     window.addEventListener("scroll",function(){if(!wartet){wartet=true;requestAnimationFrame(setzen);}},{passive:true});
     window.addEventListener("resize",setzen,{passive:true});
     setzen();
+  })();
+
+  /* Stimmen-Slider. Basis ist das native Scroll-Snap der Karten — auch ohne dieses
+     Skript sind alle Bewertungen durch Wischen/Scrollen erreichbar. Hier kommen Pfeile,
+     Punkte, Tastatur (Pfeil-links/rechts) und ein sanftes Weiterschalten dazu.
+     Das Auto-Weiterschalten pausiert bei Hover/Fokus, läuft nur im Bild und hört ganz
+     auf, sobald man selbst navigiert. Aus bei prefers-reduced-motion. */
+  (function(){
+    var slider=document.querySelector(".stimmen-slider");
+    if(!slider) return;
+    var track=slider.querySelector(".stimmen-track");
+    var karten=[].slice.call(track.querySelectorAll(".stimme"));
+    if(karten.length<2) return;
+    var prev=slider.querySelector(".stimmen-arrow.prev");
+    var next=slider.querySelector(".stimmen-arrow.next");
+    var dots=[].slice.call(slider.querySelectorAll(".stimmen-dot"));
+    var sparsam=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var aktiv=0, timer=null, manuell=false, sichtbar=true;
+
+    function markiere(){
+      for(var i=0;i<dots.length;i++) dots[i].setAttribute("aria-current", i===aktiv?"true":"false");
+    }
+    function zeige(i,glatt){
+      aktiv=(i+karten.length)%karten.length;
+      track.scrollTo({left:karten[aktiv].offsetLeft, behavior:(glatt&&!sparsam)?"smooth":"auto"});
+      markiere();
+    }
+    // Aktive Karte aus der Scroll-Position ableiten (Wischen/Trackpad ohne Buttons)
+    var wartet=false;
+    track.addEventListener("scroll",function(){
+      if(wartet) return; wartet=true;
+      requestAnimationFrame(function(){
+        wartet=false;
+        var mitte=track.scrollLeft+track.clientWidth/2, best=0, ab=1e9;
+        for(var i=0;i<karten.length;i++){
+          var km=karten[i].offsetLeft+karten[i].clientWidth/2, d=Math.abs(km-mitte);
+          if(d<ab){ab=d;best=i;}
+        }
+        if(best!==aktiv){aktiv=best;markiere();}
+      });
+    },{passive:true});
+
+    function stop(){ if(timer){clearInterval(timer);timer=null;} }
+    function start(){
+      if(sparsam||manuell||!sichtbar||timer) return;
+      timer=setInterval(function(){ zeige(aktiv+1,true); },6500);
+    }
+    function vonHand(fn){ return function(){ manuell=true; stop(); fn(); }; }
+
+    if(next) next.addEventListener("click",vonHand(function(){zeige(aktiv+1,true);}));
+    if(prev) prev.addEventListener("click",vonHand(function(){zeige(aktiv-1,true);}));
+    dots.forEach(function(d,i){ d.addEventListener("click",vonHand(function(){zeige(i,true);})); });
+    slider.addEventListener("keydown",function(e){
+      if(e.key==="ArrowRight"){ e.preventDefault(); vonHand(function(){zeige(aktiv+1,true);})(); }
+      else if(e.key==="ArrowLeft"){ e.preventDefault(); vonHand(function(){zeige(aktiv-1,true);})(); }
+    });
+
+    slider.addEventListener("pointerenter",stop);
+    slider.addEventListener("pointerleave",start);
+    slider.addEventListener("focusin",stop);
+    slider.addEventListener("focusout",start);
+    track.addEventListener("touchstart",function(){manuell=true;stop();},{passive:true});
+
+    if("IntersectionObserver" in window){
+      sichtbar=false;
+      new IntersectionObserver(function(en){
+        en.forEach(function(e){ sichtbar=e.isIntersecting; if(sichtbar) start(); else stop(); });
+      },{threshold:0.4}).observe(slider);
+    }
+
+    markiere();
+    start();
   })();
   </script>
   <script src="assets/lenis.js" defer></script>
