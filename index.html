@@ -7,8 +7,7 @@
   ╠══════════════════════════════════════════════════════════════════╣
   ║  ⚠ OFFEN (vor Versand ins Netzwerk):
   ║   • ✓ erledigt (15.06.): Video lokal eingebettet (cookiefrei) — Poster in assets/
-  ║     (Untertitel bewusst weggelassen — Lennys Entscheidung 21.07.: Roh-Transkript zu unsauber;
-  ║      bewusster A11y/WCAG-1.2.2-Kompromiss. Track-Hinweis steht am <video>-Element.)
+  ║     (Untertitel-Spur noch offen; Einbaustelle ist am <video>-Element vermerkt.)
   ║   • ✓ erledigt (12.06.): Formular scharf — Empfänger info@lechcode.de (verifiziert),
   ║     Web3Forms-Key aktiv, zweifach end-to-end getestet
   ║   • ✓ erledigt (12.06.): Web3Forms-Key aktiv · Postfach info@lechcode.de existiert · AGB freigegeben
@@ -31,9 +30,9 @@
   <meta name="robots" content="noindex, nofollow" />
   <link rel="canonical" href="https://lechcode.de/" />
   <title>Neue Website in 24 h · Webdesign aus Landsberg | Lechcode</title>
-  <meta name="description" content="Neue Website in 24 Stunden zum Ansehen — für Menschen, deren Arbeit anderen guttut. Kostenlos starten, danach 790 € inkl. Umzug. Webdesign aus Landsberg am Lech." />
+  <meta name="description" content="Neue Website in 24 Stunden zum Ansehen. Für Menschen, deren Arbeit anderen guttut. Kostenlos starten, danach 790 € inkl. Umzug. Webdesign aus Landsberg am Lech." />
   <meta property="og:title" content="Neue Website in 24 h · Webdesign aus Landsberg | Lechcode" />
-  <meta property="og:description" content="Neue Website in 24 Stunden zum Ansehen — kostenlos starten, danach 790 € inkl. Umzug. Für Menschen, deren Arbeit anderen guttut. Webdesign aus Landsberg." />
+  <meta property="og:description" content="Neue Website in 24 Stunden zum Ansehen. Kostenlos starten, danach 790 € inkl. Umzug. Für Menschen, deren Arbeit anderen guttut. Webdesign aus Landsberg." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Lechcode" />
   <meta property="og:locale" content="de_DE" />
@@ -41,10 +40,10 @@
   <meta property="og:image" content="https://lechcode.de/assets/og.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Lechcode — Webdesign aus Landsberg am Lech" />
+  <meta property="og:image:alt" content="Lechcode, Webdesign aus Landsberg am Lech" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Neue Website in 24 h · Webdesign aus Landsberg | Lechcode" />
-  <meta name="twitter:description" content="Neue Website in 24 Stunden zum Ansehen — kostenlos starten, danach 790 € inkl. Umzug. Für Menschen, deren Arbeit anderen guttut. Webdesign aus Landsberg." />
+  <meta name="twitter:description" content="Neue Website in 24 Stunden zum Ansehen. Kostenlos starten, danach 790 € inkl. Umzug. Für Menschen, deren Arbeit anderen guttut. Webdesign aus Landsberg." />
   <meta name="twitter:image" content="https://lechcode.de/assets/og.jpg" />
   <meta name="theme-color" content="#16130c" />
   <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA2NCc+PHJlY3Qgd2lkdGg9JzY0JyBoZWlnaHQ9JzY0JyByeD0nMTUnIGZpbGw9JyMxZjFiMTInLz48Y2lyY2xlIGN4PSczMicgY3k9JzMyJyByPScyMi41JyBmaWxsPSdub25lJyBzdHJva2U9JyNlN2I5NjQnIHN0cm9rZS13aWR0aD0nMy40Jy8+PHBhdGggZD0nTTE1IDM2IEMgMjIgMjgsIDI5IDI4LCAzMyAzNCBDIDM3IDQwLCA0NCA0MCwgNTAgMzEnIGZpbGw9J25vbmUnIHN0cm9rZT0nI2U3Yjk2NCcgc3Ryb2tlLXdpZHRoPSc0LjInIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCcvPjxjaXJjbGUgY3g9JzQ0JyBjeT0nMTguNScgcj0nMy40JyBmaWxsPScjZTg5MjNmJy8+PC9zdmc+" />
@@ -55,7 +54,7 @@
   :root{
     /* dunkel */
     --night:#16130c; --night-2:#1d1810; --panel:#241e14; --panel-2:#2c2418;
-    --bone:#f4ecdc; --bone-dim:#cfc3ac; --muted:#9a8e76;
+    --bone:#f4ecdc; --bone-dim:#cfc3ac; --bone-quiet:#ada189; --muted:#9a8e76;
     /* warm-hell (Lichtungen) */
     --cream:#f7efe0; --sand:#efe2cc; --warm-white:#fffaf0;
     --ink:#2a2218; --ink-soft:#6e6150; --ink-faint:#9c8e78;
@@ -295,6 +294,12 @@
   .care-banner h3{color:#fbf5e8;margin-bottom:8px;}
   .care-banner p{color:var(--bone-dim);} .care-banner b{color:#fbf5e8;}
   .care-banner .pill-mini{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);background:rgba(231,185,100,.12);border:1px solid var(--line-d);padding:4px 10px;border-radius:var(--radius-pill);margin-bottom:10px;}
+  /* Die ehrliche Fußnote („Wovon lebt ihr dann?") — eine halbe Stufe leiser als der
+     Hauptabsatz, nicht mehr. Sie beantwortet den einzigen echten Einwand gegen 0 €/Monat
+     und muss dafür gelesen werden; Fußnote bleibt sie durch Linie, Größe und Ton, nicht
+     durch Blässe. Größe genau zwischen Kleintext und Fließtext, Farbe eine Stufe über
+     --muted (6,2:1 statt 4,9:1 auf dem hellsten Punkt des Banner-Verlaufs). */
+  .care-banner .care-warum{font-size:calc((var(--step--1) + var(--step-0)) / 2);color:var(--bone-quiet);margin-top:clamp(14px,2vw,18px);padding-top:clamp(14px,2vw,18px);border-top:1px solid var(--line-d);}
 
   /* ===== 5b · WARUM LECHCODE (Vergleich) ===== */
   #vergleich .sec-head{margin-inline:auto;text-align:center;}
@@ -315,16 +320,23 @@
   .cost-flip::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(46% 80% at 6% 8%, rgba(232,146,63,.12), transparent 60%);}
   .cost-flip > *{position:relative;}
   .flip-kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--gold-deep);}
-  .flip-row{display:flex;align-items:center;justify-content:center;gap:clamp(14px,4vw,34px);flex-wrap:wrap;margin-top:12px;}
+  /* Die beiden Spalten sind unterschiedlich hoch (25px- gegen 48px-Zahl). Mittig zentriert
+     liefen ihre Kleintexte dadurch 18 px auseinander — genau auf dem stärksten Argument
+     der Seite. An der Unterkante ausgerichtet sitzen sie exakt auf einer Linie, auch wenn
+     einer davon auf schmalen Bildschirmen umbricht. Der Pfeil bleibt auf halber Höhe. */
+  .flip-row{display:flex;align-items:end;justify-content:center;gap:clamp(14px,4vw,34px);flex-wrap:wrap;margin-top:12px;}
   .flip-col{display:flex;flex-direction:column;gap:4px;}
   .cost-old{font-size:var(--step-2);color:var(--ink-faint);text-decoration:line-through;text-decoration-thickness:2px;}
   .cost-new{font-family:var(--display);font-weight:700;font-size:var(--step-4);color:var(--gold-deep);letter-spacing:var(--ls-h2);font-variant-numeric:tabular-nums;}
   .flip-col small{font-size:var(--step--1);color:var(--ink-soft);}
-  .flip-arrow{font-size:var(--step-3);color:var(--amber);line-height:1;}
+  .flip-arrow{font-size:var(--step-3);color:var(--amber);line-height:1;align-self:center;}
+  /* Auf schmalen Bildschirmen bricht .flip-row um und die beiden Spalten stehen
+     untereinander — dann muss der Pfeil nach unten zeigen statt zur Seite ins Leere.
+     Gemessen: ab ~520 px abwärts stapeln die Spalten. */
+  @media (max-width:560px){.flip-arrow{transform:rotate(90deg);}}
   .cost-say{max-width:60ch;margin:16px auto 0;color:var(--ink-soft);font-size:var(--step-0);}
   .cost-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px;}
   .cost-chips span{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--gold-deep);background:rgba(231,185,100,.14);border:1px solid rgba(199,154,79,.25);padding:5px 11px;border-radius:var(--radius-pill);}
-  .cost-foot{max-width:62ch;margin:16px auto 0;font-size:var(--step--1);color:var(--ink-faint);}
   .compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(40px,5.5vw,60px);align-items:start;}
   .compare-card{position:relative;display:flex;flex-direction:column;background:var(--warm-white);border:1px solid var(--line-l);border-radius:var(--radius);padding:26px 22px;box-shadow:var(--edge-l), var(--shadow-l);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);}
   .compare-card:hover{transform:translateY(-3px);box-shadow:var(--glow-l);border-color:rgba(199,154,79,.35);}
@@ -679,7 +691,7 @@
         "@id": "https://lechcode.de/#organisation",
         "name": "Lechcode",
         "legalName": "Schönbach & Storz GbR",
-        "description": "Lechcode baut moderne Websites für Menschen, deren Arbeit anderen guttut — aus Landsberg am Lech. Erster Entwurf in 24 Stunden, Umzug inklusive, Pflege ab 19 € im Monat.",
+        "description": "Lechcode baut moderne Websites für Menschen, deren Arbeit anderen guttut, aus Landsberg am Lech. Erster Entwurf in 24 Stunden, Umzug inklusive, einmalig 790 € und danach keine laufenden Kosten.",
         "url": "https://lechcode.de/",
         "email": "info@lechcode.de",
         "image": "https://lechcode.de/assets/og.jpg",
@@ -707,7 +719,7 @@
           {
             "@type": "Offer",
             "name": "Komplette Website",
-            "description": "Einmalig 790 €: Gestaltung, Aufbau, Texte, Umzug der bestehenden Domain und E-Mail sowie Hosting — alles enthalten, danach keine laufenden Kosten. Änderungen jederzeit selbst über das Dashboard. Der erste Entwurf ist kostenlos und unverbindlich.",
+            "description": "Einmalig 790 €: Gestaltung, Aufbau, Texte, Umzug der bestehenden Domain und E-Mail sowie Hosting. Alles enthalten, danach keine laufenden Kosten. Änderungen jederzeit selbst über das Dashboard. Der erste Entwurf ist kostenlos und unverbindlich.",
             "price": "790",
             "priceCurrency": "EUR",
             "availability": "https://schema.org/InStock",
@@ -738,7 +750,7 @@
         "@id": "https://lechcode.de/#startseite",
         "url": "https://lechcode.de/",
         "name": "Neue Website in 24 h · Webdesign aus Landsberg | Lechcode",
-        "description": "Neue Website in 24 Stunden zum Ansehen — kostenlos starten, danach 790 € inkl. Umzug. Webdesign aus Landsberg am Lech.",
+        "description": "Neue Website in 24 Stunden zum Ansehen. Kostenlos starten, danach 790 € inkl. Umzug. Webdesign aus Landsberg am Lech.",
         "isPartOf": { "@id": "https://lechcode.de/#website" },
         "about": { "@id": "https://lechcode.de/#organisation" },
         "inLanguage": "de-DE"
@@ -767,8 +779,8 @@
         <a href="#angebot">Startangebot</a>
         <a href="#ablauf">So läuft’s</a>
         <a href="#vergleich">Warum Lechcode</a>
-        <a href="#stimmen">Stimmen</a>
         <a href="#ueber-uns">Team</a>
+        <a href="#stimmen">Stimmen</a>
         <a class="btn" href="#eintragen">Kostenlos starten <span class="arr">→</span></a>
       </div>
     </nav>
@@ -781,7 +793,7 @@
       <div class="wrap">
         <span class="eyebrow">Web-Agentur aus Landsberg am Lech · Code mit Seele</span>
         <h1>Deine neue Website.<br><span class="q">Morgen schon zum Ansehen.</span></h1>
-        <p class="hero-sub">Du kümmerst dich um Menschen — wir um deine Website. Trag dich ein, morgen liegt dein fertiger Entwurf im Postfach. Erst ansehen, dann entscheiden. Kostenlos.</p>
+        <p class="hero-sub">Die meisten schicken dir erst ein Angebot. Wir schicken dir die Seite. Trag dich ein, und morgen liegt ein fertiger Entwurf in deinem Postfach, gebaut auf dem, was du mitbringst, damit du nicht raten musst, was am Ende dabei herauskommt.</p>
 
         <!-- Hero-Video: lokal gehostet (cookiefrei, 0 externe Requests). Poster in assets/.
              Quelle: „Videos & Fotos/Landingpage Special Offer Video.mov" → 1080p H.264, faststart, 87 MB. -->
@@ -790,11 +802,11 @@
                  aria-label="Vorstellungs-Video: Lenny und Michael von Lechcode erklären in rund sechs Minuten das Startangebot."
                  style="padding:0;display:block;width:100%;height:auto;background:#0d0b07;">
             <source src="assets/lechcode-video.mp4" type="video/mp4">
-            <!-- Untertitel bewusst NICHT eingebunden (Lennys Entscheidung): Roh-Transkript zu unsauber; ⚠ bewusster A11y/WCAG-1.2.2-Kompromiss.
-                 Wenn eine saubere deutsche .vtt vorliegt, hier ergänzen: <track kind="captions" srclang="de" label="Deutsch" src="assets/lechcode-video.vtt" default> -->
+            <!-- Untertitel-Spur: sobald eine deutsche .vtt vorliegt, hier ergänzen —
+                 <track kind="captions" srclang="de" label="Deutsch" src="assets/lechcode-video.vtt" default> -->
             <p style="padding:1.5em;color:var(--bone-dim);text-align:center;">Dein Browser kann das Video nicht direkt abspielen — <a href="assets/lechcode-video.mp4" style="color:var(--gold);">hier herunterladen</a>.</p>
           </video>
-          <p class="video-cap">In sechs Minuten erzählen dir Lenny und Michael, wie’s läuft.</p>
+          <p class="video-cap">Lenny und Michael erzählen dir in sechs Minuten, wie das Ganze abläuft und wer da eigentlich hinter deiner Seite sitzt.</p>
         </div>
 
         <div class="hero-cta">
@@ -802,9 +814,9 @@
           <a class="btn btn-ghost" href="#ablauf">Wie es funktioniert</a>
         </div>
         <div class="hero-trust">
-          <span class="trust">Erst ansehen, dann entscheiden — kostenlos</span>
+          <span class="trust">Kostenlos ansehen, dann entscheiden</span>
           <span class="trust">Auch ganz ohne bestehende Website</span>
-          <span class="trust">Schon über 20 Seiten gebaut</span>
+          <span class="trust">Über 20 Seiten stehen schon</span>
         </div>
       </div>
     </section>
@@ -826,29 +838,29 @@
         <div class="sec-head">
           <span class="eyebrow">Zum Start von Lechcode</span>
           <h2>Deine komplette Website: einmalig 790&nbsp;€. Alles drin.</h2>
-          <p class="lead">Eine Website kostet schnell vierstellig und zieht sich über Monate — am Ende traut man sich kaum noch, etwas zu ändern. Das wollten wir anders. Bei uns bekommst du die komplette Seite für 790 €, damit du siehst, was heute geht.</p>
+          <p class="lead">Eine Website kostet schnell vierstellig, und bis sie steht, vergehen Monate. Genau das haben wir satt. Bei uns kostet die komplette Seite einmalig 790 €, und danach ist die Sache für dich erledigt.</p>
         </div>
         <div class="offer-grid">
           <div class="price">
             <span class="pill">Startpreis · alles inklusive</span>
-            <div class="amount">790 €<small> einmalig — alles inklusive, danach keine laufenden Kosten</small></div>
-            <p class="desc">Einmal 790 €, und die Sache ist erledigt. Kein Abo, keine monatliche Gebühr — und du zahlst erst, wenn dir der Entwurf gefällt.</p>
+            <div class="amount">790 €<small> einmalig. Danach kommt nichts mehr.</small></div>
+            <p class="desc">Kein Abo, keine monatliche Gebühr. Du zahlst einmal, und zwar nachdem du deinen Entwurf gesehen hast und ihn haben willst.</p>
             <ul>
-              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Komplett neues Design</b> — in deinem Branding oder einem frischen: Farben, Schriften, Logo inklusive.</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Erster Entwurf in 24 Stunden</b> — privater Vorschau-Link, kostenlos und unverbindlich.</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>30 Minuten mit Michael</b> — ihr geht die Seite durch, deine Wünsche kommen rein. Finale Version wieder in 24 Stunden.</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Umzug inklusive</b> — wir bringen alles live, deine E-Mail-Adressen bleiben unangetastet.</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Rechtlich sauber</b> — verschlüsselt, mit Impressum &amp; Datenschutz, meist ganz ohne Cookie-Banner.</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Blitzschnell auf jedem Gerät</b> — fürs Handy zuerst gebaut, wo über 60 % deiner Besucher ankommen.</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Ändern, so oft du willst</b> — selbst über dein eigenes Dashboard, jederzeit und ohne Aufpreis. Oder du schreibst uns einfach.</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Hosting und Domain auf uns</b> — danach null laufende Kosten: kein Abo, keine monatliche Gebühr, kein Kleingedrucktes.</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Die Seite gehört dir</b> — kein Lock-in, jederzeit zu jedem Anbieter umziehbar.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Komplett neues Design:</b> in deinen Farben oder in neuen, wenn du magst. Schriften und Logo gehören dazu.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Erster Entwurf in 24 Stunden.</b> Keine Skizze, keine Präsentation: die fertig gebaute Seite zum Anklicken.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>30 Minuten mit Michael:</b> ein Gespräch mit dem Menschen, der deine Seite betreut, und danach baut er sie um, so wie du es willst.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Den Umzug machen wir.</b> Den technischen Teil übernehmen wir komplett, du musst dich in nichts einarbeiten.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Rechtlich sauber:</b> verschlüsselt, mit Impressum und Datenschutz, und meistens brauchst du nicht einmal einen Cookie-Banner.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Schnell auf jedem Gerät.</b> Am Handy genauso gut lesbar wie am großen Bildschirm, und niemand muss auf sie warten.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Ändern, so oft du willst:</b> selbst im Dashboard oder per Nachricht an uns.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Hosting und Domain zahlen wir.</b> Nach dem Umzug bekommst du von uns keine Rechnung mehr, weder monatlich noch jährlich.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Kein Vertrag, der dich bindet.</b> Keine Laufzeit, keine Kündigungsfrist und niemand, den du um Erlaubnis fragen musst.</span></li>
             </ul>
             <a class="btn" href="#eintragen">Meinen kostenlosen Entwurf ansehen <span class="arr">→</span></a>
-            <p class="price-fine">Deine Vorschau ist immer kostenlos, egal ob du danach Ja sagst — keine versteckten Kosten.</p>
+            <p class="price-fine">Die Vorschau ist kostenlos, ob du danach Ja sagst oder nicht. Versteckte Kosten gibt es bei uns keine.</p>
           </div>
-          <p class="note-line"><span class="ic">🔑</span><span>Deine Seite gehört dir — komplett. Du kannst sie jederzeit mitnehmen, zu jedem Anbieter, selbst wenn es uns eines Tages nicht mehr geben sollte.</span></p>
-          <p class="note-line"><span class="ic">💡</span><span>Übrigens: Ein laufendes Baukasten-Abo (Wix, Jimdo &amp; Co.) fällt bei uns komplett weg — oft mehrere hundert Euro im Jahr.</span></p>
+          <p class="note-line"><span class="ic">🔑</span><span>Deine Seite gehört komplett dir. Du kannst sie jederzeit mitnehmen, zu jedem Anbieter, auch dann, wenn es uns eines Tages nicht mehr geben sollte.</span></p>
+          <p class="note-line"><span class="ic">💡</span><span>Wenn du bisher ein Baukasten-Abo bei Wix oder Jimdo zahlst, fällt das komplett weg. Bei vielen sind das ein paar hundert Euro im Jahr, die einfach bei dir bleiben.</span></p>
         </div>
       </div>
     </section>
@@ -858,26 +870,27 @@
       <div class="wrap">
         <div class="sec-head">
           <span class="eyebrow">So läuft’s ab</span>
-          <h2>Von „eingetragen" bis „online" — in vier Schritten.</h2>
-          <p class="lead">Kein Technik-Wissen nötig. Drei Angaben genügen — den Rest liest unsere Software aus deiner Seite. Und wenn du noch keine hast, fangen wir gemeinsam bei null an.</p>
+          <h2>In vier Schritten von „eingetragen“ zu „online“.</h2>
+          <p class="lead">Technik musst du dafür keine können. Du gibst uns drei Angaben, den Rest liest unsere Software aus deiner bestehenden Seite aus, und falls du noch gar keine hast, fangen wir eben gemeinsam bei null an.</p>
         </div>
         <div class="steps stagger">
-          <div class="step"><div class="num">1</div><span class="zeit">2 Minuten</span><h3>Du trägst dich ein</h3><p>Name, E-Mail, Domain — mehr nicht. Deine Wünsche optional.</p></div>
-          <div class="step"><div class="num">2</div><span class="zeit">binnen 24 h</span><h3>Dein Entwurf kommt</h3><p>Ein privater Link zu deiner fertig gestalteten Seite. In Ruhe anschauen, am Handy und am Rechner. Kostenlos.</p></div>
-          <div class="step"><div class="num">3</div><span class="zeit">30 Minuten</span><h3>Gespräch mit Michael</h3><p>Ihr geht die Seite gemeinsam durch, du sagst, was anders soll. Die finale Version kommt in 24 Stunden.</p></div>
-          <div class="step"><div class="num">4</div><span class="zeit">ohne Stress</span><h3>Wir bringen sie live</h3><p>Ist die finale Version durch, übernehmen wir den kompletten Umzug — Domain, Hosting, sichere Verschlüsselung. Deine <span class="nb">E-Mails</span> bleiben unberührt.</p></div>
+          <div class="step"><div class="num">1</div><span class="zeit">2 Minuten</span><h3>Du trägst dich ein</h3><p>Name, E-Mail und die Adresse deiner jetzigen Seite reichen. Wenn du Wünsche hast, schreib sie dazu, musst du aber nicht.</p></div>
+          <div class="step"><div class="num">2</div><span class="zeit">binnen 24 h</span><h3>Dein Entwurf kommt</h3><p>Du bekommst einen privaten Link zu deiner fertig gestalteten Seite und kannst sie dir in Ruhe ansehen, am Handy wie am Rechner. Kostet nichts.</p></div>
+          <div class="step"><div class="num">3</div><span class="zeit">30 Minuten</span><h3>Gespräch mit Michael</h3><p>Ihr geht die Seite gemeinsam durch und du sagst, was dir nicht gefällt. Einen Tag später liegt die finale Fassung bei dir.</p></div>
+          <div class="step"><div class="num">4</div><span class="zeit">ohne dein Zutun</span><h3>Wir bringen sie live</h3><p>Sobald du zufrieden bist, übernehmen wir den ganzen Umzug: Domain, Hosting, Verschlüsselung, alles. Deine <span class="nb">E-Mails</span> rühren wir dabei nicht an.</p></div>
         </div>
 
         <!-- Danach: alles auf uns, keine Folgekosten -->
         <div class="care-banner">
           <canvas class="funken" aria-hidden="true"></canvas>
           <div>
-            <span class="pill-mini">Nach dem Go-Live · alles auf uns</span>
-            <div class="amount">0 €<small>pro Monat · kein Abo · alles schon im Preis</small></div>
+            <span class="pill-mini">Nach dem Umzug · alles auf uns</span>
+            <div class="amount">0 €<small>pro Monat</small></div>
           </div>
           <div>
             <h3>Und du musst nie wieder an deine Website denken.</h3>
-            <p>Nach dem Umzug kümmerst du dich um — nichts. <b>Hosting und Domain laufen über uns</b>, dafür zahlst du keinen Cent extra. Soll sich etwas ändern, tippst du es einfach selbst in dein <b>Dashboard</b>: „Neuer Preis: 80 €" genügt, und die Seite ist aktualisiert. So oft du willst, ohne Aufpreis. Keine Lust, selbst? Schreib uns eine Nachricht, wir machen's. <b>Kein Abo, keine monatliche Gebühr</b> — das war's. Genau das meinen wir mit sorgenfrei.</p>
+            <p>Nach dem Umzug kümmerst du dich um nichts mehr. <b>Hosting und Domain laufen über uns</b>, und dafür zahlst du keinen Cent. Soll sich etwas ändern, tippst du es selbst in dein <b>Dashboard</b>: „Neuer Preis: 80 €“ genügt, und die Seite ist aktualisiert, so oft du willst und ohne Aufpreis. Wenn dir gerade nicht danach ist, schreibst du uns stattdessen zwei Zeilen und wir machen es.</p>
+            <p class="care-warum">Und wovon leben wir dann? Von den 790 €. Mit KI bauen wir deine Seite in Stunden statt in Wochen, und sie danach laufen zu lassen kostet uns wenig, weil kein schwerfälliges System dahintersteckt. Das zahlen wir aus dem, was du einmal bezahlt hast. Vor zwei Jahren wäre diese Rechnung nicht aufgegangen, heute geht sie auf, und solange es Lechcode gibt, bleibt das so.</p>
           </div>
         </div>
       </div>
@@ -888,8 +901,8 @@
       <div class="wrap">
         <div class="sec-head">
           <span class="eyebrow">Warum Lechcode</span>
-          <h2>Selber basteln, Agentur — oder einfach fertig.</h2>
-          <p class="lead">Drei Wege zu einer Website. Wir haben alle drei ehrlich durchgerechnet — an Geld, an Zeit und an Nerven. Damit du in einer Minute siehst, was dich welcher kostet.</p>
+          <h2>Selber machen, Agentur beauftragen oder fertig geliefert bekommen.</h2>
+          <p class="lead">Es gibt drei Wege zu einer neuen Website, und wir haben alle drei durchgerechnet, in Euro und in Lebenszeit. In einer Minute siehst du, was jeder Weg wirklich kostet.</p>
         </div>
 
         <div class="cost-flip">
@@ -897,11 +910,10 @@
           <div class="flip-row">
             <div class="flip-col"><span class="cost-old">10–25 € / Monat</span><small>Baukasten-Abo, dauerhaft</small></div>
             <span class="flip-arrow" aria-hidden="true">→</span>
-            <div class="flip-col"><span class="cost-new">0 € / Monat</span><small>Hosting und Domain übernehmen wir</small></div>
+            <div class="flip-col"><span class="cost-new">0 € / Monat</span><small>kein Abo, nichts Laufendes</small></div>
           </div>
-          <p class="cost-say">Das monatliche Abo fällt komplett weg — und bei uns kommt keins dazu. Hosting und Domain laufen über uns. Nach dem Umzug zahlst du laufend: nichts.</p>
-          <div class="cost-chips"><span>✓ 0 € laufend</span><span>✓ kein Cookie-Banner</span><span>✓ Recht inklusive</span></div>
-          <p class="cost-foot">Etwas ändern? Machst du selbst im Dashboard oder schreibst uns kurz — beides ist schon drin, ohne Aufpreis.</p>
+          <p class="cost-say">Nach dem Umzug zahlst du laufend gar nichts.</p>
+          <div class="cost-chips"><span>✓ 0 € laufend</span><span>✓ kein Cookie-Banner</span><span>✓ Impressum &amp; Datenschutz drin</span></div>
         </div>
 
         <div class="proof-stats stagger">
@@ -909,13 +921,13 @@
             <span class="stat-tag">Bei uns gemessen</span>
             <div class="stat-num">≈&nbsp;5×</div>
             <div class="stat-label">schneller geladen</div>
-            <p>So viel schneller laden im Schnitt die Seiten, die wir bisher gebaut haben. Das merkt Google, und deine Besucher merken’s auch: Kaum jemand wartet heute noch auf eine langsame Seite.</p>
+            <p>So viel schneller laden im Schnitt die Seiten, die wir bisher gebaut haben, verglichen mit den alten. Das sieht Google, und deine Besucher merken es auch, denn auf eine Seite, die hakt, wartet heute kaum noch jemand.</p>
           </div>
           <div class="stat">
             <span class="stat-tag stat-tag-muted">Marktdaten</span>
             <div class="stat-num">über&nbsp;60&nbsp;%</div>
             <div class="stat-label">kommen am Handy</div>
-            <p>So viele Besucher sind heute mobil unterwegs. Die meisten älteren Seiten sind am Handy mühsam — bei uns ist das Handy der Ausgangspunkt, nicht die Notlösung.</p>
+            <p>So viele Besucher sind heute am Handy unterwegs, und genau dort werden ältere Seiten mühsam: winzige Schrift, verrutschte Buttons, ewiges Zoomen. Wir bauen deshalb zuerst fürs Handy und danach für den großen Bildschirm.</p>
           </div>
         </div>
 
@@ -924,10 +936,10 @@
           <h3>Selber machen</h3>
           <span class="compare-sub">Baukasten wie Wix, Jimdo, Squarespace</span>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-mid"><path d="M3.5 8h9" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Teils/teils:</span><span><b>Preis am Anfang:</b> Günstig — aber du baust alles selbst</span></li>            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-no"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Nachteil:</span><span><b>Bis sie fertig ist:</b> Wochen in Eigenregie</span></li>            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-no"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Nachteil:</span><span><b>Design:</b> Vorlage von der Stange</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-no"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Nachteil:</span><span><b>Recht & Sicherheit:</b> Cookie-Banner, du bist selbst dran</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-no"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Nachteil:</span><span><b>Änderungen:</b> Selbst im Baukasten klicken</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-no"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Nachteil:</span><span><b>Wem gehört’s?:</b> Gefangen im Anbieter</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-mid"><path d="M3.5 8h9" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Teils/teils:</span><span><b>Preis am Anfang:</b> Günstig, die Arbeit machst du</span></li>            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-no"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Nachteil:</span><span><b>Bis sie fertig ist:</b> Wochen an deinen Abenden</span></li>            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-no"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Nachteil:</span><span><b>Design:</b> Vorlage von der Stange</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-no"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Nachteil:</span><span><b>Recht &amp; Sicherheit:</b> Cookie-Banner, und haften musst du</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-no"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Nachteil:</span><span><b>Änderungen:</b> Du klickst dich selbst durch</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-no"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Nachteil:</span><span><b>Wem sie gehört:</b> Der Anbieter lässt dich schwer wieder los</span></li>
           </ul>
         </div>
         <div class="compare-card">
@@ -935,9 +947,9 @@
           <span class="compare-sub">Der übliche Weg für „was Richtiges“</span>
           <ul>
             <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-no"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Nachteil:</span><span><b>Preis am Anfang:</b> Oft vierstellig (1.500–3.500 €)</span></li>            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-mid"><path d="M3.5 8h9" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Teils/teils:</span><span><b>Bis sie fertig ist:</b> Oft Wochen bis Monate</span></li>            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Design:</b> Individuell (zum Aufpreis)</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Recht & Sicherheit:</b> Meist dabei</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-mid"><path d="M3.5 8h9" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Teils/teils:</span><span><b>Änderungen:</b> Pro Stunde, oft Paketzwang</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Wem gehört’s?:</b> Meist dir</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Recht &amp; Sicherheit:</b> Meist dabei</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-mid"><path d="M3.5 8h9" fill="none" stroke-width="2" stroke-linecap="round"/></svg><span class="vh">Teils/teils:</span><span><b>Änderungen:</b> Werden nach Stunden abgerechnet</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Wem sie gehört:</b> Meist dir</span></li>
           </ul>
         </div>
         <div class="compare-card is-featured">
@@ -945,16 +957,16 @@
           <h3>Lechcode</h3>
           <span class="compare-sub">Fertig gebaut, du sagst nur Ja</span>
           <ul>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Preis am Anfang:</b> 790 € einmalig, alles drin</span></li>            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Bis sie fertig ist:</b> Erster Entwurf in 24 Stunden</span></li>            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Design:</b> Auf deine Branche zugeschnitten</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Recht & Sicherheit:</b> Verschlüsselung, Impressum & Datenschutz — oft ganz ohne Cookie-Banner</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Änderungen:</b> Selbst im Dashboard oder eine Nachricht — unbegrenzt, ohne Aufpreis</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Wem gehört’s?:</b> Dir — kein Lock-in, jederzeit umziehbar</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Preis am Anfang:</b> 790 € einmalig, alles drin</span></li>            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Bis sie fertig ist:</b> Erster Entwurf in 24 Stunden</span></li>            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Design:</b> Für deine Arbeit gestaltet, nicht von der Stange</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Recht &amp; Sicherheit:</b> Verschlüsselung, Impressum und Datenschutz drin, meist ohne Cookie-Banner</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Änderungen:</b> Unbegrenzt, im Dashboard oder per Nachricht, ohne Aufpreis</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Wem sie gehört:</b> Dir, und du kannst jederzeit gehen</span></li>
           </ul>
         </div>
         </div>
 
         <div class="vergleich-cta">
-          <p>Klingt gut? Dann lass uns dir einfach zeigen, wie deine aussehen würde.</p>
+          <p>Am einfachsten ist es, wenn wir dir zeigen, wie deine Seite aussehen würde. Das kostet dich zwei Minuten und sonst nichts.</p>
           <a class="btn" href="#eintragen">Meinen kostenlosen Entwurf ansehen <span class="arr">→</span></a>
         </div>
       </div>
@@ -979,29 +991,43 @@
           <h2 data-anim style="--d:90ms">Warum wir das machen.</h2>
         </div>
         <div class="org-prosa" data-anim style="--d:190ms">
-          <p class="auftakt">Wir sind Lenny und Michael, zwei aus Landsberg, und wir kennen den Website-Schmerz aus eigener Erfahrung. Alles dauert zu lange, kostet zu viel, und wenn man nach dem Launch eine Kleinigkeit ändern will, vergehen wieder Wochen. Am Ende liegt die Seite halbfertig herum und man macht lieber weiter das, was man eigentlich kann.</p>
-          <details class="org-more">
-            <summary class="org-more-sum">Mehr über uns lesen</summary>
+          <p class="auftakt">Wir sind Lenny und Michael, zwei aus Landsberg, und wir haben selbst erlebt, wie zäh das mit Websites sein kann. Alles dauert zu lange, kostet zu viel, und wenn man hinterher eine Telefonnummer ändern will, vergehen wieder zwei Wochen und am Ende kommt dafür noch eine Rechnung. Irgendwann liegt die Seite halbfertig herum, und man macht lieber weiter das, was man eigentlich kann.</p>
+          <!-- Die Klappe steht im Markup OFFEN. Grundsatz des Hauses: Inhalt hängt nie an einem
+               Skript — ohne JavaScript ist die Antwort auf „Warum wir das machen." also überall
+               da, im Zweifel offen. Das Skript direkt hinter </details> klappt sie einmal beim
+               Laden zu, aber nur unter 900 px, wo die Länge zählt. Danach fasst es nichts mehr
+               an: Auf- und Zuklappen bleibt in jeder Breite das native Verhalten. -->
+          <details class="org-more" open>
+            <summary class="org-more-sum">Wie es dazu kam</summary>
             <div class="org-more-body">
-              <p>Deshalb haben wir unsere eigene KI-Software gebaut. Sie sieht sich an, was du schon hast, recherchiert die besten Websites deiner Branche und gestaltet daraus deine neue — in einer Geschwindigkeit, die vor zwei Jahren so noch nicht möglich war. Danach kommen wir dazu, hören zu, schauen drüber und machen den Feinschliff. Denn eine Website wird nicht dadurch gut, dass sie schnell fertig ist, sondern dadurch, dass jemand sie ernst nimmt.</p>
-              <p>Wir kommen selbst aus dieser Welt: Seit Jahren begleiten wir Menschen im Coaching, in Retreats und in der Bewusstseins-Arbeit. Deshalb verstehen wir die meisten, für die wir arbeiten — sie machen etwas, das anderen wirklich guttut, nur sieht man das im Netz oft nicht. Zwischen der Qualität ihrer Arbeit und dem, was ihre Website davon erzählt, klafft eine Lücke. Genau die schließen wir.</p>
-              <p>Für uns gehört beides zusammen: die Technologie, die heute möglich ist, und zwei echte Menschen, die dahinterstehen, zuhören und erreichbar sind. Das meinen wir, wenn wir von Code mit Seele sprechen.</p>
+              <p>Deshalb haben wir unsere eigene KI-Software gebaut. Sie sieht sich an, was du schon hast, schaut sich um, wie gute Seiten in deiner Branche heute aussehen, und entwirft daraus deine neue, in einem Tempo, das vor zwei Jahren noch nicht möglich war. Danach setzen wir uns dran, hören zu, schauen drüber, feilen nach. Denn schnell fertig macht eine Website noch nicht gut. Gut wird sie, wenn jemand sie ernst nimmt.</p>
+              <p>Wir kommen selbst aus dieser Welt und begleiten seit Jahren Menschen im Coaching, in Retreats und in der Bewusstseins-Arbeit. Die Leute, für die wir bauen, machen etwas, das anderen wirklich guttut, nur merkt man das ihrer Website nicht an. Zwischen dem, was sie können, und dem, was ihre Seite davon erzählt, klafft eine Lücke. Die schließen wir.</p>
+              <p>Für uns gehört beides zusammen: was die Technik heute kann, und zwei Menschen, die dahinterstehen, dir zuhören und dich beim Namen kennen. Das meinen wir mit Code mit Seele.</p>
             </div>
           </details>
+          <script>
+          /* Steht direkt hinter dem Element, damit es noch beim Parsen greift — auf dem Handy
+             wird also nichts erst offen gezeigt und dann zugeklappt. Läuft genau einmal; wer
+             danach selbst auf- oder zuklappt, behält seinen Stand. */
+          (function(){
+            var d=document.querySelector('.org-more');
+            if(d&&!window.matchMedia('(min-width:900px)').matches)d.open=false;
+          })();
+          </script>
           <hr class="org-trenner">
         </div>
 
         <div class="sec-head org-head2" style="margin-bottom:0;">
           <span class="eyebrow" data-anim>Wie wir arbeiten</span>
           <h2 data-anim style="--d:90ms">Zwei Gründer und eine KI-Werkstatt.</h2>
-          <p class="lead" data-anim style="--d:190ms">An deiner Website arbeitet ein eingespieltes Team: zwei Menschen aus Landsberg und fünf KI-Rollen, die wir selbst gebaut und trainiert haben. Jede hat ihr Handwerk — einer baut, eine schreibt, einer sucht die Fehler. Und keine Seite geht raus, bevor sie durch alle Hände gegangen ist.</p>
+          <p class="lead" data-anim style="--d:190ms">An deiner Website arbeiten zwei Menschen aus Landsberg und fünf KI-Rollen, die wir selbst gebaut und trainiert haben. Jede davon hat ihr eigenes Handwerk: Eine baut, eine schreibt, eine findet die Fehler, die sonst niemand sieht. Und keine Seite geht raus, bevor sie alle fünf Stationen durchlaufen hat.</p>
         </div>
 
         <div class="org-ebene org-gruender">
           <div class="org-label" data-anim>Die Gründer</div>
           <div class="org-reihe">
-            <div class="org-karte" data-anim style="--d:60ms"><span class="org-avhold"><img class="org-av" src="assets/team-michi.jpg" alt="Michael" width="116" height="116" loading="lazy" decoding="async"></span><h3>Michael</h3><div class="org-rolle">Gründer · Dein Kontakt</div><p>Dein persönlicher Ansprechpartner. Bei ihm laufen deine Wünsche zusammen — er begleitet dich vom ersten Entwurf bis zur finalen Abnahme und hört zu, bevor er vorschlägt.</p></div>
-            <div class="org-karte" data-anim style="--d:170ms"><span class="org-avhold"><img class="org-av" src="assets/team-lenny.jpg" alt="Lenny" width="116" height="116" loading="lazy" decoding="async"></span><h3>Lenny</h3><div class="org-rolle">Gründer · Technik &amp; KI</div><p>Der Kopf hinter der Technik. Er hat unsere KI-Software gebaut und entwickelt sie laufend weiter — damit deine Seite schnell, sicher und aktuell bleibt.</p></div>
+            <div class="org-karte" data-anim style="--d:60ms"><span class="org-avhold"><img class="org-av" src="assets/team-michi.jpg" alt="Michael" width="116" height="116" loading="lazy" decoding="async"></span><h3>Michael</h3><div class="org-rolle">Gründer · Dein Kontakt</div><p>Bei Michael laufen deine Wünsche zusammen. Er begleitet dich vom ersten Entwurf bis zur Abnahme und hört erst einmal zu, bevor er etwas vorschlägt.</p></div>
+            <div class="org-karte" data-anim style="--d:170ms"><span class="org-avhold"><img class="org-av" src="assets/team-lenny.jpg" alt="Lenny" width="116" height="116" loading="lazy" decoding="async"></span><h3>Lenny</h3><div class="org-rolle">Gründer · Technik &amp; KI</div><p>Lenny hat unsere KI-Software gebaut und schraubt ständig weiter daran, damit deine Seite schnell und sicher bleibt, auch in zwei Jahren noch.</p></div>
           </div>
         </div>
 
@@ -1010,7 +1036,7 @@
         <div class="org-ebene org-leitung">
           <div class="org-label" data-anim>Die Leitung · KI</div>
           <div class="org-reihe">
-            <div class="org-karte" data-anim style="--d:80ms"><span class="org-avhold"><img class="org-av" src="assets/team-klaus.jpg" alt="Klaus" width="112" height="112" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Klaus</h3><div class="org-rolle">Der Dirigent</div><p>Klaus führt die Werkstatt. Er nimmt auf, was du mit Michael besprochen hast, verteilt die Arbeit und kennt am Ende jede Zeile — deine Seite gibt er erst frei, wenn sie wirklich fertig ist.</p></div>
+            <div class="org-karte" data-anim style="--d:80ms"><span class="org-avhold"><img class="org-av" src="assets/team-klaus.jpg" alt="Klaus" width="112" height="112" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Klaus</h3><div class="org-rolle">Der Dirigent</div><p>Klaus führt die Werkstatt. Er nimmt auf, was du mit Michael besprochen hast, verteilt die Arbeit und kennt am Ende jede einzelne Zeile. Unter jeder Seite, die rausgeht, steht seine Unterschrift.</p></div>
           </div>
         </div>
 
@@ -1020,14 +1046,14 @@
           <div class="org-label" data-anim>Die Werkstatt · KI</div>
           <div class="org-fan" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
           <div class="org-reihe org-reihe-4">
-            <div class="org-karte" data-anim><span class="org-avhold"><img class="org-av" src="assets/team-aldo.jpg" alt="Aldo" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Aldo</h3><div class="org-rolle">Der Baumeister</div><p>Aldo plant, bevor er baut: Aufbau, Wege, jedes Format vom Handy bis zum großen Bildschirm. Erst wenn die Struktur trägt, entsteht die Oberfläche.</p></div>
-            <div class="org-karte" data-anim style="--d:110ms"><span class="org-avhold"><img class="org-av" src="assets/team-mona.jpg" alt="Mona" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Mona</h3><div class="org-rolle">Die Wortfinderin</div><p>Mona schreibt deine Texte — warm, klar und in der Sprache deiner Kundinnen. Sie sucht so lange, bis ein Satz wirklich nach dir klingt.</p></div>
-            <div class="org-karte" data-anim style="--d:220ms"><span class="org-avhold"><img class="org-av" src="assets/team-leonardo.jpg" alt="Leonardo" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Leonardo</h3><div class="org-rolle">Der Kritiker</div><p>Leonardo schaut mit frischen Augen auf das Fertige und misst es an einem hohen Maßstab. Was nur „ganz gut" ist, geht bei ihm zurück — bevor du es zu sehen bekommst.</p></div>
-            <div class="org-karte" data-anim style="--d:330ms"><span class="org-avhold"><img class="org-av" src="assets/team-andrea.jpg" alt="Andrea" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Andrea</h3><div class="org-rolle">Die erste Besucherin</div><p>Andrea geht deine Seite durch, wie deine Kundin es täte: zum ersten Mal, mit wenig Zeit. Sie sagt ehrlich, wo sie zögert, etwas nicht findet oder abspringt.</p></div>
+            <div class="org-karte" data-anim><span class="org-avhold"><img class="org-av" src="assets/team-aldo.jpg" alt="Aldo" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Aldo</h3><div class="org-rolle">Der Baumeister</div><p>Aldo ist der, der bei einem Haus zuerst nach dem Fundament fragt, und weil eine Website genauso funktioniert, klärt er erst, wo alles hingehört und wie es sich am kleinen Handy anfassen lässt, und baut dann.</p></div>
+            <div class="org-karte" data-anim style="--d:110ms"><span class="org-avhold"><img class="org-av" src="assets/team-mona.jpg" alt="Mona" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Mona</h3><div class="org-rolle">Die Wortfinderin</div><p>Mona schreibt deine Texte in der Sprache deiner Kundinnen, warm und ohne Werbesprech. Sie feilt so lange an einem Satz, bis er nach dir klingt und nicht nach einer Agentur.</p></div>
+            <div class="org-karte" data-anim style="--d:220ms"><span class="org-avhold"><img class="org-av" src="assets/team-leonardo.jpg" alt="Leonardo" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Leonardo</h3><div class="org-rolle">Der Kritiker</div><p>Leonardo prüft, was fertig aussieht, und er ist schwer zufriedenzustellen. „Ganz gut“ reicht ihm nicht. Was er zurückschickt, siehst du nie.</p></div>
+            <div class="org-karte" data-anim style="--d:330ms"><span class="org-avhold"><img class="org-av" src="assets/team-andrea.jpg" alt="Andrea" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Andrea</h3><div class="org-rolle">Die erste Besucherin</div><p>Andrea ist die Erste, die deine fertige Seite sieht, und sie hat es eilig: eine Kundin zwischen zwei Terminen, die den Termin-Knopf sucht und ihn nicht sofort findet. Was sie dabei nervt, schreibt sie uns auf.</p></div>
           </div>
         </div>
 
-        <div style="text-align:center;margin-top:clamp(44px,6.5vw,68px);" data-anim><span class="local">📍 Landsberg am Lech &amp; Umgebung</span></div>
+        <div style="text-align:center;margin-top:clamp(44px,6.5vw,68px);" data-anim><span class="local">📍 Zuhause in Landsberg am Lech</span></div>
       </div>
     </section>
 
@@ -1047,8 +1073,8 @@
       <div class="wrap">
         <div class="sec-head">
           <span class="eyebrow">Stimmen</span>
-          <h2>Von Herzen empfohlen.</h2>
-          <p class="lead">Echte Bewertungen von Menschen, für die wir gebaut haben.</p>
+          <h2>Was andere danach gesagt haben.</h2>
+          <p class="lead">Drei Bewertungen von Trustpilot und Google, in den Worten der Menschen, die sie geschrieben haben. Eine davon hatte keine Überschrift, da haben wir ihren stärksten Satz nach oben gezogen.</p>
         </div>
 
         <div class="stimmen-slider" tabindex="0" role="group" aria-roledescription="Slider" aria-label="Kundenstimmen von Google und Trustpilot">
@@ -1111,13 +1137,13 @@
       <div class="wrap">
         <div class="sec-head">
           <span class="eyebrow">Los geht’s</span>
-          <h2>Trag dich ein — den Rest machen wir.</h2>
-          <p class="lead">Morgen schaust du schon auf deine neue Seite. Drei Angaben genügen — den Rest liest unsere Software selbst aus.</p>
+          <h2>Trag dich ein, den Rest machen wir.</h2>
+          <p class="lead">Drei Felder, dann ist es an uns. Morgen um diese Zeit schaust du auf deine neue Seite.</p>
         </div>
         <div class="contact-grid">
           <div class="card">
             <h3>Deine neue Website starten</h3>
-            <p class="sub" style="margin-bottom:var(--space-3);">Kostenlos &amp; unverbindlich — du entscheidest erst, wenn du den Entwurf gesehen hast.</p>
+            <p class="sub" style="margin-bottom:var(--space-3);">Kostenlos und unverbindlich. Du schaust dir den Entwurf an und sagst uns danach, ob du magst.</p>
             <!-- Absenden startet den vollautomatischen Entwurf: das Formular-JS unten POSTet einen
                  chat-brief-Job an den Lechcode-Worker (/job) → Runner baut+prüft+deployt → Team-Push
                  „Entwurf fertig" → 1-Klick-Freigabe der Vorschau-Mail. Voll-auto ab Formular (Lenny, 22.07.).
@@ -1130,11 +1156,11 @@
               <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div class="field"><label for="name">Dein Name *</label><input id="name" type="text" name="name" required autocomplete="name" placeholder="Wie heißt du?"></div>
               <div class="field"><label for="email">Deine E-Mail *</label><input id="email" type="email" name="email" required autocomplete="email" placeholder="dahin schicken wir deinen Vorschau-Link"></div>
-              <div class="field"><label for="domain">Deine aktuelle Website *</label><input id="domain" type="text" name="domain" required inputmode="url" autocapitalize="none" placeholder="z. B. meine-praxis.de — noch keine? Schreib „keine“"></div>
-              <div class="field"><label for="wuensche">Deine Wünsche <span style="font-weight:400;color:var(--ink-faint)">(optional)</span></label><textarea id="wuensche" name="wuensche" placeholder="Was soll unbedingt auf die neue Seite? Was soll anders werden? Gibt es etwas, das aktuell fehlt?"></textarea></div>
+              <div class="field"><label for="domain">Deine aktuelle Website *</label><input id="domain" type="text" name="domain" required inputmode="url" autocapitalize="none" placeholder="z. B. meine-praxis.de (noch keine? Dann schreib einfach „keine“)"></div>
+              <div class="field"><label for="wuensche">Deine Wünsche <span style="font-weight:400;color:var(--ink-faint)">(optional)</span></label><textarea id="wuensche" name="wuensche" placeholder="Was muss unbedingt drauf? Und was hat dich an der alten Seite immer gestört?"></textarea></div>
               <div class="consent">
                 <input type="checkbox" id="einwilligung" name="einwilligung" value="AGB + Datenschutz akzeptiert, Inhalte-Nutzung für Vorschau erlaubt" required>
-                <label for="einwilligung">Ich akzeptiere die <a href="agb.html">AGB</a> und die <a href="datenschutz.html">Datenschutzerklärung</a>. Lechcode darf die Inhalte meiner bestehenden Website (Texte, Bilder, Logo) verwenden, um die unverbindliche Vorschau zu erstellen. *</label>
+                <label for="einwilligung">Ich akzeptiere die <a href="agb.html">AGB</a> und die <a href="datenschutz.html">Datenschutzerklärung</a>. Und ja, Lechcode darf die Texte, Bilder und das Logo meiner jetzigen Seite nutzen, um daraus die unverbindliche Vorschau zu bauen. *</label>
               </div>
               <button class="btn" type="submit" id="submit-btn">Meinen kostenlosen Entwurf ansehen <span class="arr">→</span></button>
               <div class="form-msg" id="form-msg" role="status" aria-live="polite"></div>
@@ -1143,10 +1169,10 @@
           </div>
           <div class="card">
             <h3>Lieber erst sprechen?</h3>
-            <p class="sub">Manche mögen’s andersrum: erst ein lockeres Kennenlern-Gespräch (ca. 30 Min), dann entscheiden wir gemeinsam, was für dich Sinn macht. Such dir einfach einen Termin — alles Weitere besprechen wir in Ruhe im Call, ganz unverbindlich.</p>
+            <p class="sub">Manche mögen’s andersrum: erst reden, dann entscheiden. Such dir einen Termin aus, wir nehmen uns eine gute halbe Stunde Zeit und schauen in Ruhe, was für dich überhaupt Sinn ergibt. Ganz unverbindlich.</p>
             <a class="btn" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1vusFYCV6O45i109a0J5ruEFtWCT7iFsq5t4Mb2KvQmNhdkMtlddml9dx5V2jButjV2SUGapFg?gv=true" target="_blank" rel="noopener noreferrer" style="margin-top:18px;">Termin aussuchen <span class="arr">→</span></a>
             <a class="btn btn-ghost" href="mailto:info@lechcode.de" style="margin-top:12px;">Oder schreib uns <span class="arr">→</span></a>
-            <p class="or-line">Es antwortet ein echter Mensch aus Landsberg — meist noch am selben Tag, ehrlich, auch wenn die Antwort mal ist: „Das brauchst du gar nicht."</p>
+            <p class="or-line">Es antwortet ein Mensch aus Landsberg, meist noch am selben Tag. Auch dann ehrlich, wenn die Antwort lautet: „Das brauchst du gar nicht.“</p>
           </div>
         </div>
       </div>
@@ -1164,8 +1190,8 @@
           <p class="addr">Lenny &amp; Michael · Landsberg am Lech<br>info@lechcode.de · lechcode.de</p>
         </div>
         <div class="foot-col">
-          <h4>Seite</h4>
-          <a href="#angebot">Startangebot</a><a href="#ablauf">So läuft’s</a><a href="#vergleich">Warum Lechcode</a><a href="#stimmen">Stimmen</a><a href="#ueber-uns">Team</a><a href="#eintragen">Eintragen</a>
+          <h4>Auf dieser Seite</h4>
+          <a href="#angebot">Startangebot</a><a href="#ablauf">So läuft’s</a><a href="#vergleich">Warum Lechcode</a><a href="#ueber-uns">Team</a><a href="#stimmen">Stimmen</a><a href="#eintragen">Eintragen</a>
         </div>
         <div class="foot-col">
           <h4>Rechtliches</h4>
@@ -1206,7 +1232,7 @@
 
       <div class="foot-bottom">
         <span>© 2026 <span class="wm" style="vertical-align:-2px;"><span class="lech">lech</span><span class="code">code</span></span> · Schönbach &amp; Storz GbR · Landsberg am Lech</span>
-        <span style="font-family:var(--hand);font-size:18px;color:var(--gold);">mit Liebe gebaut</span>
+        <span style="font-family:var(--hand);font-size:18px;color:var(--gold);">am Lech gebaut, mit Liebe</span>
       </div>
     </div>
   </footer>
@@ -1272,7 +1298,7 @@
     function mailtoFallback(data){
       var body='Hallo Lenny & Michael,%0D%0A%0D%0Aich möchte gern meinen kostenlosen Website-Entwurf:%0D%0A%0D%0AName: '+encodeURIComponent(data.name)+'%0D%0AE-Mail: '+encodeURIComponent(data.email)+'%0D%0AMeine Website: '+encodeURIComponent(data.domain)+'%0D%0AWünsche: '+encodeURIComponent(data.wuensche||'—')+'%0D%0A%0D%0AAGB & Datenschutz akzeptiert, Inhalte dürfen für die Vorschau verwendet werden.';
       msg.className='form-msg err';
-      msg.innerHTML='Hoppla, das hat online gerade nicht geklappt. Wir öffnen dir eine fertige E-Mail: einfach absenden, dann kümmern wir uns. <a href="mailto:info@lechcode.de?subject='+encodeURIComponent('Neue Website-Anfrage: '+data.domain)+'&body='+body+'" style="font-weight:600;text-decoration:underline;">Anfrage per E-Mail senden</a>';
+      msg.innerHTML='Das ist gerade an uns gescheitert, nicht an dir. Wir haben dir eine fertige E-Mail vorbereitet, du musst sie nur abschicken, dann geht alles genauso weiter. <a href="mailto:info@lechcode.de?subject='+encodeURIComponent('Neue Website-Anfrage: '+data.domain)+'&body='+body+'" style="font-weight:600;text-decoration:underline;">Anfrage per E-Mail senden</a>';
     }
     form.addEventListener('submit',function(e){
       e.preventDefault();
@@ -1302,7 +1328,7 @@
         .then(function(res){
           if(res.ok&&res.j&&res.j.ok){
             msg.className='form-msg ok';
-            msg.textContent='Schön, dass du dabei bist! Wir bauen deinen Entwurf jetzt — schau morgen um diese Zeit in dein Postfach, dein Vorschau-Link kommt. Bis dahin: einmal tief durchatmen, den Rest machen wir. ☀️';
+            msg.textContent='Angekommen, danke dir. Wir setzen uns jetzt an deinen Entwurf und schicken dir den Link, sobald er steht, spätestens in 24 Stunden. Bis dahin musst du gar nichts tun. ☀️';
             form.reset();
           }else{ mailtoFallback(data); }
         })
