@@ -113,6 +113,13 @@
   ::selection{background:rgba(232,146,63,.3);color:var(--bone);}
   .wrap{width:min(1120px,92vw);margin-inline:auto;}
   section{padding:var(--space-6) 0;position:relative;}
+  /* 1px-Überlappung an allen Vollbild-Farbkanten. Auf Displays mit 125%/150%-Skalierung
+     (unter Windows der Normalfall) rundet der Browser die Abschnittskanten unterschiedlich
+     und lässt an jedem Übergang einen haarfeinen Saum des dunklen Seitenhintergrunds
+     durchblitzen. Die Überlappung schließt ihn — inhaltlich folgenlos, die Farbkante
+     wandert nur um 1px. Der Hero bleibt außen vor (schließt oben an die Navigation an). */
+  section,svg.wave,.site-footer{margin-top:-1px;}
+  .hero{margin-top:0;}
   .sec-head{max-width:56ch;margin-bottom:var(--space-5);}
   .sec-head h2{font-size:var(--step-4);margin-top:var(--space-2);}
   .sec-head p{font-size:var(--step-1);margin-top:var(--space-3);}
@@ -382,7 +389,7 @@
   .ki-lead .role{display:block;font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.04em;color:var(--gold);margin:2px 0 7px;}
   .ki-lead p{color:var(--bone-dim);font-size:var(--step-0);line-height:var(--lh-body);}
   @media (max-width:520px){.ki-lead{flex-direction:column;text-align:center;}.ki-lead .ki-badge{margin-inline:auto;}}
-  /* Stimmen — Slider aus Trustpilot-Bewertungen.
+  /* Stimmen — Slider aus echten Kundenbewertungen (Google & Trustpilot).
      Basis ist natives Scroll-Snap: auch ohne das Slider-Skript sind alle Karten
      durch Wischen/Scrollen erreichbar. Pfeile und Punkte kommen per JS dazu.
      Jede Karte ist eine eigene Zitat-Karte (gerahmt, großes Anführungszeichen,
@@ -1044,7 +1051,7 @@
         <path d="M0 30 q 120 -16 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0" stroke="#e8923f" stroke-width="2" stroke-linecap="round" stroke-opacity=".4"/>
       </g>
       <g class="wave-anim">
-        <path d="M0 30 q 120 -11 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 L2880 56 L0 56 Z" fill="var(--cream)" stroke="none"/>
+        <path d="M0 30 q 120 -11 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 L2880 56 L0 56 Z" fill="var(--sand)" stroke="none"/>
         <path d="M0 30 q 120 -11 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0 t 240 0" stroke="#e8923f" stroke-width="2.5" stroke-linecap="round"/>
       </g>
     </svg>
@@ -1055,10 +1062,10 @@
         <div class="sec-head">
           <span class="eyebrow">Stimmen</span>
           <h2>Von Herzen empfohlen.</h2>
-          <p class="lead">Echte Bewertungen von Trustpilot — von Menschen, für die wir gebaut haben.</p>
+          <p class="lead">Echte Bewertungen von Menschen, für die wir gebaut haben.</p>
         </div>
 
-        <div class="stimmen-slider" tabindex="0" role="group" aria-roledescription="Slider" aria-label="Kundenstimmen von Trustpilot">
+        <div class="stimmen-slider" tabindex="0" role="group" aria-roledescription="Slider" aria-label="Kundenstimmen von Google und Trustpilot">
           <div class="stimmen-track">
 
             <figure class="stimme" role="group" aria-roledescription="Bewertung" aria-label="Bewertung 1 von 3">
@@ -1090,7 +1097,7 @@
               <p class="stimme-more">Wir haben ein digitales Programmheft erstellen lassen und das Ergebnis hat meine Erwartungen weit übertroffen. Es ist beeindruckend, was alles möglich ist. Der Kontakt mit Michael war von Anfang an super angenehm und professionell. Unsere Vorschläge und Wünsche wurden jederzeit offen aufgenommen und schnell sowie zuverlässig umgesetzt. Vielen Dank für die tolle Zusammenarbeit – wir würden Lechcode jederzeit weiterempfehlen und arbeiten in Zukunft hoffentlich für weitere Projekte zusammen!</p>
               <figcaption class="stimme-by">
                 <span class="stimme-av" aria-hidden="true">CM</span>
-                <span class="stimme-wer"><b>C. M.</b><small>Bewertung auf Trustpilot · 5,0 von 5</small></span>
+                <span class="stimme-wer"><b>C. M.</b><small>Bewertung auf Google · 5,0 von 5</small></span>
               </figcaption>
             </figure>
 
