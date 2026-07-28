@@ -9,7 +9,7 @@ Eine Datei pro Seite, **kein Build** (kein npm/Vite). Einfach `index.html` im Br
 > ausschließlich von **Lenny** umgeschaltet. Ein Push hier ändert an lechcode.de **nichts**.
 
 ## Dateien
-- **`index.html`** — die komplette Landingpage (HTML + CSS + JS inline). Kurz-Version fürs Netzwerk: Hero mit Video-Bühne → Startangebot (790 €) → Ablauf (4 Schritte) + Pflege-Banner (19 €/M, inkl. Kundenportal) → Warum Lechcode (3-Wege-Vergleich) → Über uns (KI-Werkstatt-Organigramm) → Stimme (Zitat-Karte) → Formular.
+- **`index.html`** — die komplette Landingpage (HTML + CSS + JS inline). Kurz-Version fürs Netzwerk: Hero mit Video-Bühne → Startangebot (790 €, alles inkl.) → Ablauf (4 Schritte) + „Alles auf uns"-Banner (0 €/Monat, Dashboard) → Warum Lechcode (3-Wege-Vergleich) → Über uns (KI-Werkstatt-Organigramm) → Stimmen (Slider) → Formular.
 - **`impressum.html` · `datenschutz.html` · `agb.html`** — Rechtsseiten (gemeinsames `assets/legal.css`). **Preis in der AGB muss = Preis auf der Seite sein** (aktuell 790 €).
 - **`assets/team-*.jpg`** — die sieben illustrierten Porträts des Organigramms (je 384 px): Michael und Lenny als Gründer, Klaus · Aldo · Mona · Leonardo · Andrea als KI-Rollen. Die fünf KI-Rollen tragen ein goldenes **KI**-Schildchen am Bild, die Gründer keins.
 - **`assets/lenis.js`** — weiches Scrollen, lokal mitgeliefert (kein externer Request).
@@ -37,10 +37,10 @@ Damit sich niemand die Arbeit überschreibt:
 - **Logo:** Lech-Welle im Kreis (Gold). Lokale Motive: Bayertor („Wer wir sind"), Footer-Skyline, fließende Lech-Welle als Trenner.
 - Voll responsive, sanfte Animationen, `prefers-reduced-motion` respektiert. **Keine externen Requests** (cookiefrei — kein Banner nötig).
 
-## Das Angebot auf der Seite (Stand Juni 2026)
-- **Startangebot:** komplette Website für einmalig **790 €** (komplett inkl. Umzug). Kein Plätze-Zähler mehr (bewusst keine Knappheit).
+## Das Angebot auf der Seite (Stand Juli 2026)
+- **Startangebot:** komplette Website für einmalig **790 € — wirklich alles inklusive**. Kein Plätze-Zähler (bewusst keine Knappheit).
 - **Versprechen:** erster Entwurf **in 24 h** (privater Vorschau-Link) → **30-Min-Gespräch mit Michael** → finale Version in weiteren 24 h → Umzug (MX/E-Mail nie anfassen).
-- **Pflege:** 19 €/Monat (Startpreis) — Änderungen per E-Mail/WhatsApp-Sprachnachricht, monatlich kündbar.
+- **Danach keine laufenden Kosten (Modellwechsel 23.07.):** Das 19-€-Abo ist gestrichen. Hosting **und** Domain trägt Lechcode (→ „0 € laufend" als No-Brainer-Argument). Änderungen unbegrenzt selbst übers **Dashboard** oder per Nachricht, ohne Aufpreis. ⚠ Reale Domain-Kosten (~10–15 €/Jahr/Kunde) trägt damit Lechcode — bewusste Entscheidung. AGB §4/§5/§8/§9 entsprechend angepasst, **mit `von Lenny prüfen`-Marker** (u. a. offen: wem gehört die Domain, was passiert bei Vertragsende).
 
 ## Formular (Sektion `#eintragen`)
 - Felder: Name, E-Mail, Domain (Pflicht) + Wünsche (optional) + **Pflicht-Checkbox** (AGB + Datenschutz + Erlaubnis, Inhalte der Altseite für die Vorschau zu nutzen).

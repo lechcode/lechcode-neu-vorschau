@@ -285,7 +285,7 @@
     .step:not(:last-child)::after{content:"";position:absolute;top:48px;right:-12px;width:16px;height:2px;background:linear-gradient(90deg,rgba(232,146,63,.5),transparent);}
   }
 
-  /* Pflege-Banner (19 €) — dunkle Karte in heller Sektion */
+  /* „Alles auf uns"-Banner (0 €/Monat) — dunkle Karte in heller Sektion */
   .care-banner{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,44px);align-items:start;margin-top:clamp(36px,5vw,54px);
     background:radial-gradient(120% 160% at 0% 0%, #2a2214, var(--night-2) 70%);color:var(--bone);border:1px solid var(--line-d);border-radius:var(--radius-lg);
     padding:clamp(24px,4vw,40px) clamp(22px,4vw,44px);box-shadow:var(--edge-d), var(--shadow-d);position:relative;overflow:hidden;}
@@ -707,26 +707,11 @@
           {
             "@type": "Offer",
             "name": "Komplette Website",
-            "description": "Einmalig 790 €: Gestaltung, Aufbau, Texte, Umzug der bestehenden Domain und E-Mail — alles enthalten. Der erste Entwurf ist kostenlos und unverbindlich.",
+            "description": "Einmalig 790 €: Gestaltung, Aufbau, Texte, Umzug der bestehenden Domain und E-Mail sowie Hosting — alles enthalten, danach keine laufenden Kosten. Änderungen jederzeit selbst über das Dashboard. Der erste Entwurf ist kostenlos und unverbindlich.",
             "price": "790",
             "priceCurrency": "EUR",
             "availability": "https://schema.org/InStock",
             "url": "https://lechcode.de/#angebot"
-          },
-          {
-            "@type": "Offer",
-            "name": "Pflege & Änderungen",
-            "description": "Änderungen per E-Mail oder Sprachnachricht, Hosting und Updates inklusive. Monatlich kündbar.",
-            "price": "19",
-            "priceCurrency": "EUR",
-            "url": "https://lechcode.de/#ablauf",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": "19",
-              "priceCurrency": "EUR",
-              "billingIncrement": 1,
-              "unitCode": "MON"
-            }
           }
         ],
         "hasOfferCatalog": {
@@ -736,7 +721,7 @@
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Webdesign & Website-Erstellung" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website-Relaunch & Modernisierung" } },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Domain- und E-Mail-Umzug" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website-Pflege & Betreuung" } }
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hosting, Pflege & Betreuung (inklusive)" } }
           ]
         }
       },
@@ -846,8 +831,8 @@
         <div class="offer-grid">
           <div class="price">
             <span class="pill">Startpreis · alles inklusive</span>
-            <div class="amount">790 €<small> einmalig — komplette Website inkl. Umzug</small></div>
-            <p class="desc">Du zahlst erst, wenn dir der Entwurf gefällt. Bis dahin: nichts.</p>
+            <div class="amount">790 €<small> einmalig — alles inklusive, danach keine laufenden Kosten</small></div>
+            <p class="desc">Einmal 790 €, und die Sache ist erledigt. Kein Abo, keine monatliche Gebühr — und du zahlst erst, wenn dir der Entwurf gefällt.</p>
             <ul>
               <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Komplett neues Design</b> — in deinem Branding oder einem frischen: Farben, Schriften, Logo inklusive.</span></li>
               <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Erster Entwurf in 24 Stunden</b> — privater Vorschau-Link, kostenlos und unverbindlich.</span></li>
@@ -855,8 +840,9 @@
               <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Umzug inklusive</b> — wir bringen alles live, deine E-Mail-Adressen bleiben unangetastet.</span></li>
               <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Rechtlich sauber</b> — verschlüsselt, mit Impressum &amp; Datenschutz, meist ganz ohne Cookie-Banner.</span></li>
               <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Blitzschnell auf jedem Gerät</b> — fürs Handy zuerst gebaut, wo über 60 % deiner Besucher ankommen.</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Kein Abo, keine Miete</b> — die Seite gehört dir und zieht jederzeit mit, auch ohne uns.</span></li>
-              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Laufend nur die Domain</b> — rund 4 € im Jahr. Das Hosting übernehmen wir, ein Monats-Abo brauchst du nicht.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Ändern, so oft du willst</b> — selbst über dein eigenes Dashboard, jederzeit und ohne Aufpreis. Oder du schreibst uns einfach.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Hosting und Domain auf uns</b> — danach null laufende Kosten: kein Abo, keine monatliche Gebühr, kein Kleingedrucktes.</span></li>
+              <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="#c79a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span><b>Die Seite gehört dir</b> — kein Lock-in, jederzeit zu jedem Anbieter umziehbar.</span></li>
             </ul>
             <a class="btn" href="#eintragen">Meinen kostenlosen Entwurf ansehen <span class="arr">→</span></a>
             <p class="price-fine">Deine Vorschau ist immer kostenlos, egal ob du danach Ja sagst — keine versteckten Kosten.</p>
@@ -882,16 +868,16 @@
           <div class="step"><div class="num">4</div><span class="zeit">ohne Stress</span><h3>Wir bringen sie live</h3><p>Ist die finale Version durch, übernehmen wir den kompletten Umzug — Domain, Hosting, sichere Verschlüsselung. Deine <span class="nb">E-Mails</span> bleiben unberührt.</p></div>
         </div>
 
-        <!-- Pflege-Service -->
+        <!-- Danach: alles auf uns, keine Folgekosten -->
         <div class="care-banner">
           <canvas class="funken" aria-hidden="true"></canvas>
           <div>
-            <span class="pill-mini">Optional · Rundum-sorglos</span>
-            <div class="amount">19 €<small>pro Monat · freiwillig · jederzeit monatlich kündbar</small></div>
+            <span class="pill-mini">Nach dem Go-Live · alles auf uns</span>
+            <div class="amount">0 €<small>pro Monat · kein Abo · alles schon im Preis</small></div>
           </div>
           <div>
             <h3>Und du musst nie wieder an deine Website denken.</h3>
-            <p>Zwei Wege, such dir aus, was zu dir passt. Entweder du schreibst uns kurz: eine E-Mail oder Sprachnachricht, und deine Änderung ist meist am nächsten Tag online. Oder du machst es selbst — in <b>deinem eigenen Kundenportal</b> tippst du einfach in den Chat, was anders soll. „Neuer Preis: 80 €" genügt, und die Seite ändert sich. So oft du willst, <b>kinderleicht</b>, ohne uns zu fragen. Freiwillig ist das alles: Wer selten etwas ändert, braucht es nicht.</p>
+            <p>Nach dem Umzug kümmerst du dich um — nichts. <b>Hosting und Domain laufen über uns</b>, dafür zahlst du keinen Cent extra. Soll sich etwas ändern, tippst du es einfach selbst in dein <b>Dashboard</b>: „Neuer Preis: 80 €" genügt, und die Seite ist aktualisiert. So oft du willst, ohne Aufpreis. Keine Lust, selbst? Schreib uns eine Nachricht, wir machen's. <b>Kein Abo, keine monatliche Gebühr</b> — das war's. Genau das meinen wir mit sorgenfrei.</p>
           </div>
         </div>
       </div>
@@ -911,11 +897,11 @@
           <div class="flip-row">
             <div class="flip-col"><span class="cost-old">10–25 € / Monat</span><small>Baukasten-Abo, dauerhaft</small></div>
             <span class="flip-arrow" aria-hidden="true">→</span>
-            <div class="flip-col"><span class="cost-new">≈ 4 € / Jahr</span><small>nur die Domain — Hosting übernehmen wir</small></div>
+            <div class="flip-col"><span class="cost-new">0 € / Monat</span><small>Hosting und Domain übernehmen wir</small></div>
           </div>
-          <p class="cost-say">Das monatliche Abo fällt komplett weg. Das Hosting übernehmen wir, bleibt nur deine Domain: rund 4 € im Jahr. Mehr nicht.</p>
-          <div class="cost-chips"><span>✓ kein Abo-Zwang</span><span>✓ kein Cookie-Banner</span><span>✓ Recht inklusive</span></div>
-          <p class="cost-foot">Änderungen lieber abgeben? Optional die Pflege für 19 €/Monat, monatlich kündbar. Sonst zahlst du im Monat nichts.</p>
+          <p class="cost-say">Das monatliche Abo fällt komplett weg — und bei uns kommt keins dazu. Hosting und Domain laufen über uns. Nach dem Umzug zahlst du laufend: nichts.</p>
+          <div class="cost-chips"><span>✓ 0 € laufend</span><span>✓ kein Cookie-Banner</span><span>✓ Recht inklusive</span></div>
+          <p class="cost-foot">Etwas ändern? Machst du selbst im Dashboard oder schreibst uns kurz — beides ist schon drin, ohne Aufpreis.</p>
         </div>
 
         <div class="proof-stats stagger">
@@ -961,7 +947,7 @@
           <ul>
             <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Preis am Anfang:</b> 790 € einmalig, alles drin</span></li>            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Bis sie fertig ist:</b> Erster Entwurf in 24 Stunden</span></li>            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Design:</b> Auf deine Branche zugeschnitten</span></li>
             <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Recht & Sicherheit:</b> Verschlüsselung, Impressum & Datenschutz — oft ganz ohne Cookie-Banner</span></li>
-            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Änderungen:</b> Eine Nachricht genügt — einzeln oder mit optionaler Pflege</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Änderungen:</b> Selbst im Dashboard oder eine Nachricht — unbegrenzt, ohne Aufpreis</span></li>
             <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cmp-yes"><path d="M3 8.5l3 3 7-7" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="vh">Vorteil:</span><span><b>Wem gehört’s?:</b> Dir — kein Lock-in, jederzeit umziehbar</span></li>
           </ul>
         </div>
