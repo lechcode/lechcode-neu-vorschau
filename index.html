@@ -370,22 +370,11 @@
   .about-bayertor{position:absolute;right:-6px;bottom:0;width:clamp(170px,24vw,290px);color:var(--gold);opacity:.06;pointer-events:none;z-index:0;
     -webkit-mask:linear-gradient(90deg,transparent,#000 35%);mask:linear-gradient(90deg,transparent,#000 35%);}
   @media (max-width:600px){.about-bayertor{opacity:.04;}}
-  .people{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:clamp(28px,4.5vw,44px);}
-  .person{background:var(--panel);border:1px solid var(--line-d);border-radius:var(--radius);padding:26px;box-shadow:var(--edge-d), var(--shadow-d);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);}
-  .person:hover{transform:translateY(-3px);box-shadow:var(--ember-glow), 0 30px 60px -30px rgba(0,0,0,.7);border-color:rgba(231,185,100,.3);}
-  .person .ic{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:var(--radius-sm);background:rgba(231,185,100,.08);box-shadow:inset 0 0 0 1px var(--line-d);font-size:22px;margin-bottom:14px;}
-  .person .avatar{display:block;width:84px;height:84px;border-radius:50%;object-fit:cover;margin-bottom:16px;box-shadow:0 0 0 3px rgba(231,185,100,.18), 0 8px 20px -8px rgba(0,0,0,.6);}
-  .person h3{color:#fbf5e8;}
-  .person .role{display:block;font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.04em;color:var(--gold);margin:4px 0 10px;}
-  .person p{color:var(--bone-dim);} .person p b{color:var(--ember);font-weight:600;}
-  .person p a{color:var(--ember);text-decoration:underline;text-decoration-color:rgba(231,185,100,.45);text-underline-offset:3px;transition:text-decoration-color .25s var(--ease);}
-  .person p a:hover{text-decoration-color:var(--ember);}
   .about .local{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--gold);background:rgba(231,185,100,.1);border:1px solid var(--line-d);padding:8px 15px;border-radius:var(--radius-pill);}
   .about h2 .q{color:var(--gold);}
   #stimmen .sec-head{margin-inline:auto;text-align:center;}
   /* KI-Team-Karten */
   .team-intro{text-align:center;font-family:var(--display);font-weight:600;color:var(--gold);font-size:var(--step-1);margin-top:clamp(30px,4.5vw,44px);}
-  .ki-team{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:var(--space-3);}
   .ki-card{background:var(--panel);border:1px solid var(--line-d);border-radius:var(--radius);padding:22px 20px;box-shadow:var(--edge-d);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);}
   .ki-card:hover{transform:translateY(-3px);box-shadow:var(--ember-glow), 0 30px 60px -30px rgba(0,0,0,.7);border-color:rgba(231,185,100,.3);}
   .ki-badge{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:var(--radius-sm);background:rgba(231,185,100,.1);box-shadow:inset 0 0 0 1px var(--line-d);font-size:22px;margin-bottom:12px;}
@@ -452,8 +441,6 @@
     transition:transform .25s var(--ease),background .25s var(--ease);}
   .stimmen-dot[aria-current="true"]::before{background:var(--gold-deep);transform:scale(1.4);}
   @media (max-width:480px){.stimme-by{flex-direction:column;gap:10px;}.stimme-wer{text-align:center;}}
-  @media (max-width:860px){.ki-team{grid-template-columns:repeat(2,1fr);}}
-  @media (max-width:520px){.ki-team{grid-template-columns:1fr;}}
   /* ===== Über uns — Organigramm (KI-Werkstatt) ===== */
   /* Größen wie im Rest der Seite: der Auftakt liegt auf der Lead-Stufe (wie die
      Einleitungen der anderen Abschnitte), der ausgeklappte Teil auf Fließtext-Stufe
@@ -474,6 +461,11 @@
   .org-more-body{margin-top:.9em;padding-top:1.4em;border-top:1px solid var(--line-d);}
   .org-trenner{width:100%;max-width:62ch;margin:clamp(48px,7vw,80px) auto 0;height:1px;border:0;background:linear-gradient(90deg,transparent,var(--line-d),transparent);}
   .org-head2{margin-top:clamp(52px,8vw,88px);}
+  /* Wo der Mensch die Maschine überstimmt — Andreas Kernfrage, direkt unter der Überschrift */
+  /* Wo der Mensch die Maschine überstimmt. Betonung über einen kurzen Querstrich,
+     damit die zentrierte Achse der Sektion heil bleibt. */
+  .org-mensch{position:relative;max-width:52ch;margin-inline:auto;padding-top:1.5em;text-align:center;color:var(--bone);}
+  .org-mensch::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:44px;height:2px;background:var(--gold);}
   .org-ebene{position:relative;margin-top:clamp(28px,4vw,40px);}
   .org-label{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:20px;}
   .org-reihe{display:flex;flex-wrap:wrap;gap:clamp(16px,2.4vw,22px);justify-content:center;position:relative;z-index:1;}
@@ -481,7 +473,8 @@
   .org-karte{background:var(--panel);border:1px solid var(--line-d);border-radius:var(--radius);padding:24px 20px 26px;text-align:center;flex:1 1 240px;max-width:300px;display:flex;flex-direction:column;align-items:center;transition:border-color .35s var(--ease),transform .45s var(--ease),box-shadow .45s var(--ease);}
   .org-reihe-4 .org-karte{max-width:none;}
   .org-karte:hover{border-color:rgba(231,185,100,.42);transform:translateY(-5px);box-shadow:0 18px 44px -22px rgba(0,0,0,.9);}
-  .org-av{width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:50% 22%;border:2px solid rgba(231,185,100,.28);background:var(--panel-2);flex:none;}
+  /* Alle Quellen quadratisch, alle Boxen auch — object-position hätte hier nichts zu verschieben. */
+  .org-av{width:104px;height:104px;border-radius:50%;object-fit:cover;border:2px solid rgba(231,185,100,.28);background:var(--panel-2);flex:none;}
   .org-av-ki{display:grid;place-items:center;font-size:40px;line-height:1;}
   .org-karte h3{font-family:var(--display);font-weight:600;font-size:var(--step-2);margin:16px 0 0;color:#fbf5e8;}
   .org-rolle{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-top:7px;}
@@ -534,7 +527,14 @@
     left:calc((100% - 3*var(--g))/8);right:calc((100% - 3*var(--g))/8);}
   .org-fan i{position:relative;}
   .org-fan i::after{content:"";position:absolute;left:50%;top:21px;width:1px;height:21px;background:var(--gold);opacity:.5;}
-  @media (max-width:900px){.org-fan{display:none;}}
+  /* Schmal stapeln sich die Karten untereinander, der Verteiler ergibt dann keinen Sinn mehr.
+     Statt ihn auszublenden (dann hinge die Werkstatt ohne Anschluss an Klaus) bleibt eine
+     einfache Vertikale stehen — dieselbe Grammatik wie .org-conn. */
+  @media (max-width:900px){
+    .org-fan{display:block;height:34px;}
+    .org-fan::after,.org-fan i{display:none;}
+    .org-fan::before{height:34px;}
+  }
   /* Aufbau-Sequenz: das Organigramm setzt sich beim Scrollen selbst zusammen —
      Karten steigen auf, Linien zeichnen sich nach. Startzustand hängt an .js:
      ohne JavaScript ist alles sofort da, Inhalt hängt nie an einer Animation. */
@@ -796,17 +796,18 @@
         <p class="hero-sub">Die meisten schicken dir erst ein Angebot. Wir schicken dir die Seite. Trag dich ein, und morgen liegt ein fertiger Entwurf in deinem Postfach, gebaut auf dem, was du mitbringst, damit du nicht raten musst, was am Ende dabei herauskommt.</p>
 
         <!-- Hero-Video: lokal gehostet (cookiefrei, 0 externe Requests). Poster in assets/.
-             Quelle: „Videos & Fotos/Landingpage Special Offer Video.mov" → 1080p H.264, faststart, 87 MB. -->
+             Quelle: „Website Relaunch/Neues Landingpage Video/Neues Landingpage Video.mov" (311 MB)
+             → 1080p H.264, CRF 26 + leichtes Entrauschen, faststart, 58 MB. Laufzeit 3:34. -->
         <div class="video-shell">
           <video class="video-frame" controls preload="none" playsinline poster="assets/video-poster.jpg"
-                 aria-label="Vorstellungs-Video: Lenny und Michael von Lechcode erklären in rund sechs Minuten das Startangebot."
+                 aria-label="Vorstellungs-Video: Lenny und Michael von Lechcode erklären in rund dreieinhalb Minuten das Startangebot."
                  style="padding:0;display:block;width:100%;height:auto;background:#0d0b07;">
             <source src="assets/lechcode-video.mp4" type="video/mp4">
             <!-- Untertitel-Spur: sobald eine deutsche .vtt vorliegt, hier ergänzen —
                  <track kind="captions" srclang="de" label="Deutsch" src="assets/lechcode-video.vtt" default> -->
             <p style="padding:1.5em;color:var(--bone-dim);text-align:center;">Dein Browser kann das Video nicht direkt abspielen — <a href="assets/lechcode-video.mp4" style="color:var(--gold);">hier herunterladen</a>.</p>
           </video>
-          <p class="video-cap">Lenny und Michael erzählen dir in sechs Minuten, wie das Ganze abläuft und wer da eigentlich hinter deiner Seite sitzt.</p>
+          <p class="video-cap">Lenny und Michael erzählen dir in dreieinhalb Minuten, wie das Ganze abläuft und wer da eigentlich hinter deiner Seite sitzt.</p>
         </div>
 
         <div class="hero-cta">
@@ -816,7 +817,6 @@
         <div class="hero-trust">
           <span class="trust">Kostenlos ansehen, dann entscheiden</span>
           <span class="trust">Auch ganz ohne bestehende Website</span>
-          <span class="trust">Über 20 Seiten stehen schon</span>
         </div>
       </div>
     </section>
@@ -1020,14 +1020,15 @@
         <div class="sec-head org-head2" style="margin-bottom:0;">
           <span class="eyebrow" data-anim>Wie wir arbeiten</span>
           <h2 data-anim style="--d:90ms">Zwei Gründer und eine KI-Werkstatt.</h2>
-          <p class="lead" data-anim style="--d:190ms">An deiner Website arbeiten zwei Menschen aus Landsberg und fünf KI-Rollen, die wir selbst gebaut und trainiert haben. Jede davon hat ihr eigenes Handwerk: Eine baut, eine schreibt, eine findet die Fehler, die sonst niemand sieht. Und keine Seite geht raus, bevor sie alle fünf Stationen durchlaufen hat.</p>
+          <p class="lead" data-anim style="--d:190ms">Zwei Menschen aus Landsberg, die du anrufen kannst. Dazu fünf KI-Rollen, jede für ein Handwerk, jede von uns selbst trainiert. So schaffen wir 24 Stunden, ohne zu schludern.</p>
+          <p class="lead org-mensch" data-anim style="--d:260ms">Der erste Entwurf kommt von der KI. Was bei dir ankommt, hat Michael durchgesehen — und was ihm nicht passt, schickt er zurück in die Werkstatt.</p>
         </div>
 
         <div class="org-ebene org-gruender">
           <div class="org-label" data-anim>Die Gründer</div>
           <div class="org-reihe">
-            <div class="org-karte" data-anim style="--d:60ms"><span class="org-avhold"><img class="org-av" src="assets/team-michi.jpg" alt="Michael" width="116" height="116" loading="lazy" decoding="async"></span><h3>Michael</h3><div class="org-rolle">Gründer · Dein Kontakt</div><p>Bei Michael laufen deine Wünsche zusammen. Er begleitet dich vom ersten Entwurf bis zur Abnahme und hört erst einmal zu, bevor er etwas vorschlägt.</p></div>
-            <div class="org-karte" data-anim style="--d:170ms"><span class="org-avhold"><img class="org-av" src="assets/team-lenny.jpg" alt="Lenny" width="116" height="116" loading="lazy" decoding="async"></span><h3>Lenny</h3><div class="org-rolle">Gründer · Technik &amp; KI</div><p>Lenny hat unsere KI-Software gebaut und schraubt ständig weiter daran, damit deine Seite schnell und sicher bleibt, auch in zwei Jahren noch.</p></div>
+            <div class="org-karte" data-anim style="--d:60ms"><span class="org-avhold"><img class="org-av" src="assets/team-michi.jpg" alt="" width="116" height="116" loading="lazy" decoding="async"></span><h3>Michael</h3><div class="org-rolle">Gründer · Zuhören &amp; Dranbleiben</div><p>Michael geht die Seite in 30 Minuten mit dir durch und schreibt mit, was du anders willst. Danach bleibt er deine feste Ansprechperson.</p></div>
+            <div class="org-karte" data-anim style="--d:170ms"><span class="org-avhold"><img class="org-av" src="assets/team-lenny.jpg" alt="" width="116" height="116" loading="lazy" decoding="async"></span><h3>Lenny</h3><div class="org-rolle">Gründer · Technik &amp; KI</div><p>Die Software, aus der deine neue Seite entsteht, hat er selbst geschrieben. Fast täglich feilt er weiter: schnell laden, in zwei Jahren noch laufen.</p></div>
           </div>
         </div>
 
@@ -1036,7 +1037,7 @@
         <div class="org-ebene org-leitung">
           <div class="org-label" data-anim>Die Leitung · KI</div>
           <div class="org-reihe">
-            <div class="org-karte" data-anim style="--d:80ms"><span class="org-avhold"><img class="org-av" src="assets/team-klaus.jpg" alt="Klaus" width="112" height="112" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Klaus</h3><div class="org-rolle">Der Dirigent</div><p>Klaus führt die Werkstatt. Er nimmt auf, was du mit Michael besprochen hast, verteilt die Arbeit und kennt am Ende jede einzelne Zeile. Unter jeder Seite, die rausgeht, steht seine Unterschrift.</p></div>
+            <div class="org-karte" data-anim style="--d:80ms"><span class="org-avhold"><img class="org-av" src="assets/team-klaus.jpg" alt="" width="112" height="112" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Klaus</h3><div class="org-rolle">Der Dirigent</div><p>Teilt die Arbeit ein, gibt das Tempo vor. Was du Michael erzählt hast, hakt er erst ab, wenn es wirklich auf der Seite steht.</p></div>
           </div>
         </div>
 
@@ -1046,10 +1047,10 @@
           <div class="org-label" data-anim>Die Werkstatt · KI</div>
           <div class="org-fan" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
           <div class="org-reihe org-reihe-4">
-            <div class="org-karte" data-anim><span class="org-avhold"><img class="org-av" src="assets/team-aldo.jpg" alt="Aldo" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Aldo</h3><div class="org-rolle">Der Baumeister</div><p>Aldo ist der, der bei einem Haus zuerst nach dem Fundament fragt, und weil eine Website genauso funktioniert, klärt er erst, wo alles hingehört und wie es sich am kleinen Handy anfassen lässt, und baut dann.</p></div>
-            <div class="org-karte" data-anim style="--d:110ms"><span class="org-avhold"><img class="org-av" src="assets/team-mona.jpg" alt="Mona" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Mona</h3><div class="org-rolle">Die Wortfinderin</div><p>Mona schreibt deine Texte in der Sprache deiner Kundinnen, warm und ohne Werbesprech. Sie feilt so lange an einem Satz, bis er nach dir klingt und nicht nach einer Agentur.</p></div>
-            <div class="org-karte" data-anim style="--d:220ms"><span class="org-avhold"><img class="org-av" src="assets/team-leonardo.jpg" alt="Leonardo" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Leonardo</h3><div class="org-rolle">Der Kritiker</div><p>Leonardo prüft, was fertig aussieht, und er ist schwer zufriedenzustellen. „Ganz gut“ reicht ihm nicht. Was er zurückschickt, siehst du nie.</p></div>
-            <div class="org-karte" data-anim style="--d:330ms"><span class="org-avhold"><img class="org-av" src="assets/team-andrea.jpg" alt="Andrea" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Andrea</h3><div class="org-rolle">Die erste Besucherin</div><p>Andrea ist die Erste, die deine fertige Seite sieht, und sie hat es eilig: eine Kundin zwischen zwei Terminen, die den Termin-Knopf sucht und ihn nicht sofort findet. Was sie dabei nervt, schreibt sie uns auf.</p></div>
+            <div class="org-karte" data-anim><span class="org-avhold"><img class="org-av" src="assets/team-aldo.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Aldo</h3><div class="org-rolle">Der Baumeister</div><p>Deine Seite baut er zuerst fürs kleine Handy, weil da die meisten landen. Von dort arbeitet er sich zum großen Bildschirm hoch.</p></div>
+            <div class="org-karte" data-anim style="--d:110ms"><span class="org-avhold"><img class="org-av" src="assets/team-mona.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Mona</h3><div class="org-rolle">Die Texterin</div><p>Schreibt deine Texte, streicht alles heraus, was nach Werbung klingt. Stehen bleibt, was du selbst so sagen würdest.</p></div>
+            <div class="org-karte" data-anim style="--d:220ms"><span class="org-avhold"><img class="org-av" src="assets/team-leonardo.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Leonardo</h3><div class="org-rolle">Der Kritiker</div><p>Was noch nicht stimmt, findet er an der fertigen Seite. Bei dir landet erst die Fassung, die er durchgehen lässt.</p></div>
+            <div class="org-karte" data-anim style="--d:330ms"><span class="org-avhold"><img class="org-av" src="assets/team-andrea.jpg" alt="" width="96" height="96" loading="lazy" decoding="async"><span class="org-chip is-ki">KI</span></span><h3>Andrea</h3><div class="org-rolle">Die erste Besucherin</div><p>Als deine Kundin liest sie die Seite, am Handy, in Eile. Wo sie zögert oder etwas nicht versteht, ändern wir es.</p></div>
           </div>
         </div>
 
