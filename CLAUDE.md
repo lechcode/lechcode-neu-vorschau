@@ -11,7 +11,7 @@ Eine Datei pro Seite, **kein Build** (kein npm/Vite). Einfach `index.html` im Br
 ## Dateien
 - **`index.html`** — die komplette Landingpage (HTML + CSS + JS inline). Kurz-Version fürs Netzwerk: Hero mit Video-Bühne → Startangebot (790 €, alles inkl.) → Ablauf (4 Schritte) + „Alles auf uns"-Banner (0 €/Monat, Dashboard) → Warum Lechcode (3-Wege-Vergleich) → Über uns (KI-Werkstatt-Organigramm) → Stimmen (Slider) → Formular.
 - **`impressum.html` · `datenschutz.html` · `agb.html`** — Rechtsseiten (gemeinsames `assets/legal.css`). **Preis in der AGB muss = Preis auf der Seite sein** (aktuell 790 €).
-- **`assets/team-*.jpg`** — die sieben illustrierten Porträts des Organigramms (je 384 px): Michael und Lenny als Gründer, Klaus · Aldo · Mona · Leonardo · Andrea als KI-Rollen. Die fünf KI-Rollen tragen ein goldenes **KI**-Schildchen am Bild, die Gründer keins.
+- **`assets/team-*.jpg`** — die sieben Porträts des Organigramms. **Michael und Lenny sind echte Fotos** (400 px, seit 31.07.); Klaus · Aldo · Mona · Leonardo · Andrea sind **Illustrationen** (384 px). Die fünf KI-Rollen tragen ein goldenes **KI**-Schildchen am Bild, die Gründer keins. Der Medium-Bruch Foto/Zeichnung ist gewollt (ehrliche Unterscheidung Mensch/Maschine) — ⚠ noch nicht gestaltet sind Hintergrund und Aufnahmedistanz, siehe „Offene Punkte".
 - **`assets/lenis.js`** — weiches Scrollen, lokal mitgeliefert (kein externer Request).
 - **`assets/og.jpg`** — Teilen-Vorschaubild (WhatsApp/Social, 1200×630).
 - **`robots.txt` · `sitemap.xml`** — SEO-Fundament für den Cutover (beide mit Anleitung im Kopf; solange `noindex` gilt, sperrt robots.txt bewusst).
@@ -42,6 +42,12 @@ Damit sich niemand die Arbeit überschreibt:
 - **Versprechen:** erster Entwurf **in 24 h** (privater Vorschau-Link) → **30-Min-Gespräch mit Michael** → finale Version in weiteren 24 h → Umzug (MX/E-Mail nie anfassen).
 - **Danach keine laufenden Kosten (Modellwechsel 23.07.):** Das 19-€-Abo ist gestrichen. Hosting **und** Domain trägt Lechcode (→ „0 € laufend" als No-Brainer-Argument). Änderungen unbegrenzt selbst übers **Dashboard** oder per Nachricht, ohne Aufpreis. ⚠ Reale Domain-Kosten (~10–15 €/Jahr/Kunde) trägt damit Lechcode — bewusste Entscheidung. AGB §4/§5/§8/§9 entsprechend angepasst, **mit `von Lenny prüfen`-Marker** (u. a. offen: wem gehört die Domain, was passiert bei Vertragsende).
 
+## Texte — drei Stellen, die zusammenhängen (leicht zu übersehen)
+- **Headline** (seit 31.07.): „Deine neue Website. **Morgen schon fertig.**" Die drei Meta-Beschreibungen (`description`, `og:description`, `twitter:description`) **und** die JSON-LD-Beschreibung sagen denselben Satz. Ändert sich die Headline, müssen alle vier mit — das ist der Text im Google-Snippet und in der WhatsApp-Vorschau.
+- **Video-Laufzeit** steht doppelt: in der Bildunterschrift und im `aria-label` des `<video>`. Aktuell „dreieinhalb Minuten".
+- **Stimmen-Lead nennt die Namen einzeln** („Emily, Anna, C. M. und Sibylle"). Kommt eine Bewertung dazu oder fällt eine weg, muss der Lead mit — sonst stimmt die Aufzählung nicht mehr. Die `aria-label`s der Karten („Bewertung 3 von 4") ebenfalls.
+- **Team-Karten:** Höchstens die zwei Gründer-Absätze dürfen mit dem Eigennamen beginnen. Wenn alle sieben so anfangen — und der Name steht zwei Zeilen darüber schon im `<h3>` — klingt die ganze Reihe nach Maschine. Das war der Hauptbefund der Überarbeitung vom 31.07.
+
 ## Formular (Sektion `#eintragen`)
 - Felder: Name, E-Mail, Domain (Pflicht) + Wünsche (optional) + **Pflicht-Checkbox** (AGB + Datenschutz + Erlaubnis, Inhalte der Altseite für die Vorschau zu nutzen).
 - Versand via **Web3Forms** (`fetch`, Inline-Erfolg/Fehler). **Solange der Key fehlt** (Suche `PLATZHALTER-FORM`), öffnet das Formular stattdessen automatisch eine **fertige E-Mail an info@lechcode.de** — es geht also nichts verloren.
@@ -49,7 +55,11 @@ Damit sich niemand die Arbeit überschreibt:
 
 ## ⚠ Offene Punkte
 1. **`noindex` bleibt drin**, solange diese Fassung unter der Vorschau-URL liegt — sonst stünde sie als zweite, fast gleiche Seite neben lechcode.de in Google. Raus kommt es erst beim Cutover, zusammen mit `robots.txt` (siehe Kommentar im Kopf von `index.html`).
-2. **Video wiegt 88 MB** (`assets/lechcode-video.mp4`). Es lädt dank `preload="none"` erst beim Klick, macht aber den Klon groß. Eine kleinere Fassung (1080p, ~15 MB) wäre der nächste sinnvolle Schritt.
+2. ✓ **Video erledigt (31.07.):** neues Video, 58 MB statt 87, Laufzeit 3:34. Rezept und Begründung stehen in der `README.md`. Lädt dank `preload="none"` weiterhin erst beim Klick.
+3. **Porträt-Familie angleichen.** Michaels und Lennys echte Fotos haben hellen Hintergrund und werden auf dem dunklen Panel zu leuchtenden Scheiben, während die fünf KI-Porträts in die Sektion hineinschmelzen; dazu sind die echten Gesichter im selben Kreis rund doppelt so groß (KI-Bilder sind Halbfiguren, deren Requisiten der Kreis anschneidet). **Bruch Foto/Zeichnung behalten, Hintergrund + Distanz angleichen.**
+4. **Gründer-Ebene ohne Querbalken:** Die Linie zu Klaus startet im Leerraum zwischen den beiden Karten. Die Werkstatt-Ebene darunter hat einen echten Verteiler — zwei Grammatiken in einem Diagramm.
+5. **Vor dem Cutover:** OG-Tags auf den drei Rechtsseiten ergänzen · `ASSETS-LIZENZEN.md` anlegen (Foto-Rechte) · Lighthouse neu messen.
+6. ⚠️ **`lc-qa` meldet auf dieser Seite 4× ROT „Externer Request"** — das sind die vier `rel="canonical"`-Links auf lechcode.de. Ein Canonical-Tag löst nie einen Request aus; das Gate liest das `rel`-Attribut nicht ein. **Fehlalarm, nicht auf der Seite fixen.** Die Seite hat weiterhin 0 externe Requests.
 
 ✓ Video ist eingebaut (lokal, cookiefrei, mit Poster) — der Vermerk `PLATZHALTER-VIDEO` in der CSS ist nur noch ein Kommentar-Rest.
 
